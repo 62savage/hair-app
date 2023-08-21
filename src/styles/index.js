@@ -11,7 +11,7 @@ import commonStyles from './common';
 const { width } = Dimensions.get('window');
 
 // Guideline sizes are based on standard ~5" screen mobile device
-const guidelineBaseWidth: number = 350;
+const guidelineBaseWidth = 350;
 
 Colors.loadColors(colors);
 
@@ -122,6 +122,8 @@ Assets.loadAssetsGroup('images', {});
 
 Assets.loadAssetsGroup('icons', {});
 
-const scale = (size: number): number => (width / guidelineBaseWidth) * size;
+const scale = size => (width / guidelineBaseWidth) * size;
 
-export { colors, fonts, scale, commonStyles };
+const deviceType = width > 480 ? 'tablet' : 'phone';
+
+export { colors, fonts, scale, commonStyles, deviceType };

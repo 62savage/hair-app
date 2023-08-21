@@ -8,6 +8,7 @@ import {
 
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
+import AppleLoginBtn from '../../molecules/auth/appleLogin';
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
@@ -29,6 +30,10 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         resizeMode="cover"
       >
         <View style={styles.section}>
+          <AppleLoginBtn />
+        </View>
+
+        <View style={styles.section}>
           <Text size={20} white>
             Home
           </Text>
@@ -43,7 +48,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         </View>
         <View style={[styles.section, styles.sectionLarge]}>
           <Text color="#19e7f7" hCenter size={15} style={styles.description}>
-            {' '}
             A powerful starter project that bootstraps development of your
             mobile application and saves you $20 000*
           </Text>
@@ -53,6 +57,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 {isExtended ? '$499' : '$99'}
               </Text>
             </View>
+
             <TouchableOpacity
               style={styles.priceLink}
               onPress={() =>
