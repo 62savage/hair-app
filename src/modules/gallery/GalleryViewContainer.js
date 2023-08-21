@@ -17,7 +17,7 @@ export default compose(
   ),
   lifecycle({
     componentDidMount() {
-      this.props.loadImages();
+      this.props.refreshImages();
     },
   }),
 )(GalleryScreen);
