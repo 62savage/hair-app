@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import "RNSplashScreen.h"  // here
 
 @implementation AppDelegate
 
@@ -11,7 +12,12 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
 
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+  bool didFinish = [super application:application didFinishLaunchingWithOptions:launchOptions];
+
+  [RNSplashScreen show];  // this needs to be called after [super application:application didFinishLaunchingWithOptions:launchOptions];
+  // @ref https://github.com/crazycodeboy/react-native-splash-screen/issues/610
+
+  return didFinish;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
