@@ -8,8 +8,15 @@ import { colors } from './src/styles';
 import { store, persistor } from './src/redux/store';
 
 import AppView from './src/modules/AppViewContainer';
+import { useEffect } from 'react';
+
+import SplashScreen from 'react-native-splash-screen';
 
 export default function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <Provider store={store}>
       <NavigationContainer>
