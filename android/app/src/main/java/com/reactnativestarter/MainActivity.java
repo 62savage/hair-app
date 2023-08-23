@@ -4,6 +4,17 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
+// react-native-splash-screen >= 0.3.1
+
+// ---------------------------------------------------------
+import android.os.Bundle; // required for onCreate parameter
+import org.devio.rn.splashscreen.SplashScreen; // here
+
+// https://github.com/crazycodeboy/react-native-splash-screen/issues/111
+// https://github.com/crazycodeboy/react-native-splash-screen/issues/601
+
+// ---------------------------------------------------------
+
 
 public class MainActivity extends ReactActivity {
 
@@ -14,6 +25,12 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "ReactNativeStarter";
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        SplashScreen.show(this);
+        super.onCreate(savedInstanceState);
     }
 
     /**
