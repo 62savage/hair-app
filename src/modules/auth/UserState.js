@@ -1,6 +1,6 @@
 // initial state
 const initialState = {
-  user: { email: 'gmail', name: 'name' },
+  user: {},
 };
 
 // actions
