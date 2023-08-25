@@ -3,6 +3,7 @@ import { compose, lifecycle } from 'recompose';
 import { Platform, UIManager } from 'react-native';
 
 import AppView from './AppView';
+import { login } from './auth/UserState';
 
 export default compose(
   connect(
@@ -11,7 +12,7 @@ export default compose(
     }),
     dispatch => ({
       loadImages: () => dispatch(loadImages()),
-      userLogin: () => dispatch(userLogin({ email: 'gmail', name: 'name' })),
+      login: () => dispatch(login({ email: 'gmail', name: 'name' })),
     }),
   ),
   lifecycle({

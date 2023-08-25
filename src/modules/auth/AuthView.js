@@ -10,15 +10,30 @@ import { commonStyles } from '../../styles';
 export default function AuthScreen(props) {
   console.log('AuthScreen props', props.user);
 
+  const [loading, setLoading] = React.useState(false);
+
   useEffect(() => {
     let timeout;
-    if (props.user) {
+    if (props.user && props.user.email) {
+      setLoading(true);
       // timeout = setTimeout(() => {
       //   props.navigation.navigate('RNMBombs');
       // }, 3000);
     }
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      setLoading(false);
+    };
   }, [props.user]);
+
+  const LoginProgressBar = () => {
+    return (
+      <View style={[styles.loginButtonsContainer]}>
+        <View></View>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={[styles.logoContainer]}>
@@ -30,7 +45,7 @@ export default function AuthScreen(props) {
           primary
           caption="Button"
           onPress={() => {
-            props.userLogin();
+            props.login({ email: 'def' });
           }}
         />
         <Button
@@ -38,7 +53,7 @@ export default function AuthScreen(props) {
           primary
           caption="Button"
           onPress={() => {
-            props.userLogin();
+            props.login({});
           }}
         />
         <Button
@@ -46,7 +61,7 @@ export default function AuthScreen(props) {
           primary
           caption="Button"
           onPress={() => {
-            props.userLogin();
+            props.login({});
           }}
         />
       </View>
@@ -62,6 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#221F32',
   },
   demoButton: {
+    alignSelf: 'stretch',
     marginTop: 8,
     marginBottom: 8,
   },
@@ -71,9 +87,9 @@ const styles = StyleSheet.create({
     aspectRatio: 26 / 12,
   },
   logoContainer: {
-    flex: 1,
+    flex: 0.8,
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     margin: 20,
     marginBottom: 10,
@@ -84,7 +100,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    margin: 20,
+    alignSelf: 'stretch',
+    margin: 60,
     marginBottom: 10,
   },
 });

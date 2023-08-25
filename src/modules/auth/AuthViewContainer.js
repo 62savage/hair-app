@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose, lifecycle } from 'recompose';
 
 import AuthScreen from './AuthView';
-import { userLogin } from './UserState';
+import { login } from './UserState';
 import { loadImages } from '../gallery/GalleryState';
 
 export default compose(
@@ -12,12 +12,12 @@ export default compose(
     }),
     dispatch => ({
       loadImages: () => dispatch(loadImages()),
-      userLogin: () => dispatch(userLogin({ email: 'gmail', name: 'name' })),
+      login: userData => dispatch(login(userData)),
     }),
   ),
   lifecycle({
     componentDidMount() {
-      this.props.userLogin();
+      this.props.login();
     },
   }),
 )(AuthScreen);
