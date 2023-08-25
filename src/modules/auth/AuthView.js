@@ -3,25 +3,40 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { Button } from '../../components';
-
+import { ProgressBar, MD3Colors } from 'react-native-paper';
 import _logo from '../../../assets/images/mbombs_logo.png';
 import { commonStyles } from '../../styles';
+import { Title } from 'react-native-paper';
 
 export default function AuthScreen(props) {
   console.log('AuthScreen props', props.user);
 
   const [loading, setLoading] = React.useState(false);
+  const [progress, setProgress] = React.useState(0);
 
   useEffect(() => {
-    let timeout;
+    let interval;
+    var startTime = new Date().getTime();
     if (props.user && props.user.email) {
       setLoading(true);
-      // timeout = setTimeout(() => {
-      //   props.navigation.navigate('RNMBombs');
-      // }, 3000);
+      if (progress < 1) {
+        interval = setInterval(() => {
+          setProgress(progress => {
+            if (progress < 1) {
+              return progress + 0.006;
+            }
+            return progress;
+          });
+          if (new Date().getTime() - startTime > 3000) {
+            clearInterval(interval);
+            props.navigation.navigate('RNMBombs');
+            return;
+          }
+        }, 10);
+      }
     }
     return () => {
-      clearTimeout(timeout);
+      clearInterval(interval);
       setLoading(false);
     };
   }, [props.user]);
@@ -29,7 +44,49 @@ export default function AuthScreen(props) {
   const LoginProgressBar = () => {
     return (
       <View style={[styles.loginButtonsContainer]}>
-        <View></View>
+        <View
+          style={{
+            flexDirection: 'row',
+            backgroundColor: 'lightgray',
+            borderRadius: 4,
+            overflow: 'hidden',
+            margin: 60,
+          }}
+        >
+          <View style={{ flex: progress, height: 3, backgroundColor: 'red' }} />
+          <View style={{ flex: 1 - progress }} />
+        </View>
+      </View>
+    );
+  };
+
+  const LoginButtons = () => {
+    return (
+      <View style={[styles.loginButtonsContainer]}>
+        <Button
+          style={[styles.demoButton]}
+          primary
+          caption="Demo"
+          onPress={() => {
+            props.login({ email: 'def' });
+          }}
+        />
+        <Button
+          style={[styles.demoButton]}
+          primary
+          caption="Login"
+          onPress={() => {
+            props.login({});
+          }}
+        />
+        <Button
+          style={[styles.demoButton]}
+          primary
+          caption="Register"
+          onPress={() => {
+            props.login({});
+          }}
+        />
       </View>
     );
   };
@@ -39,32 +96,7 @@ export default function AuthScreen(props) {
       <View style={[styles.logoContainer]}>
         <Image style={styles.logo} source={_logo} resizeMode="contain" />
       </View>
-      <View style={[styles.loginButtonsContainer]}>
-        <Button
-          style={[styles.demoButton]}
-          primary
-          caption="Button"
-          onPress={() => {
-            props.login({ email: 'def' });
-          }}
-        />
-        <Button
-          style={[styles.demoButton]}
-          primary
-          caption="Button"
-          onPress={() => {
-            props.login({});
-          }}
-        />
-        <Button
-          style={[styles.demoButton]}
-          primary
-          caption="Button"
-          onPress={() => {
-            props.login({});
-          }}
-        />
-      </View>
+      {loading ? <LoginProgressBar /> : <LoginButtons />}
     </View>
   );
 }
@@ -103,5 +135,9 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     margin: 60,
     marginBottom: 10,
+  },
+  progress: {
+    height: 10,
+    width: undefined,
   },
 });
