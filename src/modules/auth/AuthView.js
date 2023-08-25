@@ -3,10 +3,8 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { Button } from '../../components';
-import { ProgressBar, MD3Colors } from 'react-native-paper';
 import _logo from '../../../assets/images/mbombs_logo.png';
-import { commonStyles } from '../../styles';
-import { Title } from 'react-native-paper';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function AuthScreen(props) {
   console.log('AuthScreen props', props.user);
@@ -50,10 +48,16 @@ export default function AuthScreen(props) {
             backgroundColor: 'lightgray',
             borderRadius: 4,
             overflow: 'hidden',
-            margin: 60,
+            margin: 65,
           }}
         >
-          <View style={{ flex: progress, height: 3, backgroundColor: 'red' }} />
+          <LinearGradient
+            flex={progress}
+            style={{ flex: progress, height: 5 }}
+            start={{ x: 0.5, y: 1 }}
+            end={{ x: 1, y: 1 }}
+            colors={['#806FE8', '#CC7AFF']}
+          />
           <View style={{ flex: 1 - progress }} />
         </View>
       </View>
