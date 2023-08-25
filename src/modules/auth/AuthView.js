@@ -5,6 +5,7 @@ import { View, StyleSheet, Image } from 'react-native';
 import { Button } from '../../components';
 import _logo from '../../../assets/images/mbombs_logo.png';
 import LinearGradient from 'react-native-linear-gradient';
+import { Text } from '../../components/StyledText';
 
 export default function AuthScreen(props) {
   console.log('AuthScreen props', props.user);
@@ -27,7 +28,8 @@ export default function AuthScreen(props) {
           });
           if (new Date().getTime() - startTime > 3000) {
             clearInterval(interval);
-            props.navigation.navigate('RNMBombs');
+            // dev mode
+            //props.navigation.navigate('RNMBombs');
             return;
           }
         }, 10);
@@ -38,6 +40,23 @@ export default function AuthScreen(props) {
       setLoading(false);
     };
   }, [props.user]);
+
+  const Logo = (
+    <View style={[styles.logoContainer]}>
+      <Image style={styles.logo} source={_logo} resizeMode="contain" />
+    </View>
+  );
+
+  const WelcomeText = (
+    <View style={[styles.welcomeContainer]}>
+      <Text bold style={{ fontSize: 40, marginBottom: 10 }}>
+        Login
+      </Text>
+      <Text style={{ fontSize: 20, marginBottom: 10 }}>
+        Hello, Welcome back
+      </Text>
+    </View>
+  );
 
   const LoginProgressBar = () => {
     return (
@@ -97,9 +116,7 @@ export default function AuthScreen(props) {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.logoContainer]}>
-        <Image style={styles.logo} source={_logo} resizeMode="contain" />
-      </View>
+      {loading ? Logo : WelcomeText}
       {loading ? <LoginProgressBar /> : <LoginButtons />}
     </View>
   );
@@ -130,6 +147,14 @@ const styles = StyleSheet.create({
     margin: 20,
     marginBottom: 10,
   },
+  welcomeContainer: {
+    flex: 0.6,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    margin: 20,
+    marginBottom: 10,
+  },
   loginButtonsContainer: {
     flex: 1,
     display: 'flex',
@@ -137,8 +162,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     alignSelf: 'stretch',
-    margin: 60,
-    marginBottom: 10,
+    marginHorizontal: 60,
   },
   progress: {
     height: 10,
