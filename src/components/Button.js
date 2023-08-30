@@ -11,9 +11,9 @@ import {
 
 import { colors, fonts } from '../styles';
 
-const borderRadius = 40;
+const borderRadius = 100;
 
-export default function RNSButton(props) {
+export default function CustomButton(props) {
   const caption = props.caption && props.caption.toUpperCase();
   let icon;
   if (props.icon) {
@@ -95,7 +95,7 @@ export default function RNSButton(props) {
           styles.button,
           props.small && styles.buttonSmall,
           styles.primaryButton,
-          props.rounded && { borderRadius },
+          props.rounded && { borderRadius: props.borderRadius },
           props.action && styles.action,
         ]}
       >

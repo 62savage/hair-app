@@ -14,7 +14,7 @@ const iconComponents = require('../../../assets/images/tabbar/components.png');
 const tabNavigationData = [
   {
     name: 'Home',
-    component: AuthScreen,
+    component: HomeScreen,
     icon: iconHome,
   },
   {

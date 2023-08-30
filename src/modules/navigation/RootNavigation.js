@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { createStackNavigator, Header } from '@react-navigation/stack';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import StackNavigationData from './stackNavigationData';
+import { colors, commonStyles } from '../../styles';
 
 const Stack = createStackNavigator();
 
@@ -22,31 +23,41 @@ export default function NavigatorView(props) {
           paddingVertical: 12,
         }}
       >
-        <Image
+        {/* dev mode */}
+        {/* <Image
           source={require('../../../assets/images/drawer/menu.png')}
           resizeMode="contain"
           style={{
             height: 20,
           }}
-        />
-      </TouchableOpacity>    
-    )
-  }
+        /> */}
+      </TouchableOpacity>
+    );
+  };
+
+  const noNeedHeaderScreen = ['TABSCREENS-default', 'Auth'];
 
   return (
     <Stack.Navigator>
       {StackNavigationData.map((item, idx) => (
         <Stack.Screen
-          key={`stack_item-${idx+1}`}
-          name={item.name} 
-          component={item.component} 
+          key={`stack_item-${idx + 1}`}
+          name={item.name}
+          component={item.component}
+          backgroundColor={colors.backgroundPrimary}
           options={{
             headerLeft: item.headerLeft || headerLeftComponentMenu,
             headerBackground: () => (
-              <Image style={styles.headerImage} source={item.headerBackground.source} />
+              <View
+                style={[
+                  styles.headerImage,
+                  { backgroundColor: colors.backgroundPrimary },
+                ]}
+              />
             ),
             headerTitleStyle: item.headerTitleStyle,
-          }} 
+            headerShown: noNeedHeaderScreen.includes(item.name) ? true : true,
+          }}
         />
       ))}
     </Stack.Navigator>

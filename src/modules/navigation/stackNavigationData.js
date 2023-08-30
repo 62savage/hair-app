@@ -3,6 +3,8 @@ import { TouchableOpacity, Image } from 'react-native';
 
 import TabNavigator from './MainTabNavigator';
 import GalleryScreen from '../gallery/GalleryViewContainer';
+import AuthScreen from '../auth/AuthViewContainer';
+
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
 
 // import ProfileScreen from '../profile/ProfileViewContainer';
@@ -38,7 +40,7 @@ const headerBackground = require('../../../assets/images/topBarBg.png');
 
 const StackNavigationData = [
   {
-    name: 'React Native Starter',
+    name: 'TABSCREENS',
     component: TabNavigator,
     headerLeft: null,
     headerBackground: { source: headerBackground },
@@ -46,11 +48,13 @@ const StackNavigationData = [
       fontFamily: fonts.primaryRegular,
       color: colors.white,
       fontSize: 18,
+      display: 'none',
     },
   },
+  // dev mode
   // {
-  //   name: 'Charts',
-  //   component: AvailableInFullVersion,
+  //   name: 'Auth',
+  //   component: AuthScreen,
   //   headerLeft: headerLeftComponent,
   //   headerBackground: { source: headerBackground },
   //   headerTitleStyle: {
@@ -59,6 +63,18 @@ const StackNavigationData = [
   //     fontSize: 18,
   //   },
   // },
+
+  {
+    name: 'Charts',
+    component: AvailableInFullVersion,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
   // {
   //   name: 'Blog',
   //   component: AvailableInFullVersion,
@@ -81,6 +97,7 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
+
   // {
   //   name: 'Profile',
   //   component: AvailableInFullVersion,

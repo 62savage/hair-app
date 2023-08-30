@@ -22,22 +22,22 @@ const drawerData = [
     name: 'Home',
     icon: iconHome,
   },
-  {
-    name: 'Calendar',
-    icon: iconCalendar,
-  },
-  {
-    name: 'Grids',
-    icon: iconGrids,
-  },
-  {
-    name: 'Pages',
-    icon: iconPages,
-  },
-  {
-    name: 'Components',
-    icon: iconComponents,
-  },
+  // {
+  //   name: 'Calendar',
+  //   icon: iconCalendar,
+  // },
+  // {
+  //   name: 'Grids',
+  //   icon: iconGrids,
+  // },
+  // {
+  //   name: 'Pages',
+  //   icon: iconPages,
+  // },
+  // {
+  //   name: 'Components',
+  //   icon: iconComponents,
+  // },
 ];
 
 const Drawer = createDrawerNavigator();

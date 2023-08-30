@@ -16,13 +16,13 @@ function applyGeneralStyles({
 }) {
   return [
     style && style,
-    bold && styles.bold,
+    // bold && styles.bold,
     light && styles.light,
     white && styles.white,
     underline && styles.underline,
     hCenter && { textAlign: 'center' },
     lineThrough && styles.lineThrough,
-    color && { color },
+    color && { color: color },
     size && { fontSize: size },
   ];
 }
@@ -56,6 +56,8 @@ export function Caption(props) {
 const styles = StyleSheet.create({
   default: {
     fontFamily: fonts.primaryRegular,
+    // fontColor: colors.white,
+    color: colors.white,
   },
   bold: {
     fontFamily: fonts.primaryBold,

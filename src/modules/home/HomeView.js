@@ -4,11 +4,14 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
+  Image,
 } from 'react-native';
 
-import { fonts, colors } from '../../styles';
-import { Text } from '../../components/StyledText';
-import AppleLoginBtn from '../../molecules/auth/appleLogin';
+import { fonts, colors, commonStyles } from '../../styles';
+import { Caption, Text, Title } from '../../components/StyledText';
+import CustomButton from '../../components/Button';
+import _checkCircle from '../../../assets/images/check-circle.png';
+import _lockIcon from '../../../assets/images/lock-icon.png';
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
@@ -22,57 +25,151 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
   //   });
   // };
 
+  const WebViewLinkButtonContent = [
+    {
+      title: '남다른 취향을 위한 색다른 감각',
+      content: '로이드밤 헤어',
+      link: 'https://reactnativestarter.com',
+    },
+    {
+      title: '작은 차이를 만드는 헤어 큐레이터',
+      content: '휴이엠 헤어',
+      link: 'https://reactnativestarter.com',
+    },
+  ];
+
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require('../../../assets/images/background.png')}
-        style={styles.bgImage}
-        resizeMode="cover"
-      >
-        <View style={styles.section}>
-          <AppleLoginBtn />
-        </View>
-
-        <View style={styles.section}>
-          <Text size={20} white>
-            Home
-          </Text>
-        </View>
-        <View style={styles.section}>
-          <Text color="#19e7f7" size={15}>
-            The smartest Way to build your mobile app
-          </Text>
-          <Text size={30} bold white style={styles.title}>
-            React Native Starter
-          </Text>
-        </View>
-        <View style={[styles.section, styles.sectionLarge]}>
-          <Text color="#19e7f7" hCenter size={15} style={styles.description}>
-            A powerful starter project that bootstraps development of your
-            mobile application and saves you $20 000*
-          </Text>
-          <View style={styles.priceContainer}>
-            <View style={{ flexDirection: 'row' }}>
-              <Text white bold size={50} style={styles.price}>
-                {isExtended ? '$499' : '$99'}
-              </Text>
-            </View>
-
-            <TouchableOpacity
-              style={styles.priceLink}
-              onPress={() =>
-                isExtended ? setIsExtended(false) : setIsExtended(true)
-              }
+      <View style={styles.bgImage}>
+        <View style={styles.commonSection}>
+          <View style={[styles.section]}>
+            <CustomButton
+              rounded
+              borderRadius={30}
+              style={[styles.mainButton, { marginBottom: 10 }]}
+              bgGradientStart="#F9FA50"
+              bgGradientEnd="#29FC4B"
             >
-              <Text white size={14}>
-                {isExtended
-                  ? 'Multiple Applications License'
-                  : 'Single Application License'}
-              </Text>
-            </TouchableOpacity>
+              <View style={styles.mainButtonContent}>
+                <Text color={colors.black} style={{ fontWeight: 100 }} hCenter>
+                  Personal Hair Style
+                </Text>
+                <Text
+                  bold
+                  color={colors.black}
+                  hCenter
+                  size={17}
+                  style={{ fontWeight: 700 }}
+                >
+                  나에게 맞는 헤어스타일부터{'\n'} 헤어고민까지 진단테스트
+                  시작하기
+                </Text>
+                <Image
+                  style={styles.image}
+                  source={_checkCircle}
+                  resizeMode="contain"
+                />
+                <Text
+                  color={colors.black}
+                  size={16}
+                  style={{ fontWeight: 700 }}
+                >
+                  Analyst Start!
+                </Text>
+              </View>
+            </CustomButton>
+          </View>
+          {/**flex 2 */}
+          <View style={[styles.section]}>
+            <View style={[styles.section, { marginBottom: 10 }]}>
+              {WebViewLinkButtonContent.map((item, idx) => (
+                <View
+                  style={[styles.section, { justifyContent: 'space-around' }]}
+                >
+                  <CustomButton
+                    rounded
+                    borderRadius={10}
+                    bgGradientStart="#806FE8"
+                    bgGradientEnd="#CC7AFF"
+                    style={{ flex: 1, marginBottom: 10 }}
+                  >
+                    <View style={{ flexBasis: '80%', flexWrap: 'wrap' }}>
+                      <Text style={{ fontWeight: 100 }} hCenter>
+                        {item.title}
+                      </Text>
+                      <Text size={16} style={{ fontWeight: 700 }}>
+                        {item.content}
+                      </Text>
+                    </View>
+                    <View style={{ flexBasis: '20%', flexWrap: 'wrap' }}>
+                      <Text size={16} style={{ fontWeight: 700 }}>
+                        {'>'}
+                      </Text>
+                      {/* <Image source={_checkCircle} /> */}
+                    </View>
+                  </CustomButton>
+                </View>
+              ))}
+            </View>
+            <View
+              style={[
+                styles.section,
+                {
+                  flexDirection: 'row',
+                  gap: 10,
+                },
+              ]}
+            >
+              <CustomButton
+                rounded
+                borderRadius={10}
+                bgGradientStart="#FAAC50"
+                bgGradientEnd="#F9FA50"
+                style={{
+                  flex: 1,
+                  height: '100%',
+                  marginBottom: 10,
+                }}
+              >
+                <View style={styles.lockContainer}>
+                  <Image
+                    style={styles.lockImage}
+                    source={_lockIcon}
+                    resizeMode="contain"
+                  />
+                  <View>
+                    <Text style={{ fontWeight: 100 }}>Designer private</Text>
+                    <Text size={16} style={{ fontWeight: 700 }}>
+                      디자이너 전용 {'>'}
+                    </Text>
+                  </View>
+                </View>
+              </CustomButton>
+              <CustomButton
+                rounded
+                borderRadius={10}
+                bgGradientStart="#FF7971"
+                bgGradientEnd="#FAAC50"
+                style={{ flex: 1, height: '100%', marginBottom: 10 }}
+              >
+                <View style={styles.lockContainer}>
+                  <Image
+                    style={styles.lockImage}
+                    source={_lockIcon}
+                    resizeMode="contain"
+                  />
+                  <View>
+                    <Text style={{ fontWeight: 100 }}>Owner private</Text>
+                    <Text size={16} style={{ fontWeight: 700 }}>
+                      점주 전용 {'>'}
+                    </Text>
+                  </View>
+                </View>
+              </CustomButton>
+            </View>
           </View>
         </View>
-      </ImageBackground>
+      </View>
     </View>
   );
 }
@@ -83,18 +180,47 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
+  commonSection: {
+    margin: 20,
+  },
+  mainButton: {
+    flex: 1,
+    flexBasis: '90%',
+  },
+  mainButtonContent: {
+    height: '70%',
+    flexBasis: '100%',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  image: {
+    width: '40%',
+    height: 'auto',
+    aspectRatio: 26 / 12,
+  },
+  lockImage: {
+    width: '40%',
+    height: 'auto',
+    aspectRatio: 1,
+  },
   bgImage: {
     flex: 1,
-    marginHorizontal: -20,
+    backgroundColor: colors.backgroundPrimary,
+  },
+  lockContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    flexBasis: '100%',
+    gap: 5,
   },
   section: {
     flex: 1,
-    paddingHorizontal: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    // padding: 10,
   },
   sectionLarge: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'space-around',
   },
   sectionHeader: {
@@ -124,3 +250,10 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.primary,
   },
 });
+
+/**
+ * @todo
+ * - [ ] react native vector icons replace > to icon
+ * - [ ] react native webview link
+ *
+ */
