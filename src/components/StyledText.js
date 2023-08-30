@@ -16,7 +16,7 @@ function applyGeneralStyles({
 }) {
   return [
     style && style,
-    bold && styles.bold,
+    // bold && styles.bold,
     light && styles.light,
     white && styles.white,
     underline && styles.underline,

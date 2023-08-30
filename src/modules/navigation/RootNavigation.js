@@ -35,7 +35,7 @@ export default function NavigatorView(props) {
     );
   };
 
-  const noNeedHeaderScreen = ['TABSCREENS', 'Auth'];
+  const noNeedHeaderScreen = ['TABSCREENS-default', 'Auth'];
 
   return (
     <Stack.Navigator>
@@ -44,6 +44,7 @@ export default function NavigatorView(props) {
           key={`stack_item-${idx + 1}`}
           name={item.name}
           component={item.component}
+          backgroundColor={colors.backgroundPrimary}
           options={{
             headerLeft: item.headerLeft || headerLeftComponentMenu,
             headerBackground: () => (
@@ -55,7 +56,7 @@ export default function NavigatorView(props) {
               />
             ),
             headerTitleStyle: item.headerTitleStyle,
-            headerShown: noNeedHeaderScreen.includes(item.name) ? false : true,
+            headerShown: noNeedHeaderScreen.includes(item.name) ? true : true,
           }}
         />
       ))}

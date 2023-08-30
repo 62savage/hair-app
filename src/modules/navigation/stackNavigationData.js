@@ -48,6 +48,7 @@ const StackNavigationData = [
       fontFamily: fonts.primaryRegular,
       color: colors.white,
       fontSize: 18,
+      display: 'none',
     },
   },
   // dev mode
