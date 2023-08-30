@@ -8,7 +8,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Text } from '../../components/StyledText';
 
 export default function AuthScreen(props) {
-  console.log('AuthScreen props', props.user);
+  // dev mode
+  // console.log('AuthScreen props', props.user);
 
   const [loading, setLoading] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
@@ -29,7 +30,7 @@ export default function AuthScreen(props) {
           if (new Date().getTime() - startTime > 3000) {
             clearInterval(interval);
             // dev mode
-            //props.navigation.navigate('RNMBombs');
+            props.navigation.navigate('TABSCREENS');
             return;
           }
         }, 10);

@@ -56,7 +56,7 @@ export function Caption(props) {
 const styles = StyleSheet.create({
   default: {
     fontFamily: fonts.primaryRegular,
-    fontColor: colors.white,
+    // fontColor: colors.white,
     color: colors.white,
   },
   bold: {

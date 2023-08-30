@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { createStackNavigator, Header } from '@react-navigation/stack';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import StackNavigationData from './stackNavigationData';
+import { colors, commonStyles } from '../../styles';
 
 const Stack = createStackNavigator();
 
@@ -22,16 +23,19 @@ export default function NavigatorView(props) {
           paddingVertical: 12,
         }}
       >
-        <Image
+        {/* dev mode */}
+        {/* <Image
           source={require('../../../assets/images/drawer/menu.png')}
           resizeMode="contain"
           style={{
             height: 20,
           }}
-        />
+        /> */}
       </TouchableOpacity>
     );
   };
+
+  const noNeedHeaderScreen = ['TABSCREENS', 'Auth'];
 
   return (
     <Stack.Navigator>
@@ -43,13 +47,15 @@ export default function NavigatorView(props) {
           options={{
             headerLeft: item.headerLeft || headerLeftComponentMenu,
             headerBackground: () => (
-              <Image
-                style={styles.headerImage}
-                source={item.headerBackground.source}
+              <View
+                style={[
+                  styles.headerImage,
+                  { backgroundColor: colors.backgroundPrimary },
+                ]}
               />
             ),
             headerTitleStyle: item.headerTitleStyle,
-            headerShown: item.name === 'Auth' ? false : true,
+            headerShown: noNeedHeaderScreen.includes(item.name) ? false : true,
           }}
         />
       ))}

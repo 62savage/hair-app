@@ -22,11 +22,11 @@ Typography.loadTypographies({
       ios: {
         fontFamily: fonts.primary,
         fontWeight: 'bold',
-        fontColor: colors.white,
+        // fontColor: colors.white,
       },
       android: {
         fontFamily: fonts.primaryBold,
-        fontColor: colors.white,
+        // fontColor: colors.white,
       },
     }),
   },

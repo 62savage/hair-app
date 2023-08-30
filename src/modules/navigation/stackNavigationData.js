@@ -40,18 +40,7 @@ const headerBackground = require('../../../assets/images/topBarBg.png');
 
 const StackNavigationData = [
   {
-    name: 'Auth',
-    component: AuthScreen,
-    headerLeft: headerLeftComponent,
-    headerBackground: { source: headerBackground },
-    headerTitleStyle: {
-      fontFamily: fonts.primaryRegular,
-      color: colors.white,
-      fontSize: 18,
-    },
-  },
-  {
-    name: 'RNMBombs',
+    name: 'TABSCREENS',
     component: TabNavigator,
     headerLeft: null,
     headerBackground: { source: headerBackground },
@@ -61,6 +50,19 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
+  // dev mode
+  // {
+  //   name: 'Auth',
+  //   component: AuthScreen,
+  //   headerLeft: headerLeftComponent,
+  //   headerBackground: { source: headerBackground },
+  //   headerTitleStyle: {
+  //     fontFamily: fonts.primaryRegular,
+  //     color: colors.white,
+  //     fontSize: 18,
+  //   },
+  // },
+
   {
     name: 'Charts',
     component: AvailableInFullVersion,
