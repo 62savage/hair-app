@@ -8,6 +8,7 @@ import AuthScreen from '../auth/AuthViewContainer';
 import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
 import NoticeScreen from '../notice/NoticeViewContainer';
+import ResultScreen from '../result/ResultViewContainer';
 
 const iconHome = require('../../../assets/images/tabbar/home.png');
 const iconInfo = require('../../../assets/images/tabbar/info.png');
@@ -53,6 +54,12 @@ const tabNavigationData = [
   // },
   {
     name: 'Result',
+    component: ResultScreen,
+    icon: iconResult,
+    coloredIcon: coloredIconResult,
+  },
+  {
+    name: 'Test',
     component: TestScreen,
     icon: iconResult,
     coloredIcon: coloredIconResult,

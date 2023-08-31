@@ -49,13 +49,6 @@ export default function NoticeView(props) {
         onPress={() => {
           let _notice = notice.filter(item => item.id === prop.id)[0];
           setNoticeClicked(_notice);
-          //   props.navigation.navigate('NoticeDetail', {
-          //     title: prop.title,
-          //     body: prop.body,
-          //     createdAt: prop.createdAt,
-          //     updatedAt: prop.updatedAt,
-          //     ...prop,
-          //   });
         }}
       >
         <View

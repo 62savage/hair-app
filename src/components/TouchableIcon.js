@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-ui-lib';
 export default function TouchableIcon({ icon, style, onPress }) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Image resizeMode="contain" source={icon} style={styles.icon} />
+      <Image resizeMode="contain" source={icon} style={[styles.icon, style]} />
     </TouchableOpacity>
   );
 }
