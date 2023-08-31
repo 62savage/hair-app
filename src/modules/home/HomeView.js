@@ -108,6 +108,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             >
               {WebViewLinkButtonContent.map((item, idx) => (
                 <CustomButton
+                  key={`webview-button-${idx}`}
                   rounded
                   borderRadius={10}
                   bgGradientStart="#806FE8"

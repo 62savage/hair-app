@@ -11,10 +11,10 @@ export default function BottomTabs() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        //showLabel: false,
+        showLabel: false,
         style: {
           position: 'absolute',
-          bottom: 30,
+          bottom: 20,
           left: 20,
           right: 20,
           elevation: 0,
@@ -42,18 +42,27 @@ export default function BottomTabs() {
                     focused && styles.tabBarIconFocused,
                   ]}
                 />
+                <Text
+                  style={{
+                    marginTop: 5,
+                    fontSize: 12,
+                    color: focused ? '#806FE8' : colors.white,
+                  }}
+                >
+                  {item.name}
+                </Text>
               </View>
             ),
-            tabBarLabel: ({ focused }) => (
-              <Text
-                style={{
-                  fontSize: 12,
-                  color: focused ? '#806FE8' : colors.white,
-                }}
-              >
-                {item.name}
-              </Text>
-            ),
+            // tabBarLabel: ({ focused }) => (
+            //   <Text
+            //     style={{
+            //       fontSize: 12,
+            //       color: focused ? '#806FE8' : colors.white,
+            //     }}
+            //   >
+            //     {item.name}
+            //   </Text>
+            // ),
           }}
         />
       ))}
