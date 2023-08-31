@@ -27,7 +27,7 @@ class MBombsService {
       let res = await this.axiosInstance.get('/notificationinfo');
       return res.data;
     } catch (error) {
-      console.log('service getting notice error', error);
+      console.log('service getting info error', error);
       throw error;
     }
   };
@@ -36,7 +36,22 @@ class MBombsService {
     try {
       let res = await this.axiosWebInstance.get('/notification/published');
       return res.data;
-    } catch (error) {}
+    } catch (error) {
+      console.log('service getting notice error', error);
+      throw error;
+    }
+  };
+
+  getResult = async () => {
+    try {
+      let res = await this.axiosInstance.get(
+        '/analytics/clck8it81000cph397yp5cnz9',
+      );
+      return res.data;
+    } catch (error) {
+      console.log('service getting analytics result error', error);
+      throw error;
+    }
   };
 }
 

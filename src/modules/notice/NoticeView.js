@@ -49,13 +49,6 @@ export default function NoticeView(props) {
         onPress={() => {
           let _notice = notice.filter(item => item.id === prop.id)[0];
           setNoticeClicked(_notice);
-          //   props.navigation.navigate('NoticeDetail', {
-          //     title: prop.title,
-          //     body: prop.body,
-          //     createdAt: prop.createdAt,
-          //     updatedAt: prop.updatedAt,
-          //     ...prop,
-          //   });
         }}
       >
         <View
@@ -144,18 +137,17 @@ export default function NoticeView(props) {
           props.navigation.navigate('Home');
         }}
       >
-        {notice.map((item, index) => {
+        {notice.map((item, _) => {
           return (
-            <>
+            <View key={`notice-${item.id}`}>
               <NoticeButton
-                key={`notice-${index}`}
                 title={item.title}
                 createdAt={item.createdAt}
                 updatedAt={item.updatedAt}
                 {...item}
               />
               <Spacer size={10} />
-            </>
+            </View>
           );
         })}
       </ViewContainer>
