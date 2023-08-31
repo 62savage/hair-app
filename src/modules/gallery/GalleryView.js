@@ -6,9 +6,6 @@ import { colors } from '../../styles';
 import { GridRow } from '../../components';
 
 export default function GalleryScreen(props) {
-  setTimeout(() => {
-    console.log('GalleryScreen props', props?.images);
-  }, 1000);
   const _keyExtractor = item =>
     item.id ? `${item.id}` : `${item[0] && item[0].id}`;
 

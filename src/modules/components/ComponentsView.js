@@ -50,47 +50,47 @@ export default function ComponentsScreen(props) {
 
         <View style={styles.demoButtonsContainer}>
           <Button
-            style={[styles.demoButton, {flexBasis: '47%'}]}
+            style={[styles.demoButton, { flexBasis: '47%' }]}
             primary
             caption="Button"
             onPress={() => {}}
           />
           <Button
-            style={[styles.demoButton, {flexBasis: '47%'}]}
+            style={[styles.demoButton, { flexBasis: '47%' }]}
             secondary
             caption="Button"
             onPress={() => {}}
           />
           <Button
-            style={[styles.demoButton, {flexBasis: '47%'}]}
+            style={[styles.demoButton, { flexBasis: '47%' }]}
             primary
             rounded
             caption="Button"
             onPress={() => {}}
           />
           <Button
-            style={[styles.demoButton, {flexBasis: '47%'}]}
+            style={[styles.demoButton, { flexBasis: '47%' }]}
             secondary
             rounded
             caption="Button"
             onPress={() => {}}
           />
           <Button
-            style={[styles.demoButton, {flexBasis: '47%'}]}
+            style={[styles.demoButton, { flexBasis: '47%' }]}
             primary
             bordered
             caption="Button"
             onPress={() => {}}
           />
           <Button
-            style={[styles.demoButton, {flexBasis: '47%'}]}
+            style={[styles.demoButton, { flexBasis: '47%' }]}
             secondary
             bordered
             caption="Button"
             onPress={() => {}}
           />
           <Button
-            style={[styles.demoButton, {flexBasis: '47%'}]}
+            style={[styles.demoButton, { flexBasis: '47%' }]}
             primary
             bordered
             rounded
@@ -98,7 +98,7 @@ export default function ComponentsScreen(props) {
             onPress={() => {}}
           />
           <Button
-            style={[styles.demoButton, {flexBasis: '47%'}]}
+            style={[styles.demoButton, { flexBasis: '47%' }]}
             secondary
             bordered
             rounded

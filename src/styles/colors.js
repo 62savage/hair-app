@@ -1,8 +1,8 @@
 const blueVersion = {
   primary: '#555CC4',
   primaryLight: '#829BF8',
-  primaryGradientStart: '#4f44b6',
-  primaryGradientEnd: '#4f44b6',
+  primaryGradientStart: '#F9FA50',
+  primaryGradientEnd: '#29FC4B',
   secondaryGradientStart: '#FF1358',
   secondaryGradientEnd: '#FF1358',
   profileGradientStart: '#54CBF6',
