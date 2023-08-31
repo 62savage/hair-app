@@ -5,13 +5,22 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  ScrollView,
+  SafeAreaView,
 } from 'react-native';
 
-import { fonts, colors, commonStyles } from '../../styles';
+import {
+  fonts,
+  colors,
+  commonStyles,
+  windowHeight,
+  windowWidth,
+} from '../../styles';
 import { Caption, Text, Title } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
 import _checkCircle from '../../../assets/images/check-circle.png';
 import _lockIcon from '../../../assets/images/lock-icon.png';
+import { ScrollViewBackgroundLayer } from '../../components/ScrollViewBackgroundLayer';
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
@@ -38,83 +47,95 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
     },
   ];
 
+  const spacerHeight = windowHeight + 1000;
+
   return (
-    <View style={styles.container}>
-      <View style={styles.bgImage}>
-        <View style={styles.commonSection}>
-          <View style={[styles.section]}>
-            <CustomButton
-              rounded
-              borderRadius={30}
-              style={[styles.mainButton, { marginBottom: 10 }]}
-              bgGradientStart="#F9FA50"
-              bgGradientEnd="#29FC4B"
-            >
-              <View style={styles.mainButtonContent}>
-                <Text color={colors.black} style={{ fontWeight: 100 }} hCenter>
-                  Personal Hair Style
-                </Text>
-                <Text
-                  bold
-                  color={colors.black}
-                  hCenter
-                  size={17}
-                  style={{ fontWeight: 700 }}
-                >
-                  나에게 맞는 헤어스타일부터{'\n'} 헤어고민까지 진단테스트
-                  시작하기
-                </Text>
-                <Image
-                  style={styles.image}
-                  source={_checkCircle}
-                  resizeMode="contain"
-                />
-                <Text
-                  color={colors.black}
-                  size={16}
-                  style={{ fontWeight: 700 }}
-                >
-                  Analyst Start!
-                </Text>
-              </View>
-            </CustomButton>
-          </View>
-          {/**flex 2 */}
-          <View style={[styles.section]}>
-            <View style={[styles.section, { marginBottom: 10 }]}>
-              {WebViewLinkButtonContent.map((item, idx) => (
-                <View
-                  style={[styles.section, { justifyContent: 'space-around' }]}
-                >
-                  <CustomButton
-                    rounded
-                    borderRadius={10}
-                    bgGradientStart="#806FE8"
-                    bgGradientEnd="#CC7AFF"
-                    style={{ flex: 1, marginBottom: 10 }}
+    <SafeAreaView>
+      <ScrollViewBackgroundLayer
+        topBounceColor={colors.backgroundPrimary}
+        bottomBounceColor={colors.backgroundPrimary}
+      />
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.bgImage}>
+          <View style={styles.commonSection}>
+            <View style={[styles.section]}>
+              <CustomButton
+                rounded
+                borderRadius={30}
+                style={[styles.mainButton]}
+                bgGradientStart="#F9FA50"
+                bgGradientEnd="#29FC4B"
+              >
+                <View style={styles.mainButtonContent}>
+                  <Text
+                    color={colors.black}
+                    style={{ fontWeight: 100 }}
+                    hCenter
                   >
-                    <View style={{ flexBasis: '80%', flexWrap: 'wrap' }}>
-                      <Text style={{ fontWeight: 100 }} hCenter>
-                        {item.title}
-                      </Text>
-                      <Text size={16} style={{ fontWeight: 700 }}>
-                        {item.content}
-                      </Text>
-                    </View>
-                    <View style={{ flexBasis: '20%', flexWrap: 'wrap' }}>
-                      <Text size={16} style={{ fontWeight: 700 }}>
-                        {'>'}
-                      </Text>
-                      {/* <Image source={_checkCircle} /> */}
-                    </View>
-                  </CustomButton>
+                    Personal Hair Style
+                  </Text>
+                  <Text
+                    bold
+                    color={colors.black}
+                    hCenter
+                    size={17}
+                    style={{ fontWeight: 700 }}
+                  >
+                    나에게 맞는 헤어스타일부터{'\n'} 헤어고민까지 진단테스트
+                    시작하기
+                  </Text>
+                  <Image
+                    style={styles.image}
+                    source={_checkCircle}
+                    resizeMode="contain"
+                  />
+                  <Text
+                    color={colors.black}
+                    size={16}
+                    style={{ fontWeight: 700 }}
+                  >
+                    Analyst Start!
+                  </Text>
                 </View>
+              </CustomButton>
+            </View>
+            {/**flex 2 */}
+            <View
+              style={[
+                styles.section,
+                { height: 150 + 10, justifyContent: 'space-between' },
+              ]}
+            >
+              {WebViewLinkButtonContent.map((item, idx) => (
+                <CustomButton
+                  rounded
+                  borderRadius={10}
+                  bgGradientStart="#806FE8"
+                  bgGradientEnd="#CC7AFF"
+                  style={{ height: 75 }}
+                >
+                  <View style={{ flexBasis: '80%', flexWrap: 'wrap' }}>
+                    <Text style={{ fontWeight: 100 }} hCenter>
+                      {item.title}
+                    </Text>
+                    <Text size={16} style={{ fontWeight: 700 }}>
+                      {item.content}
+                    </Text>
+                  </View>
+                  <View style={{ flexBasis: '20%', flexWrap: 'wrap' }}>
+                    <Text size={16} style={{ fontWeight: 700 }}>
+                      {'>'}
+                    </Text>
+                  </View>
+                </CustomButton>
               ))}
             </View>
+
             <View
               style={[
                 styles.section,
                 {
+                  height: 150,
                   flexDirection: 'row',
                   gap: 10,
                 },
@@ -128,7 +149,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 style={{
                   flex: 1,
                   height: '100%',
-                  marginBottom: 10,
                 }}
               >
                 <View style={styles.lockContainer}>
@@ -150,7 +170,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 borderRadius={10}
                 bgGradientStart="#FF7971"
                 bgGradientEnd="#FAAC50"
-                style={{ flex: 1, height: '100%', marginBottom: 10 }}
+                style={{ flex: 1, height: '100%' }}
               >
                 <View style={styles.lockContainer}>
                   <Image
@@ -169,23 +189,20 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             </View>
           </View>
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-around',
+    backgroundColor: colors.backgroundPrimary,
   },
-  commonSection: {
-    margin: 20,
-  },
+
   mainButton: {
     flex: 1,
-    flexBasis: '90%',
+    flexBasis: '100%',
   },
   mainButtonContent: {
     height: '70%',
@@ -205,6 +222,11 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
+    alignItems: 'center',
+    backgroundColor: colors.backgroundPrimary,
+  },
+  spacer: {
+    flex: 0.2,
     backgroundColor: colors.backgroundPrimary,
   },
   lockContainer: {
@@ -214,9 +236,11 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   section: {
-    flex: 1,
+    width: windowWidth - 40,
+    height: 300,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
     // padding: 10,
   },
   sectionLarge: {

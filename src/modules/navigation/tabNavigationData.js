@@ -27,16 +27,16 @@ const tabNavigationData = [
     component: GridsScreen,
     icon: iconGrids,
   },
-  {
-    name: 'Pages',
-    component: PagesScreen,
-    icon: iconPages,
-  },
-  {
-    name: 'Components',
-    component: ComponentsScreen,
-    icon: iconComponents,
-  },
+  // {
+  //   name: 'Pages',
+  //   component: PagesScreen,
+  //   icon: iconPages,
+  // },
+  // {
+  //   name: 'Components',
+  //   component: ComponentsScreen,
+  //   icon: iconComponents,
+  // },
   {
     name: 'Test',
     component: TestScreen,
