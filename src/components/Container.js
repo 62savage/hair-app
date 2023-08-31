@@ -1,9 +1,11 @@
 import React from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { ScrollViewBackgroundLayer } from './ScrollViewBackgroundLayer';
 import { colors } from '../styles';
 import CustomHeader from './Header';
-import { ScrollView, StyleSheet } from 'react-native';
+import Spacer from './Spacer';
 
 export default function ScrollViewContainer({
   header,
@@ -32,9 +34,14 @@ export default function ScrollViewContainer({
   );
 }
 
+export function ViewContainer() {
+  return <></>;
+}
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: colors.backgroundPrimary,
+    paddingBottom: 80,
   },
 });
