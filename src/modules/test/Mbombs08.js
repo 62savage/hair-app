@@ -2,10 +2,6 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { colors } from '../../styles';
 import CustomButton from '../../components/Button';
-/**
- * @todo
- * - [ ] style props
- */
 
 export default function Mbombs08() {
   return (
@@ -57,30 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  // smallButtonContainer: {
-  //   width: 252,
-  //   height: 252,
-  //   borderRadius: 252 / 2,
-  //   backgroundColor: '#383550',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // mediumButtonContainer: {
-  //   width: 358,
-  //   height: 358,
-  //   borderRadius: 358 / 2,
-  //   backgroundColor: '#312E47',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // largeButtonContainer: {
-  //   width: 482,
-  //   height: 482,
-  //   borderRadius: 482 / 2,
-  //   backgroundColor: '#2C2941',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
   textAboveButton: {
     position: 'absolute',
     top: 30,
@@ -107,5 +79,4 @@ const styles = StyleSheet.create({
  *
  * @todo
  * - [ ] add navigation to diagnosis first proceed screen
- * - [ ] recycle styles
  */
