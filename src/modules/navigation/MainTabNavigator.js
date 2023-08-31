@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors, commonStyles } from '../../styles';
 
 import tabNavigationData from './tabNavigationData';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Tab = createBottomTabNavigator();
 
@@ -11,10 +12,10 @@ export default function BottomTabs() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        //showLabel: false,
+        showLabel: false,
         style: {
           position: 'absolute',
-          bottom: 30,
+          bottom: 20,
           left: 20,
           right: 20,
           elevation: 0,
@@ -35,24 +36,10 @@ export default function BottomTabs() {
               <View style={[styles.tabBarItemContainer]}>
                 <Image
                   resizeMode="contain"
-                  source={item.icon}
-                  style={[
-                    { width: 25, height: 25 },
-                    styles.tabBarIcon,
-                    focused && styles.tabBarIconFocused,
-                  ]}
+                  source={focused ? item.coloredIcon : item.icon}
+                  style={[styles.tabBarIcon]}
                 />
               </View>
-            ),
-            tabBarLabel: ({ focused }) => (
-              <Text
-                style={{
-                  fontSize: 12,
-                  color: focused ? '#806FE8' : colors.white,
-                }}
-              >
-                {item.name}
-              </Text>
             ),
           }}
         />
@@ -71,8 +58,8 @@ const styles = StyleSheet.create({
     bottom: Platform.OS === 'ios' ? -5 : 0,
   },
   tabBarIcon: {
-    width: 23,
-    height: 23,
+    width: 45,
+    height: 45,
   },
   tabBarIconFocused: {
     tintColor: '#806FE8',

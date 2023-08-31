@@ -507,8 +507,8 @@ PODS:
     - React-Core
   - RNScreens (2.11.0):
     - React
-  - RNVectorIcons (6.7.0):
-    - React
+  - RNVectorIcons (10.0.0):
+    - React-Core
   - SocketRocket (0.6.1)
   - toolbar-android (0.2.1):
     - React
@@ -780,7 +780,7 @@ SPEC CHECKSUMS:
   RNLocalize: 452d4118e338dee1e5ca3fac4d5a11a4ab26a46a
   RNReanimated: c1b56d030d1616239861534d9adb531f8cffab68
   RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
-  RNVectorIcons: 368d6d8b8301224e5ffb6254191f4f8876c2be0d
+  RNVectorIcons: 8b5bb0fa61d54cd2020af4f24a51841ce365c7e9
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   toolbar-android: 2a73856e98b750d7e71ce4644d3f41cc98211719
   Yoga: c79810ea24a2a73b7f39174e78d60f4e28261f33

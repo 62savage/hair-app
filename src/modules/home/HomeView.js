@@ -47,8 +47,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
     },
   ];
 
-  const spacerHeight = windowHeight + 1000;
-
   return (
     <SafeAreaView>
       <ScrollViewBackgroundLayer
@@ -108,6 +106,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             >
               {WebViewLinkButtonContent.map((item, idx) => (
                 <CustomButton
+                  key={`webview-button-${idx}`}
                   rounded
                   borderRadius={10}
                   bgGradientStart="#806FE8"
