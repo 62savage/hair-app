@@ -74,6 +74,7 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
+
   // {
   //   name: 'Blog',
   //   component: AvailableInFullVersion,

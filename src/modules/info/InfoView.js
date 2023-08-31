@@ -19,7 +19,7 @@ export default function InfoView(props) {
 
   const getNoticeStringData = async () => {
     try {
-      const result = await Service.getNotice();
+      const result = await Service.getInfo();
       let noticeStringData = result.text.split('\n');
       noticeStringData.map((item, idx) => {
         if (item.includes('STEP')) {

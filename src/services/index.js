@@ -4,7 +4,8 @@ class MBombsService {
   constructor() {
     this.BASE_TREE_SERVER_URL =
       'http://ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080';
-    this.BASE_URL = 'http://ec2-user@ec2-43-201-111-38';
+    this.BASE_URL =
+      'http://ec2-3-35-174-140.ap-northeast-2.compute.amazonaws.com/api';
     this.axiosInstance = axios.create({
       baseURL: this.BASE_TREE_SERVER_URL,
       timeout: 2000,
@@ -12,9 +13,16 @@ class MBombsService {
         'Content-Type': 'application/json',
       },
     });
+    this.axiosWebInstance = axios.create({
+      baseURL: this.BASE_URL,
+      timeout: 2000,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
-  getNotice = async () => {
+  getInfo = async () => {
     try {
       let res = await this.axiosInstance.get('/notificationinfo');
       return res.data;
@@ -22,6 +30,13 @@ class MBombsService {
       console.log('service getting notice error', error);
       throw error;
     }
+  };
+
+  getNotice = async () => {
+    try {
+      let res = await this.axiosWebInstance.get('/notification/published');
+      return res.data;
+    } catch (error) {}
   };
 }
 
