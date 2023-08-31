@@ -47,8 +47,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
     },
   ];
 
-  const spacerHeight = windowHeight + 1000;
-
   return (
     <SafeAreaView>
       <ScrollViewBackgroundLayer

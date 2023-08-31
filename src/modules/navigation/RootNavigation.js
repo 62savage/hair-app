@@ -35,7 +35,7 @@ export default function NavigatorView(props) {
     );
   };
 
-  const noNeedHeaderScreen = ['TABSCREENS-default', 'Auth'];
+  const noNeedHeaderScreen = ['TABSCREENS', 'Auth'];
 
   return (
     <Stack.Navigator>
@@ -56,7 +56,7 @@ export default function NavigatorView(props) {
               />
             ),
             headerTitleStyle: item.headerTitleStyle,
-            headerShown: noNeedHeaderScreen.includes(item.name) ? true : true,
+            headerShown: noNeedHeaderScreen.includes(item.name) ? false : true,
           }}
         />
       ))}
