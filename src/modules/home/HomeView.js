@@ -1,27 +1,11 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  ImageBackground,
-  Image,
-  ScrollView,
-  SafeAreaView,
-} from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
-import {
-  fonts,
-  colors,
-  commonStyles,
-  windowHeight,
-  windowWidth,
-} from '../../styles';
+import { fonts, colors, windowWidth } from '../../styles';
 import { Caption, Text, Title } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
 import _checkCircle from '../../../assets/images/check-circle.png';
 import _lockIcon from '../../../assets/images/lock-icon.png';
-import { ScrollViewBackgroundLayer } from '../../components/ScrollViewBackgroundLayer';
-import { useRoute } from '@react-navigation/native';
 import ScrollViewContainer from '../../components/Container';
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
