@@ -1,10 +1,8 @@
 import React from 'react';
 import { Text } from './StyledText';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Header } from '@react-navigation/stack';
-import { colors, commonStyles, fonts } from '../styles';
-import { useRoute } from '@react-navigation/native';
-import { Button } from '.';
+import { colors, fonts } from '../styles';
+import Spacer from './Spacer';
 
 const ArrowBack = require('../../assets/images/icons/arrow-back.png');
 

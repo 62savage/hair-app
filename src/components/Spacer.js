@@ -1,15 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const Spacer = ({ horizontal, size }) => {
-  const defaultValue = 'auto';
-
+export default function Spacer({ size }) {
   return (
     <View
       style={{
-        width: horizontal ? size : defaultValue,
-        height: !horizontal ? size : defaultValue,
+        height: size ? size : 20,
       }}
     />
   );
-};
+}

@@ -27,6 +27,7 @@ export default function ScrollViewContainer({
           onPressGoBackIcon={onPressGoBackIcon}
         />
       )}
+      <Spacer />
       <ScrollView contentContainerStyle={styles.container}>
         {children}
       </ScrollView>
