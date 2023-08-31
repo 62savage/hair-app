@@ -1,26 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+
+import Service from '../../services';
 
 import { Text } from '../../components/StyledText';
 import ScrollViewContainer from '../../components/Container';
 import CustomButton from '../../components/Button';
 
-import { colors, commonStyles, windowWidth } from '../../styles';
+import { colors, commonStyles, windowHeight, windowWidth } from '../../styles';
 import { Spacer, TouchableIcon } from '../../components';
 
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 const _close_button = require('../../../assets/images/icons/close-button.png');
 
 export default function Result() {
-  return (
-    <ScrollViewContainer
-      header
-      screenName="My Page"
-      goBack
-      onPressGoBackIcon={() => {
-        props.navigation.navigate('Home');
-      }}
-    >
+  const [result, setResult] = useState([]);
+
+  useEffect(() => {
+    const getResult = async () => {
+      try {
+        let res = await Service.getResult();
+        console.log(res.reverse());
+        setResult(res);
+      } catch (error) {
+        console.log('result error', error);
+      }
+    };
+
+    // getResult();
+  }, []);
+
+  const ResultButton = prop => {
+    return (
       <CustomButton
         rounded
         borderRadius={10}
@@ -53,11 +64,11 @@ export default function Result() {
           }}
         >
           <Text fontWeight="700" size={16}>
-            타이틀
+            Hair Analyst
           </Text>
           <Spacer size={7} />
           <Text fontWeight="300" size={10}>
-            시간
+            {prop.CreatedAt.split('T')[0]}
           </Text>
           <Spacer size={7} />
           <Text>진단 결과 다시보기</Text>
@@ -65,7 +76,7 @@ export default function Result() {
 
         <TouchableIcon
           style={{
-            margin: 10,
+            margin: 20,
             width: 18,
             height: 18,
             top: -30,
@@ -74,6 +85,47 @@ export default function Result() {
           onPress={() => {}}
         />
       </CustomButton>
+    );
+  };
+
+  const NoResultData = (
+    <View
+      style={[
+        commonStyles.container,
+        { height: windowHeight - 350, justifyContent: 'center' },
+      ]}
+    >
+      <Image
+        resizeMode="contain"
+        source={_check_linear_gradient}
+        style={[styles.icon, { width: 80, height: 80 }]}
+      />
+      <Spacer />
+      <Text hCenter size={22} fontWeight="400">
+        진단 내용이 없습니다.
+      </Text>
+    </View>
+  );
+
+  return (
+    <ScrollViewContainer
+      header
+      screenName="My Page"
+      goBack
+      onPressGoBackIcon={() => {
+        props.navigation.navigate('Home');
+      }}
+    >
+      {result && result.length === 0
+        ? NoResultData
+        : result.map((item, _) => {
+            return (
+              <View key={`result-${item.id}`}>
+                <ResultButton {...item} />
+                <Spacer size={10} />
+              </View>
+            );
+          })}
     </ScrollViewContainer>
   );
 }
