@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors, commonStyles } from '../../styles';
 
 import tabNavigationData from './tabNavigationData';
-import LinearGradient from 'react-native-linear-gradient';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +20,7 @@ export default function BottomTabs() {
           elevation: 0,
           borderRadius: 15,
           alignItems: 'center',
-          height: Platform.OS === 'ios' ? 80 : 50,
+          height: Platform.OS === 'ios' ? 76 : 50,
           backgroundColor: colors.backgroundSecondary,
         },
       }}
@@ -55,15 +54,13 @@ const styles = StyleSheet.create({
     // borderBottomWidth: 2,
     // borderBottomColor: colors.white,
     paddingHorizontal: 10,
-    bottom: Platform.OS === 'ios' ? -5 : 0,
+    bottom: Platform.OS === 'ios' ? 0 : 0,
   },
   tabBarIcon: {
     width: 45,
     height: 45,
   },
-  tabBarIconFocused: {
-    tintColor: '#806FE8',
-  },
+
   // shadow: {
   //   shadowColor: '#7F5DF0',
   //   shadowOffset: {

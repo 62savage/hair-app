@@ -1,9 +1,12 @@
 import HomeScreen from '../home/HomeViewContainer';
-import AuthScreen from '../auth/AuthViewContainer';
 import GridsScreen from '../grids/GridsViewContainer';
+
+import TestScreen from '../test/TestViewContainer';
+import InfoScreen from '../info/InfoViewContainer';
+
+import AuthScreen from '../auth/AuthViewContainer';
 import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
-import TestScreen from '../test/TestViewContainer';
 
 const iconHome = require('../../../assets/images/tabbar/home.png');
 const iconInfo = require('../../../assets/images/tabbar/info.png');
@@ -27,7 +30,7 @@ const tabNavigationData = [
   },
   {
     name: 'Info',
-    component: AuthScreen,
+    component: InfoScreen,
     icon: iconInfo,
     coloredIcon: coloredIconInfo,
   },
@@ -37,6 +40,16 @@ const tabNavigationData = [
     icon: iconNotice,
     coloredIcon: coloredIconNotice,
   },
+  // {
+  //   name: 'Pages',
+  //   component: PagesScreen,
+  //   icon: iconPages,
+  // },
+  // {
+  //   name: 'Components',
+  //   component: ComponentsScreen,
+  //   icon: iconComponents,
+  // },
   {
     name: 'Result',
     component: TestScreen,

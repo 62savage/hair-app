@@ -21,6 +21,7 @@ import CustomButton from '../../components/Button';
 import _checkCircle from '../../../assets/images/check-circle.png';
 import _lockIcon from '../../../assets/images/lock-icon.png';
 import { ScrollViewBackgroundLayer } from '../../components/ScrollViewBackgroundLayer';
+import { useRoute } from '@react-navigation/native';
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';

@@ -9,7 +9,6 @@ import { Text } from '../../components/StyledText';
 
 export default function AuthScreen(props) {
   // dev mode
-  // console.log('AuthScreen props', props.user);
 
   const [loading, setLoading] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
@@ -92,7 +91,7 @@ export default function AuthScreen(props) {
           primary
           caption="Demo"
           onPress={() => {
-            props.login({ email: 'def' });
+            props.login({ email: 'pallyjyo@gmail.com' });
           }}
         />
         <Button
