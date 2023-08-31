@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
 import { fonts, colors, windowWidth } from '../../styles';
-import { Caption, Text, Title } from '../../components/StyledText';
+import { Text } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
 import _checkCircle from '../../../assets/images/check-circle.png';
 import _lockIcon from '../../../assets/images/lock-icon.png';
 import ScrollViewContainer from '../../components/Container';
+
+const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
@@ -90,7 +92,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 bgGradientEnd="#CC7AFF"
                 style={{ height: 75 }}
               >
-                <View style={{ flexBasis: '80%', flexWrap: 'wrap' }}>
+                <View style={{ flexBasis: '90%', flexWrap: 'wrap' }}>
                   <Text style={{ fontWeight: 100 }} hCenter>
                     {item.title}
                   </Text>
@@ -98,10 +100,12 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                     {item.content}
                   </Text>
                 </View>
-                <View style={{ flexBasis: '20%', flexWrap: 'wrap' }}>
-                  <Text size={16} style={{ fontWeight: 700 }}>
-                    {'>'}
-                  </Text>
+                <View style={{ flexBasis: '10%', flexWrap: 'wrap' }}>
+                  <Image
+                    resizeMode="contain"
+                    source={_right_arrow}
+                    style={(styles.icon, { width: 12, height: 12 })}
+                  />
                 </View>
               </CustomButton>
             ))}

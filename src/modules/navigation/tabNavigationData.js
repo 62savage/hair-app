@@ -7,6 +7,7 @@ import InfoScreen from '../info/InfoViewContainer';
 import AuthScreen from '../auth/AuthViewContainer';
 import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
+import NoticeScreen from '../notice/NoticeViewContainer';
 
 const iconHome = require('../../../assets/images/tabbar/home.png');
 const iconInfo = require('../../../assets/images/tabbar/info.png');
@@ -36,7 +37,7 @@ const tabNavigationData = [
   },
   {
     name: 'Notice',
-    component: GridsScreen,
+    component: NoticeScreen,
     icon: iconNotice,
     coloredIcon: coloredIconNotice,
   },

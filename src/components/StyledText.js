@@ -13,9 +13,11 @@ function applyGeneralStyles({
   lineThrough,
   color,
   size,
+  fontWeight,
 }) {
   return [
     style && style,
+    fontWeight && { fontWeight: fontWeight },
     // bold && styles.bold,
     light && styles.light,
     white && styles.white,

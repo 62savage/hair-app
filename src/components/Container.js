@@ -31,6 +31,7 @@ export default function ScrollViewContainer({
       <ScrollView contentContainerStyle={styles.container}>
         {children}
       </ScrollView>
+      <Spacer />
     </SafeAreaView>
   );
 }
@@ -43,6 +44,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: colors.backgroundPrimary,
-    paddingBottom: 80,
+    paddingBottom: 120,
   },
 });
