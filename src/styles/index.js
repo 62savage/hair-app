@@ -8,7 +8,7 @@ import colors from './colors';
 import fonts from './fonts';
 import commonStyles from './common';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 // Guideline sizes are based on standard ~5" screen mobile device
 const guidelineBaseWidth = 350;
@@ -128,4 +128,12 @@ const scale = size => (width / guidelineBaseWidth) * size;
 
 const deviceType = width > 480 ? 'tablet' : 'phone';
 
-export { colors, fonts, scale, commonStyles, deviceType };
+export {
+  colors,
+  fonts,
+  scale,
+  commonStyles,
+  deviceType,
+  width as windowWidth,
+  height as windowHeight,
+};
