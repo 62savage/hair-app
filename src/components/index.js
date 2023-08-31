@@ -8,6 +8,7 @@ import SegmentedControl from './SegmentedControl';
 import Spacer from './Spacer';
 import Header from './Header';
 import Container from './Container';
+import TouchableIcon from './TouchableIcon';
 
 export {
   // ## Generator Components Exports
@@ -20,4 +21,5 @@ export {
   Spacer,
   Header,
   Container,
+  TouchableIcon,
 };

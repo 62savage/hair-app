@@ -1,16 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ScrollViewContainer from '../../components/Container';
 import { Image, StyleSheet, View } from 'react-native';
 import { Text } from '../../components/StyledText';
 import { colors, commonStyles, windowWidth } from '../../styles';
 import Spacer from '../../components/Spacer';
 import CustomButton from '../../components/Button';
+import Service from '../../services';
+import TouchableIcon from '../../components/TouchableIcon';
+import { useRoute } from '@react-navigation/native';
 
 const _bell = require('../../../assets/images/icons/bell.png');
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
+const _close_button = require('../../../assets/images/icons/close-button.png');
 
 export default function InfoView(props) {
   const [isExtended, setIsExtended] = useState(false);
+  const [noticeStringData, setNoticeStringData] = useState([]);
+
+  const getNoticeStringData = async () => {
+    try {
+      const result = await Service.getNotice();
+      let noticeStringData = result.text.split('\n');
+      noticeStringData.map((item, idx) => {
+        if (item.includes('STEP')) {
+          noticeStringData[idx] = (
+            <Text
+              color={colors.black}
+              key={`notice-string-${idx}`}
+              size={12}
+              fontWeight="700"
+              style={{ marginBottom: 10 }}
+            >
+              {item}
+            </Text>
+          );
+        } else {
+          noticeStringData[idx] = (
+            <Text
+              color={colors.black}
+              key={`notice-string-${idx}`}
+              size={12}
+              fontWeight="300"
+            >
+              {item}
+            </Text>
+          );
+        }
+      });
+      setNoticeStringData(noticeStringData);
+    } catch (error) {
+      console.error('Error fetching notice:', error);
+    }
+  };
 
   const linkData = [
     {
@@ -73,13 +114,14 @@ export default function InfoView(props) {
         어플리케이션입니다. 해당 어플리케이션 200% 활용하기 설명서
         시작하겠습니다.
       </Text>
-      <Spacer size={10} />
+      <Spacer size={20} />
       <CustomButton
         rounded
         borderRadius={100}
         bgGradientStart="#806FE8"
         bgGradientEnd="#CC7AFF"
         onPress={() => {
+          getNoticeStringData();
           setIsExtended(true);
         }}
       >
@@ -92,6 +134,14 @@ export default function InfoView(props) {
 
   const IntroduceBoxExtended = (
     <View style={styles.introductionContainer}>
+      <View style={styles.closeIcon}>
+        <TouchableIcon
+          icon={_close_button}
+          onPress={() => {
+            setIsExtended(false);
+          }}
+        />
+      </View>
       <Image resizeMode="contain" source={_bell} style={styles.icon} />
       <Spacer />
       <Text size={16} fontWeight="700" color={colors.black}>
@@ -111,8 +161,9 @@ export default function InfoView(props) {
       </Text>
       <Spacer size={20} />
       <View style={{ width: windowWidth - 70, justifyContent: 'flex-start' }}>
-        <Text color={colors.black}>STEP.1 엠밤스 어플리케이션 사용설명서</Text>
-        <Text color={colors.black}>STEP.1 엠밤스 어플리케이션 사용설명서</Text>
+        {noticeStringData.map((item, _) => {
+          return item;
+        })}
       </View>
     </View>
   );
@@ -180,15 +231,10 @@ export default function InfoView(props) {
           </CustomButton>
         ))}
       </View>
+      <Spacer size={80} />
     </ScrollViewContainer>
   );
 }
-
-const customTextStyle = (color, size, fontWeight) => ({
-  color: color,
-  fontSize: size,
-  fontWeight: fontWeight,
-});
 
 const styles = StyleSheet.create({
   introductionContainer: {
@@ -203,6 +249,12 @@ const styles = StyleSheet.create({
   icon: {
     width: 24,
     height: 24,
+  },
+  closeIcon: {
+    width: 30,
+    height: 30,
+    marginLeft: 'auto',
+    marginRight: 20,
   },
   linkerButtonsLayout: {
     alignItems: 'center',
