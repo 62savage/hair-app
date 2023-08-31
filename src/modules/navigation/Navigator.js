@@ -98,7 +98,7 @@ export default function App() {
       drawerStyle={{
         backgroundColor: '#3C38B1',
       }}
-      drawerContent={props => <CustomDrawerContent {...props} />}
+      // drawerContent={props => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen name="Homes" component={NavigatorView} />
     </Drawer.Navigator>

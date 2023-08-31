@@ -19,6 +19,7 @@ const blueVersion = {
   green: '#6DD0A3',
   yellow: '#ffc247',
   backgroundPrimary: '#221F32',
+  backgroundSecondary: '#3A3951',
 };
 
 export default blueVersion;

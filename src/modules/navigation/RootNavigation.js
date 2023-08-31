@@ -4,6 +4,7 @@ import { createStackNavigator, Header } from '@react-navigation/stack';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import StackNavigationData from './stackNavigationData';
+
 import { colors, commonStyles } from '../../styles';
 
 const Stack = createStackNavigator();
@@ -24,18 +25,18 @@ export default function NavigatorView(props) {
         }}
       >
         {/* dev mode */}
-        {/* <Image
+        <Image
           source={require('../../../assets/images/drawer/menu.png')}
           resizeMode="contain"
           style={{
             height: 20,
           }}
-        /> */}
+        />
       </TouchableOpacity>
     );
   };
 
-  const noNeedHeaderScreen = ['TABSCREENS-default', 'Auth'];
+  const noNeedHeaderScreen = ['Home', 'Auth'];
 
   return (
     <Stack.Navigator>
@@ -52,11 +53,12 @@ export default function NavigatorView(props) {
                 style={[
                   styles.headerImage,
                   { backgroundColor: colors.backgroundPrimary },
+                  commonStyles.borderTest,
                 ]}
               />
             ),
             headerTitleStyle: item.headerTitleStyle,
-            headerShown: noNeedHeaderScreen.includes(item.name) ? true : true,
+            headerShown: false,
           }}
         />
       ))}
