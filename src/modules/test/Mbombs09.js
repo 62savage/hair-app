@@ -48,10 +48,11 @@ const styles = StyleSheet.create({
  * - [ ] with the button component, change it to module
  */
 
+let selectedId = 480;
+
 const apiRequestUrl =
   'http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/478';
-const apiRequestUrl2 =
-  'http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/478';
+const apiRequestUrl2 = `http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/${selectedId}/children`;
 
 const mockData = {
   ID: 478,
