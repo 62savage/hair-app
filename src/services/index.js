@@ -1,0 +1,60 @@
+import axios from 'axios';
+
+class MBombsService {
+  constructor() {
+    this.BASE_TREE_SERVER_URL =
+      'http://ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080';
+    this.BASE_URL =
+      'http://ec2-3-35-174-140.ap-northeast-2.compute.amazonaws.com/api';
+    this.axiosInstance = axios.create({
+      baseURL: this.BASE_TREE_SERVER_URL,
+      timeout: 2000,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    this.axiosWebInstance = axios.create({
+      baseURL: this.BASE_URL,
+      timeout: 2000,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  getInfo = async () => {
+    try {
+      let res = await this.axiosInstance.get('/notificationinfo');
+      return res.data;
+    } catch (error) {
+      console.log('service getting info error', error);
+      throw error;
+    }
+  };
+
+  getNotice = async () => {
+    try {
+      let res = await this.axiosWebInstance.get('/notification/published');
+      return res.data;
+    } catch (error) {
+      console.log('service getting notice error', error);
+      throw error;
+    }
+  };
+
+  getResult = async () => {
+    try {
+      let res = await this.axiosInstance.get(
+        '/analytics/clck8it81000cph397yp5cnz9',
+      );
+      return res.data;
+    } catch (error) {
+      console.log('service getting analytics result error', error);
+      throw error;
+    }
+  };
+}
+
+const Service = new MBombsService();
+
+export default Service;

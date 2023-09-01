@@ -1,24 +1,37 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ScrollViewBackgroundLayer } from './ScrollViewBackgroundLayer';
-import { colors } from '../styles';
+import { colors, windowHeight } from '../styles';
 import CustomHeader from './Header';
 import Spacer from './Spacer';
 
-export default function ScrollViewContainer({
+export default function ViewContainer({
   header,
   screenName,
   goBack,
   onPressGoBackIcon,
   children,
+  style,
+  safeAreaViewBounceColor = colors.backgroundPrimary,
+  scrollable = true,
 }) {
+  const ContainerType = scrollable ? ScrollView : View;
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <ScrollViewBackgroundLayer
-        topBounceColor={colors.backgroundPrimary}
-        bottomBounceColor={colors.backgroundPrimary}
+        topBounceColor={
+          safeAreaViewBounceColor
+            ? safeAreaViewBounceColor
+            : colors.backgroundPrimary
+        }
+        bottomBounceColor={
+          safeAreaViewBounceColor
+            ? safeAreaViewBounceColor
+            : colors.backgroundPrimary
+        }
       />
       {header && (
         <CustomHeader
@@ -27,22 +40,27 @@ export default function ScrollViewContainer({
           onPressGoBackIcon={onPressGoBackIcon}
         />
       )}
-      <Spacer />
-      <ScrollView contentContainerStyle={styles.container}>
+      <Spacer size={10} />
+      <ContainerType
+        style={!scrollable && [styles.container, { ...style }]}
+        contentContainerStyle={scrollable && [styles.container, { ...style }]}
+      >
         {children}
-      </ScrollView>
+      </ContainerType>
+      <Spacer />
     </SafeAreaView>
   );
-}
-
-export function ViewContainer() {
-  return <></>;
 }
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: colors.backgroundPrimary,
-    paddingBottom: 80,
+    paddingBottom: 120,
+  },
+  viewContainer: {
+    alignItems: 'center',
+    // backgroundColor: colors.backgroundPrimary,
+    // paddingBottom: 120,
   },
 });
