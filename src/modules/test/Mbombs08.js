@@ -41,6 +41,7 @@ const buttonContainerStyles = (_num, _backgroundColor) =>
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.backgroundPrimary,
+    // backgroundColor: '#fff',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

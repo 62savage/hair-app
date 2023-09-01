@@ -7,6 +7,7 @@ import CustomButton from '../../components/Button';
 import _checkCircle from '../../../assets/images/check-circle.png';
 import _lockIcon from '../../../assets/images/lock-icon.png';
 import ScrollViewContainer from '../../components/Container';
+import Spacer from '../../components/Spacer';
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
@@ -164,6 +165,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             </CustomButton>
           </View>
         </View>
+        <Spacer size={40} />
       </View>
     </ScrollViewContainer>
   );
