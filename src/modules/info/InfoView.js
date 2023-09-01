@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ScrollViewContainer from '../../components/Container';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Linking, StyleSheet, View } from 'react-native';
 import { Text } from '../../components/StyledText';
 import { colors, commonStyles, windowWidth } from '../../styles';
 import Spacer from '../../components/Spacer';
@@ -16,6 +16,16 @@ const _close_button = require('../../../assets/images/icons/close-button.png');
 export default function InfoView(props) {
   const [isExtended, setIsExtended] = useState(false);
   const [noticeStringData, setNoticeStringData] = useState([]);
+
+  const handleClickWebviewButton = url => {
+    Linking.canOpenURL(url).then(supported => {
+      if (supported) {
+        Linking.openURL(url);
+      } else {
+        console.log("Don't know how to open URI: " + url);
+      }
+    });
+  };
 
   const getNoticeStringData = async () => {
     try {
@@ -66,6 +76,7 @@ export default function InfoView(props) {
           인스타그램 바로가기
         </Text>
       ),
+      link: 'https://www.instagram.com/lloydbomb_official/',
     },
     {
       icon: require('../../../assets/images/icons/instagram.png'),
@@ -79,6 +90,7 @@ export default function InfoView(props) {
           인스타그램 바로가기
         </Text>
       ),
+      link: 'https://www.instagram.com/huuimhair_official/',
     },
     {
       icon: require('../../../assets/images/icons/phone.png'),
@@ -92,6 +104,7 @@ export default function InfoView(props) {
           070-8824-0111
         </Text>
       ),
+      link: 'tel:070-8824-0111',
     },
   ];
 
@@ -191,6 +204,13 @@ export default function InfoView(props) {
               width: windowWidth - 40,
               justifyContent: 'flex-start',
               height: 75,
+            }}
+            onPress={() => {
+              if (item.link.includes('tel:')) {
+                Linking.openURL(item.link);
+                return;
+              }
+              handleClickWebviewButton(item.link);
             }}
           >
             <View

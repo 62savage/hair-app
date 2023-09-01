@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Linking } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 import { fonts, colors, windowWidth } from '../../styles';
 import { Text } from '../../components/StyledText';
@@ -22,16 +23,26 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
   //   });
   // };
 
+  const handleClickWebviewButton = url => {
+    Linking.canOpenURL(url).then(supported => {
+      if (supported) {
+        Linking.openURL(url);
+      } else {
+        console.log("Don't know how to open URI: " + url);
+      }
+    });
+  };
+
   const WebViewLinkButtonContent = [
     {
       title: '남다른 취향을 위한 색다른 감각',
       content: '로이드밤 헤어',
-      link: 'https://reactnativestarter.com',
+      link: 'http://lloydbomb.com/',
     },
     {
       title: '작은 차이를 만드는 헤어 큐레이터',
       content: '휴이엠 헤어',
-      link: 'https://reactnativestarter.com',
+      link: 'https://huuim.com/',
     },
   ];
 
@@ -91,6 +102,9 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 bgGradientStart="#806FE8"
                 bgGradientEnd="#CC7AFF"
                 style={{ height: 75 }}
+                onPress={() => {
+                  handleClickWebviewButton(item.link);
+                }}
               >
                 <View style={{ flexBasis: '90%', flexWrap: 'wrap' }}>
                   <Text style={{ fontWeight: 100 }} hCenter>
