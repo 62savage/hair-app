@@ -1,0 +1,77 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Lato-Bold.ttf",
+      "sha1": "6b2c7b124cbf0aaeba48d57fb0fa19f2c6c69683"
+    },
+    {
+      "path": "assets/fonts/Lato-BoldItalic.ttf",
+      "sha1": "bf9e7d4a6185b53a256272869e66762c1e5d503b"
+    },
+    {
+      "path": "assets/fonts/Lato-Italic.ttf",
+      "sha1": "63c5d4424bc3466477be05dc122799df7665e571"
+    },
+    {
+      "path": "assets/fonts/Lato-Light.ttf",
+      "sha1": "a405c8288a8a90881407f93b6ee02b29e26a8735"
+    },
+    {
+      "path": "assets/fonts/Lato-LightItalic.ttf",
+      "sha1": "f05f3b58c5abd991036a1b43bd601556244ffe9e"
+    },
+    {
+      "path": "assets/fonts/Lato-Medium.ttf",
+      "sha1": "c78e94b7cc0b782eef4f9f2be371c3cf9c3f6eaf"
+    },
+    {
+      "path": "assets/fonts/Lato-Regular.ttf",
+      "sha1": "f59f9e4f3cbee981a5e6f58a279f9b9613f22599"
+    },
+    {
+      "path": "assets/fonts/Lato-Semibold.ttf",
+      "sha1": "96569e2cfcc3a298bb1aea21103d0d1e3c7e2ed4"
+    },
+    {
+      "path": "assets/fonts/Lato-Thin.ttf",
+      "sha1": "dbe1f622faef3ea3f286d848da6b10f104405060"
+    },
+    {
+      "path": "assets/fonts/SUIT-Bold.ttf",
+      "sha1": "7e0af5612f3e3d84f41b8ffd0d0bb4c9aa32cf7e"
+    },
+    {
+      "path": "assets/fonts/SUIT-ExtraBold.ttf",
+      "sha1": "67f49c7d86ee8c6282e14e139a000cd1107a297f"
+    },
+    {
+      "path": "assets/fonts/SUIT-ExtraLight.ttf",
+      "sha1": "188a59fe7ceb1973d4bd422e38c3ae7838f995d0"
+    },
+    {
+      "path": "assets/fonts/SUIT-Heavy.ttf",
+      "sha1": "b6e30e5138842a257100262ced8dcf5c7d2ba7bc"
+    },
+    {
+      "path": "assets/fonts/SUIT-Light.ttf",
+      "sha1": "b4c1becc9ef4a2a23088af37c798c10a81dae6c9"
+    },
+    {
+      "path": "assets/fonts/SUIT-Medium.ttf",
+      "sha1": "54eedab7e500e8ba55d158be7e2f419094f2925d"
+    },
+    {
+      "path": "assets/fonts/SUIT-Regular.ttf",
+      "sha1": "59e3518d7509f6a025b64d6bf96bbbe8d4c1b92d"
+    },
+    {
+      "path": "assets/fonts/SUIT-SemiBold.ttf",
+      "sha1": "c0d3026995d06a57fe3b6962506d35db20b6e464"
+    },
+    {
+      "path": "assets/fonts/SUIT-Thin.ttf",
+      "sha1": "f13be6b6adf5cbbba1edc80f2fb71cc26dca51ed"
+    }
+  ]
+}
