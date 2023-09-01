@@ -27,7 +27,7 @@ export default function Result() {
       }
     };
 
-    // getResult();
+    getResult();
   }, []);
 
   const ResultButton = prop => {
