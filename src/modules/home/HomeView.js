@@ -57,9 +57,8 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
       <View style={styles.bgImage}>
         <View style={styles.commonSection}>
           {tree.map((item, idx) => (
-            <View style={[styles.section]}>
+            <View style={[styles.section]} key={`main-button-${item.id}`}>
               <CustomButton
-                key={`main-button-${item.id}`}
                 rounded
                 borderRadius={20}
                 style={[styles.mainButton]}
