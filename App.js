@@ -17,6 +17,7 @@ import AppView from './src/modules/AppViewContainer';
 import { useEffect } from 'react';
 
 import SplashScreen from 'react-native-splash-screen';
+import { PaperProvider } from 'react-native-paper';
 
 export default function App() {
   const navTheme = {
@@ -38,29 +39,31 @@ export default function App() {
   }, []);
 
   return (
-    <Provider store={store}>
-      <SafeAreaView
-        style={{ flex: 1, backgroundColor: colors.backgroundPrimary }}
-        edges={['right', 'top', 'left']}
-      >
-        <NavigationContainer theme={navTheme}>
-          <PersistGate
-            loading={
-              // eslint-disable-next-line react/jsx-wrap-multilines
-              <View style={commonStyles.container}>
-                <ActivityIndicator color={colors.red} />
-              </View>
-            }
-            persistor={persistor}
-          >
-            <CustomStatusBar
-              backgroundColor="#221F32"
-              barStyle="light-content"
-            />
-            <AppView />
-          </PersistGate>
-        </NavigationContainer>
-      </SafeAreaView>
-    </Provider>
+    <PaperProvider>
+      <Provider store={store}>
+        <SafeAreaView
+          style={{ flex: 1, backgroundColor: colors.backgroundPrimary }}
+          edges={['right', 'top', 'left']}
+        >
+          <NavigationContainer theme={navTheme}>
+            <PersistGate
+              loading={
+                // eslint-disable-next-line react/jsx-wrap-multilines
+                <View style={commonStyles.container}>
+                  <ActivityIndicator color={colors.red} />
+                </View>
+              }
+              persistor={persistor}
+            >
+              <CustomStatusBar
+                backgroundColor="#221F32"
+                barStyle="light-content"
+              />
+              <AppView />
+            </PersistGate>
+          </NavigationContainer>
+        </SafeAreaView>
+      </Provider>
+    </PaperProvider>
   );
 }
