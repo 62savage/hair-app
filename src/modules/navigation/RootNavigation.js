@@ -47,7 +47,7 @@ export default function NavigatorView(props) {
           component={item.component}
           backgroundColor={colors.backgroundPrimary}
           options={{
-            headerLeft: item.headerLeft || headerLeftComponentMenu,
+            // headerLeft: item.headerLeft || headerLeftComponentMenu,
             headerBackground: () => (
               <View
                 style={[

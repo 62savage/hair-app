@@ -39,17 +39,17 @@ const headerLeftComponent = props => {
 const headerBackground = require('../../../assets/images/topBarBg.png');
 
 const StackNavigationData = [
-  // {
-  //   name: 'Auth',
-  //   component: AuthScreen,
-  //   headerLeft: headerLeftComponent,
-  //   headerBackground: { source: headerBackground },
-  //   headerTitleStyle: {
-  //     fontFamily: fonts.primaryRegular,
-  //     color: colors.white,
-  //     fontSize: 18,
-  //   },
-  // },
+  {
+    name: 'Auth',
+    component: AuthScreen,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
   {
     name: 'TABSCREENS',
     component: TabNavigator,
@@ -74,6 +74,10 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
+  {
+    name: 'AuthAgreement',
+    component: AvailableInFullVersion,
+  },
 
   // {
   //   name: 'Blog',
@@ -97,7 +101,6 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
-
   // {
   //   name: 'Profile',
   //   component: AvailableInFullVersion,

@@ -1,28 +1,38 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { colors } from '../../styles';
+import { colors, windowHeight } from '../../styles';
 import CustomButton from '../../components/Button';
+import ScrollViewContainer from '../../components/Container';
 
 export default function Mbombs08() {
   return (
-    <View style={styles.container}>
-      <View style={buttonContainerStyles(482, '#2C2941').buttonContainer}>
-        <View style={buttonContainerStyles(358, '#312E47').buttonContainer}>
-          <View style={buttonContainerStyles(252, '#383550').buttonContainer}>
-            <Text style={styles.textAboveButton}>
-              나에게 맞는 헤어스타일 부터 헤어고민까지 진단 시작하기.
-            </Text>
-            <CustomButton
-              rounded
-              borderRadius={104 / 2}
-              style={{ width: 104, height: 104 }}
-            >
-              <Text style={styles.buttonText}>START!</Text>
-            </CustomButton>
+    <ScrollViewContainer
+      header
+      screenName="Hair Analyst"
+      goBack
+      onPressGoBackIcon={() => {
+        props.navigation.navigate('Home');
+      }}
+    >
+      <View style={styles.container}>
+        <View style={buttonContainerStyles(482, '#2C2941').buttonContainer}>
+          <View style={buttonContainerStyles(358, '#312E47').buttonContainer}>
+            <View style={buttonContainerStyles(252, '#383550').buttonContainer}>
+              <Text style={styles.textAboveButton}>
+                나에게 맞는 헤어스타일 부터 헤어고민까지 진단 시작하기.
+              </Text>
+              <CustomButton
+                rounded
+                borderRadius={104 / 2}
+                style={{ width: 104, height: 104 }}
+              >
+                <Text style={styles.buttonText}>START!</Text>
+              </CustomButton>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </ScrollViewContainer>
   );
 }
 
@@ -41,10 +51,10 @@ const buttonContainerStyles = (_num, _backgroundColor) =>
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.backgroundPrimary,
-    // backgroundColor: '#fff',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    height: windowHeight - 280,
   },
   button: {
     backgroundColor: '#F9FA50',

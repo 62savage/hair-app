@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     width: windowWidth - 40,
     gap: 10,
-    height: windowHeight - 320,
+    height: windowHeight - 280,
     justifyContent: 'center',
   },
   buttonText: {

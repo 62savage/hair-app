@@ -22,6 +22,16 @@ class MBombsService {
     });
   }
 
+  getTree = async () => {
+    try {
+      let res = await this.axiosWebInstance.get('/tree/branch');
+      return res.data;
+    } catch (error) {
+      console.log('service getting info error', error);
+      throw error;
+    }
+  };
+
   getInfo = async () => {
     try {
       let res = await this.axiosInstance.get('/notificationinfo');
