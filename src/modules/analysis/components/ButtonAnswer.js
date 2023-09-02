@@ -1,23 +1,21 @@
 import { StyleSheet } from 'react-native';
 import { Text } from '../../../components/StyledText';
-import { windowHeight, windowWidth } from '../../../styles';
 import CustomButton from '../../../components/Button';
 
-export default function ButtonAnswer({ name }) {
+export default function ButtonAnswer({ name, onPress }) {
   return (
-    <CustomButton rounded borderRadius={10} style={{ height: 44 }}>
+    <CustomButton
+      rounded
+      borderRadius={10}
+      style={{ height: 44 }}
+      onPress={onPress}
+    >
       <Text style={styles.buttonText}>{name}</Text>
     </CustomButton>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: windowWidth - 40,
-    gap: 10,
-    height: windowHeight - 280,
-    justifyContent: 'center',
-  },
   buttonText: {
     fontSize: 12,
     color: '#221F32',

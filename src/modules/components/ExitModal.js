@@ -40,7 +40,7 @@ const CustomModal = ({ isVisible, closeModal, goHome }) => {
           <Text
             hCenter
             size={20}
-            style={{ color: '#fff', fontWeight: 900, fontsize: 20 }}
+            style={{ color: '#fff', fontWeight: 900, fontSize: 20 }}
           >
             잠깐!
           </Text>

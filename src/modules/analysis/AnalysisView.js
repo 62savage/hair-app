@@ -12,6 +12,8 @@ import PhotoAnswer from './components/PhotoAnswer';
 
 export default function AnalysisScreen(props) {
   const [data, setData] = useState({});
+  // const [a, setA] = useState([316, 359, 478, 739, 887]);
+  const [a, setA] = useState([316, 359, 478, 739, 887]);
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
@@ -27,14 +29,27 @@ export default function AnalysisScreen(props) {
     props.navigation.navigate('Home');
   };
 
+  const goToNext = async id => {
+    const data = await fetch(
+      `http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/${id}/children`,
+    ).then(res => res.json());
+    fetch(
+      `http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/${data[0].ID}`,
+    )
+      .then(res => res.json())
+      .then(setData);
+  };
+
   useEffect(() => {
     fetch(
-      'http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/486',
+      'http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/359',
     )
       .then(data => data.json())
       .then(setData);
   }, []);
-  console.log(data.ImgUrl);
+
+  // console.log(data);
+
   return (
     <ScrollViewContainer
       header
@@ -60,11 +75,16 @@ export default function AnalysisScreen(props) {
         <Spacer />
         {data.ChildrenIDs?.map((item, idx) =>
           item.imgUrl === '' ? (
-            <ButtonAnswer name={item.name} key={`answer-${idx}`} />
+            <ButtonAnswer
+              name={item.name}
+              onPress={() => goToNext(item.id)}
+              key={`answer-${idx}`}
+            />
           ) : (
             <PhotoAnswer
               name={item.name}
               imgUrl={item.imgUrl}
+              onPress={() => goToNext(item.id)}
               key={`answer-${idx}`}
             />
           ),
@@ -79,10 +99,13 @@ export default function AnalysisScreen(props) {
   );
 }
 const styles = StyleSheet.create({
+  // container: {
+  //   gap: 10,
+  //   paddingHorizontal: 20,
+  // },
   container: {
     width: windowWidth - 40,
     gap: 10,
-    height: windowHeight - 280,
     justifyContent: 'center',
   },
   buttonText: {
