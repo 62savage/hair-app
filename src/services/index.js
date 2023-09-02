@@ -63,6 +63,26 @@ class MBombsService {
       throw error;
     }
   };
+
+  getPrivacyPolicy = async () => {
+    try {
+      let res = await this.axiosInstance.get('/privatepolicy');
+      return res.data;
+    } catch (error) {
+      console.log('service getting privacy policy error', error);
+      throw error;
+    }
+  };
+
+  getMarketingPolicy = async () => {
+    try {
+      let res = await this.axiosInstance.get('/marketingpolicy');
+      return res.data;
+    } catch (error) {
+      console.log('service getting privacy policy error', error);
+      throw error;
+    }
+  };
 }
 
 const Service = new MBombsService();
