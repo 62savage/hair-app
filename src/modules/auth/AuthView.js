@@ -2,11 +2,13 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
-import { Button } from '../../components';
+import { Button, Spacer } from '../../components';
 import _logo from '../../../assets/images/mbombs_logo.png';
 import LinearGradient from 'react-native-linear-gradient';
 import { Text } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
+import { AppleButton } from '@invertase/react-native-apple-authentication';
+import { windowWidth } from '../../styles';
 
 export default function AuthScreen(props) {
   // dev mode
@@ -87,6 +89,15 @@ export default function AuthScreen(props) {
   const LoginButtons = () => {
     return (
       <View style={[styles.loginButtonsContainer]}>
+        <AppleButton
+          buttonStyle={AppleButton.Style.WHITE}
+          buttonType={AppleButton.Type.SIGN_IN}
+          style={{
+            width: windowWidth - 120, // You must specify a width
+            height: 45, // You must specify a height
+          }}
+          onPress={() => onAppleButtonPress()}
+        />
         <Button
           style={[styles.demoButton]}
           primary
@@ -111,6 +122,14 @@ export default function AuthScreen(props) {
             props.login({});
           }}
         />
+        <Spacer />
+        <Text
+          onPress={() => {
+            props.navigation.navigate('AuthAgreement');
+          }}
+        >
+          이용 약관
+        </Text>
       </View>
     );
   };
@@ -119,11 +138,6 @@ export default function AuthScreen(props) {
     <View style={styles.container}>
       {loading ? Logo : WelcomeText}
       {loading ? <LoginProgressBar /> : <LoginButtons />}
-      <CustomButton
-        onPress={() => {
-          props.navigation.navigate('AuthAgreement');
-        }}
-      />
     </View>
   );
 }
