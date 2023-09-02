@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Image, Linking } from 'react-native';
-import { WebView } from 'react-native-webview';
 
-import { fonts, colors, windowWidth } from '../../styles';
+import { fonts, colors, windowWidth, commonStyles } from '../../styles';
 import { Text } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
 import _checkCircle from '../../../assets/images/check-circle.png';
 import _lockIcon from '../../../assets/images/lock-icon.png';
 import ScrollViewContainer from '../../components/Container';
+import Service from '../../services';
+import { Spacer } from '../../components';
 
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
-  // const rnsUrl = 'https://reactnativestarter.com';
-  // const handleClick = () => {
-  //   Linking.canOpenURL(rnsUrl).then(supported => {
-  //     if (supported) {
-  //       Linking.openURL(rnsUrl);
-  //     } else {
-  //       console.log(`Don't know how to open URI: ${rnsUrl}`);
-  //     }
-  //   });
-  // };
+  const [tree, setTree] = useState([]);
 
   const handleClickWebviewButton = url => {
     Linking.canOpenURL(url).then(supported => {
@@ -46,49 +38,64 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
     },
   ];
 
+  useEffect(() => {
+    const getTreeData = async () => {
+      try {
+        let res = await Service.getTree();
+        console.log(res);
+        setTree(res);
+      } catch (error) {
+        console.log('notice error', error);
+      }
+    };
+
+    getTreeData();
+  }, []);
+
   return (
     <ScrollViewContainer>
       <View style={styles.bgImage}>
         <View style={styles.commonSection}>
-          <View style={[styles.section]}>
-            <CustomButton
-              rounded
-              borderRadius={30}
-              style={[styles.mainButton]}
-              bgGradientStart="#F9FA50"
-              bgGradientEnd="#29FC4B"
-            >
-              <View style={styles.mainButtonContent}>
-                <Text color={colors.black} style={{ fontWeight: 100 }} hCenter>
-                  Personal Hair Style
-                </Text>
-                <Text
-                  bold
-                  color={colors.black}
-                  hCenter
-                  size={17}
-                  style={{ fontWeight: 700 }}
-                >
-                  나에게 맞는 헤어스타일부터{'\n'} 헤어고민까지 진단테스트
-                  시작하기
-                </Text>
-                <Image
-                  style={styles.image}
-                  source={_checkCircle}
-                  resizeMode="contain"
-                />
-                <Text
-                  color={colors.black}
-                  size={16}
-                  style={{ fontWeight: 700 }}
-                >
-                  Analyst Start!
-                </Text>
-              </View>
-            </CustomButton>
-          </View>
+          {tree.map((item, idx) => (
+            <View style={[styles.section]}>
+              <CustomButton
+                key={`main-button-${item.id}`}
+                rounded
+                borderRadius={20}
+                style={[styles.mainButton]}
+                bgGradientStart={item.startGradient}
+                bgGradientEnd={item.endGradient}
+              >
+                <View style={styles.mainButtonContent}>
+                  <Image
+                    style={styles.image}
+                    source={_checkCircle}
+                    resizeMode="contain"
+                  />
+                  <Spacer size={10} />
+                  <Text
+                    color={colors.black}
+                    style={{ fontWeight: 100 }}
+                    hCenter
+                  >
+                    {item.subTitle}
+                  </Text>
+                  <Text
+                    bold
+                    color={colors.black}
+                    hCenter
+                    size={15}
+                    style={{ fontWeight: 700 }}
+                  >
+                    {item.title} {'>'}
+                  </Text>
+                </View>
+              </CustomButton>
+            </View>
+          ))}
+
           {/**flex 2 */}
-          <View
+          {/* <View
             style={[
               styles.section,
               { height: 150 + 10, justifyContent: 'space-between' },
@@ -123,9 +130,9 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 </View>
               </CustomButton>
             ))}
-          </View>
+          </View> */}
 
-          <View
+          {/* <View
             style={[
               styles.section,
               {
@@ -180,7 +187,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 </View>
               </View>
             </CustomButton>
-          </View>
+          </View> */}
         </View>
       </View>
     </ScrollViewContainer>
@@ -192,10 +199,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.backgroundPrimary,
   },
-
+  section: {
+    width: windowWidth - 40,
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // padding: 10,
+  },
   mainButton: {
-    flex: 1,
-    flexBasis: '100%',
+    //flex: 1,
+    flexBasis: '95%',
   },
   mainButtonContent: {
     height: '70%',
@@ -204,7 +217,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: '40%',
+    width: '50%',
     height: 'auto',
     aspectRatio: 26 / 12,
   },
@@ -228,14 +241,7 @@ const styles = StyleSheet.create({
     flexBasis: '100%',
     gap: 5,
   },
-  section: {
-    width: windowWidth - 40,
-    height: 300,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 10,
-    // padding: 10,
-  },
+
   sectionLarge: {
     flex: 1,
     justifyContent: 'space-around',
