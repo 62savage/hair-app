@@ -3,7 +3,6 @@ import { compose, lifecycle } from 'recompose';
 
 import AuthScreen from './AuthView';
 import { login } from './UserState';
-import { loadImages } from '../gallery/GalleryState';
 
 export default compose(
   connect(
@@ -11,7 +10,6 @@ export default compose(
       user: state.user.user,
     }),
     dispatch => ({
-      loadImages: () => dispatch(loadImages()),
       login: userData => dispatch(login(userData)),
     }),
   ),

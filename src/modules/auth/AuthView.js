@@ -1,20 +1,66 @@
 /* eslint-disable class-methods-use-this */
 import * as React from 'react';
 import { useEffect } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Platform } from 'react-native';
 import { Button, Spacer } from '../../components';
 import _logo from '../../../assets/images/mbombs_logo.png';
 import LinearGradient from 'react-native-linear-gradient';
 import { Text } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
-import { AppleButton } from '@invertase/react-native-apple-authentication';
 import { windowWidth } from '../../styles';
+import AppleLoginBtn from '../../molecules/auth/appleLogin';
+import AuthService from '../../services/authService';
+import Storage from '../../services/Storage';
+import { get } from 'lodash';
 
 export default function AuthScreen(props) {
   // dev mode
 
   const [loading, setLoading] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
+
+  const loginButtonBindWithSocial = async (email, signinMethod, userData) => {
+    try {
+      let res;
+      if (email) {
+        res = await AuthService.socialLoginOrRegister(email, signinMethod);
+      }
+      if (res && res.status) {
+        await saveUserDataOnAsyncStorage({ ...res, ...userData });
+        props.login({ ...res, ...userData });
+      } else if (res && !res.status) {
+        props.navigation.navigate('AuthAgreement');
+      }
+    } catch (error) {
+      console.log('service login error', error);
+      throw error;
+    }
+  };
+
+  const saveUserDataOnAsyncStorage = async userData => {
+    try {
+      await Storage.storeUserData(userData);
+      console.log('saveUserDataOnAsyncStorage', userData);
+    } catch (error) {
+      console.log('saveUserDataOnAsyncStorage error', error);
+    }
+  };
+
+  useEffect(() => {
+    saveUserDataOnAsyncStorage();
+    const getAsyncStorageUserData = async () => {
+      try {
+        const res = await Storage.getUserData();
+        console.log('user data', res);
+        if (res && res.email) {
+          props.login(res);
+        }
+      } catch (error) {
+        console.log('getAsyncStorageUserData error', error);
+      }
+    };
+    getAsyncStorageUserData();
+  }, []);
 
   useEffect(() => {
     let interval;
@@ -89,30 +135,27 @@ export default function AuthScreen(props) {
   const LoginButtons = () => {
     return (
       <View style={[styles.loginButtonsContainer]}>
-        <AppleButton
-          buttonStyle={AppleButton.Style.WHITE}
-          buttonType={AppleButton.Type.SIGN_IN}
-          style={{
-            width: windowWidth - 120, // You must specify a width
-            height: 45, // You must specify a height
-          }}
-          onPress={() => onAppleButtonPress()}
-        />
+        {Platform.OS === 'ios' ? (
+          <AppleLoginBtn
+            signinApproved={props =>
+              loginButtonBindWithSocial(props.email, 'APPLE', props)
+            }
+          />
+        ) : null}
+
         <Button
           style={[styles.demoButton]}
           primary
           caption="Demo"
           onPress={() => {
-            props.login({ email: 'pallyjyo@gmail.com' });
+            saveUserDataOnAsyncStorage();
           }}
         />
         <Button
           style={[styles.demoButton]}
           primary
           caption="Login"
-          onPress={() => {
-            props.login({});
-          }}
+          onPress={() => {}}
         />
         <Button
           style={[styles.demoButton]}
