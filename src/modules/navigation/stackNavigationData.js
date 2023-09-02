@@ -5,8 +5,6 @@ import TabNavigator from './MainTabNavigator';
 import GalleryScreen from '../gallery/GalleryViewContainer';
 import AuthScreen from '../auth/AuthViewContainer';
 
-import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
-
 // import ProfileScreen from '../profile/ProfileViewContainer';
 // import ArticleScreen from '../article/ArticleViewContainer';
 // import ChatScreen from '../chat/ChatViewContainer';
@@ -15,26 +13,7 @@ import AvailableInFullVersion from '../../modules/availableInFullVersion/Availab
 // import AuthScreen from '../auth/AuthViewContainer';
 
 import { colors, fonts } from '../../styles';
-
-const headerLeftComponent = props => {
-  return (
-    <TouchableOpacity
-      onPress={props.onPress}
-      style={{
-        paddingHorizontal: 16,
-        paddingVertical: 12,
-      }}
-    >
-      <Image
-        source={require('../../../assets/images/icons/arrow-back.png')}
-        resizeMode="contain"
-        style={{
-          height: 20,
-        }}
-      />
-    </TouchableOpacity>
-  );
-};
+import AuthAgreementScreen from '../authAgreement/AuthAgreementView';
 
 const headerBackground = require('../../../assets/images/topBarBg.png');
 
@@ -42,41 +21,26 @@ const StackNavigationData = [
   {
     name: 'Auth',
     component: AuthScreen,
-    headerLeft: headerLeftComponent,
-    headerBackground: { source: headerBackground },
-    headerTitleStyle: {
-      fontFamily: fonts.primaryRegular,
-      color: colors.white,
-      fontSize: 18,
-    },
   },
   {
     name: 'TABSCREENS',
     component: TabNavigator,
-    headerLeft: null,
-    headerBackground: { source: headerBackground },
-    headerTitleStyle: {
-      fontFamily: fonts.primaryRegular,
-      color: colors.white,
-      fontSize: 18,
-      // display: 'none',
-    },
   },
 
-  {
-    name: 'Charts',
-    component: AvailableInFullVersion,
-    headerLeft: headerLeftComponent,
-    headerBackground: { source: headerBackground },
-    headerTitleStyle: {
-      fontFamily: fonts.primaryRegular,
-      color: colors.white,
-      fontSize: 18,
-    },
-  },
+  // {
+  //   name: 'Charts',
+  //   component: AvailableInFullVersion,
+  //   headerLeft: headerLeftComponent,
+  //   headerBackground: { source: headerBackground },
+  //   headerTitleStyle: {
+  //     fontFamily: fonts.primaryRegular,
+  //     color: colors.white,
+  //     fontSize: 18,
+  //   },
+  // },
   {
     name: 'AuthAgreement',
-    component: AvailableInFullVersion,
+    component: AuthAgreementScreen,
   },
 
   // {
@@ -90,17 +54,17 @@ const StackNavigationData = [
   //     fontSize: 18,
   //   },
   // },
-  {
-    name: 'Gallery',
-    component: GalleryScreen,
-    headerLeft: headerLeftComponent,
-    headerBackground: { source: headerBackground },
-    headerTitleStyle: {
-      fontFamily: fonts.primaryRegular,
-      color: colors.white,
-      fontSize: 18,
-    },
-  },
+  // {
+  //   name: 'Gallery',
+  //   component: GalleryScreen,
+  //   headerLeft: headerLeftComponent,
+  //   headerBackground: { source: headerBackground },
+  //   headerTitleStyle: {
+  //     fontFamily: fonts.primaryRegular,
+  //     color: colors.white,
+  //     fontSize: 18,
+  //   },
+  // },
 
   // {
   //   name: 'Profile',

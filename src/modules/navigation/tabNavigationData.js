@@ -5,7 +5,6 @@ import TestScreen from '../test/TestViewContainer';
 import InfoScreen from '../info/InfoViewContainer';
 
 import AuthScreen from '../auth/AuthViewContainer';
-import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
 import NoticeScreen from '../notice/NoticeViewContainer';
 import ResultScreen from '../result/ResultViewContainer';
