@@ -38,7 +38,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Bold.ttf</string>
@@ -65,6 +65,15 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>SUIT-Bold.ttf</string>
+		<string>SUIT-ExtraBold.ttf</string>
+		<string>SUIT-ExtraLight.ttf</string>
+		<string>SUIT-Heavy.ttf</string>
+		<string>SUIT-Light.ttf</string>
+		<string>SUIT-Medium.ttf</string>
+		<string>SUIT-Regular.ttf</string>
+		<string>SUIT-SemiBold.ttf</string>
+		<string>SUIT-Thin.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
