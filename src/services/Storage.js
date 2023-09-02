@@ -5,7 +5,7 @@ class RNStorage {
 
   storeUserData = async value => {
     try {
-      const jsonValue = JSON.stringify('testvalue');
+      const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem('user-data', jsonValue);
     } catch (e) {
       // saving error

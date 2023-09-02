@@ -52,11 +52,9 @@ class MBombsService {
     }
   };
 
-  getResult = async () => {
+  getResult = async userId => {
     try {
-      let res = await this.axiosInstance.get(
-        '/analytics/clck8it81000cph397yp5cnz9',
-      );
+      let res = await this.axiosInstance.get(`/analytics/${userId}`);
       return res.data;
     } catch (error) {
       console.log('service getting analytics result error', error);

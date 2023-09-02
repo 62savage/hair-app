@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import * as React from 'react';
 import { useEffect } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Platform } from 'react-native';
 import { Button, Spacer } from '../../components';
 import _logo from '../../../assets/images/mbombs_logo.png';
 import LinearGradient from 'react-native-linear-gradient';
@@ -47,9 +47,11 @@ export default function AuthScreen(props) {
   };
 
   useEffect(() => {
+    saveUserDataOnAsyncStorage();
     const getAsyncStorageUserData = async () => {
       try {
         const res = await Storage.getUserData();
+        console.log('user data', res);
         if (res && res.email) {
           props.login(res);
         }
@@ -133,11 +135,14 @@ export default function AuthScreen(props) {
   const LoginButtons = () => {
     return (
       <View style={[styles.loginButtonsContainer]}>
-        <AppleLoginBtn
-          signinApproved={props =>
-            loginButtonBindWithSocial(props.email, 'APPLE', props)
-          }
-        />
+        {Platform.OS === 'ios' ? (
+          <AppleLoginBtn
+            signinApproved={props =>
+              loginButtonBindWithSocial(props.email, 'APPLE', props)
+            }
+          />
+        ) : null}
+
         <Button
           style={[styles.demoButton]}
           primary
