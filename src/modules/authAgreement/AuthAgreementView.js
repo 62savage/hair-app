@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ViewContainer from '../../components/Container';
 import { Text } from '../../components/StyledText';
 import { StyleSheet, View } from 'react-native';
 import { colors, commonStyles, windowWidth } from '../../styles';
 import { Spacer } from '../../components';
-
-import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { Checkbox, Chip } from 'react-native-paper';
 
 export default function AuthAgreementView(props) {
+  const [checked, setChecked] = useState(false);
   return (
     <ViewContainer scrollable={false}>
       <View style={[styles.container]}>
@@ -18,7 +18,7 @@ export default function AuthAgreementView(props) {
           <Spacer />
           <View width={windowWidth - 60} style={styles.section}>
             <View width="100%" style={styles.sectionView}>
-              <AwesomeIcon />
+              <Checkbox.Item label="Item" status="checked" />
             </View>
           </View>
         </View>
