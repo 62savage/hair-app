@@ -9,7 +9,7 @@ import { Text } from '../../components/StyledText';
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 const _close_button = require('../../../assets/images/icons/close-button.png');
 
-const CustomModal = ({ isVisible, closeModal }) => {
+const CustomModal = ({ isVisible, closeModal, goHome }) => {
   return (
     <Modal isVisible={isVisible} backdropOpacity={0.5}>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -56,7 +56,7 @@ const CustomModal = ({ isVisible, closeModal }) => {
             rounded
             borderRadius={20}
             style={{ height: 32, width: 124 }}
-            onPress={closeModal}
+            onPress={goHome}
           >
             <Text style={{ color: '#000', fontSize: 16, fontWeight: 500 }}>
               종료하기

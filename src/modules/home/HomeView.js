@@ -12,7 +12,7 @@ import { Spacer } from '../../components';
 
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
 
-export default function HomeScreen({ isExtended, setIsExtended }) {
+export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
   const [tree, setTree] = useState([]);
 
   const handleClickWebviewButton = url => {
@@ -37,6 +37,12 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
       link: 'https://huuim.com/',
     },
   ];
+
+  const onPress = (id, props) => {
+    if (id === 5) {
+      props.navigation.navigate('START');
+    }
+  };
 
   useEffect(() => {
     const getTreeData = async () => {
@@ -64,6 +70,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 style={[styles.mainButton]}
                 bgGradientStart={item.startGradient}
                 bgGradientEnd={item.endGradient}
+                onPress={() => onPress(item.id, props)}
               >
                 <View style={styles.mainButtonContent}>
                   <Image
