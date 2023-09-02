@@ -6,8 +6,8 @@ import { colors, windowWidth } from '../../styles';
 import CustomButton from '../../components/Button';
 import { Text } from '../../components/StyledText';
 
-const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
-const _close_button = require('../../../assets/images/icons/close-button.png');
+const _check_linear_gradient = require('../../../assets/images/icons/question-button.png');
+const _question_button = require('../../../assets/images/icons/close-button.png');
 
 const CustomModal = ({ isVisible, closeModal, goHome }) => {
   return (
@@ -26,7 +26,7 @@ const CustomModal = ({ isVisible, closeModal, goHome }) => {
         >
           <View style={styles.closeIcon}>
             <TouchableIcon
-              icon={_close_button}
+              icon={_question_button}
               onPress={closeModal}
               style={{ width: 14, height: 14 }}
             />
