@@ -88,7 +88,7 @@ export default function CustomButton(props) {
 
     content = (
       <LinearGradient
-        start={{ x: 0.5, y: 1 }}
+        start={{ x: 0, y: 1 }}
         end={{ x: 1, y: 1 }}
         colors={gradientArray}
         style={[
