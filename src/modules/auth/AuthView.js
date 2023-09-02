@@ -6,6 +6,7 @@ import { Button } from '../../components';
 import _logo from '../../../assets/images/mbombs_logo.png';
 import LinearGradient from 'react-native-linear-gradient';
 import { Text } from '../../components/StyledText';
+import CustomButton from '../../components/Button';
 
 export default function AuthScreen(props) {
   // dev mode
@@ -118,6 +119,11 @@ export default function AuthScreen(props) {
     <View style={styles.container}>
       {loading ? Logo : WelcomeText}
       {loading ? <LoginProgressBar /> : <LoginButtons />}
+      <CustomButton
+        onPress={() => {
+          props.navigation.navigate('AuthAgreement');
+        }}
+      />
     </View>
   );
 }

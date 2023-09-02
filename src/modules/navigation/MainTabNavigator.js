@@ -20,7 +20,7 @@ export default function BottomTabs() {
           elevation: 0,
           borderRadius: 15,
           alignItems: 'center',
-          height: Platform.OS === 'ios' ? 76 : 50,
+          height: 76,
           backgroundColor: colors.backgroundSecondary,
         },
       }}

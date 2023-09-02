@@ -20,7 +20,7 @@ export default function Result() {
     const getResult = async () => {
       try {
         let res = await Service.getResult();
-        console.log(res.reverse());
+        console.log('result =', res.reverse());
         setResult(res);
       } catch (error) {
         console.log('result error', error);
@@ -120,7 +120,7 @@ export default function Result() {
         ? NoResultData
         : result.map((item, _) => {
             return (
-              <View key={`result-${item.id}`}>
+              <View key={`result-${item.ID}`}>
                 <ResultButton {...item} />
                 <Spacer size={10} />
               </View>
