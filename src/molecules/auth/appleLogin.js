@@ -4,6 +4,9 @@ import {
   appleAuth,
   AppleButton,
 } from '@invertase/react-native-apple-authentication';
+import { windowWidth } from '../../styles';
+import { useDispatch } from 'react-redux';
+import { login } from '../../modules/auth/UserState';
 
 /**
  * You'd technically persist this somewhere for later use.
@@ -13,7 +16,10 @@ let user = null;
 /**
  * Fetches the credential state for the current user, if any, and updates state on completion.
  */
-async function fetchAndUpdateCredentialState(updateCredentialStateForUser) {
+async function fetchAndUpdateCredentialState(
+  updateCredentialStateForUser,
+  signinApproved,
+) {
   if (user === null) {
     updateCredentialStateForUser('N/A');
   } else {
@@ -29,7 +35,10 @@ async function fetchAndUpdateCredentialState(updateCredentialStateForUser) {
 /**
  * Starts the Sign In flow.
  */
-async function onAppleButtonPress(updateCredentialStateForUser) {
+async function onAppleButtonPress(
+  updateCredentialStateForUser,
+  signinApproved,
+) {
   console.warn('Beginning Apple Authentication');
 
   // start a login request
@@ -51,6 +60,8 @@ async function onAppleButtonPress(updateCredentialStateForUser) {
 
     user = newUser;
 
+    console.log('user', user);
+
     fetchAndUpdateCredentialState(updateCredentialStateForUser).catch(error =>
       updateCredentialStateForUser(`Error: ${error.code}`),
     );
@@ -67,6 +78,8 @@ async function onAppleButtonPress(updateCredentialStateForUser) {
     }
 
     console.warn(`Apple Authentication Completed, ${user}, ${email}`);
+
+    signinApproved(appleAuthRequestResponse);
   } catch (error) {
     if (error.code === appleAuth.Error.CANCELED) {
       console.warn('User canceled Apple Sign in.');
@@ -76,7 +89,7 @@ async function onAppleButtonPress(updateCredentialStateForUser) {
   }
 }
 
-export default function AppleLoginBtn() {
+export default function AppleLoginBtn({ signinApproved }) {
   const [credentialStateForUser, updateCredentialStateForUser] = useState(-1);
   useEffect(() => {
     if (!appleAuth.isSupported) return;
@@ -106,21 +119,21 @@ export default function AppleLoginBtn() {
   }
 
   return (
-    <View style={[styles.container, styles.horizontal]}>
-      <AppleButton
-        style={styles.appleButton}
-        cornerRadius={5}
-        buttonStyle={AppleButton.Style.WHITE}
-        buttonType={AppleButton.Type.CONTINUE}
-        onPress={() => onAppleButtonPress(updateCredentialStateForUser)}
-      />
-    </View>
+    <AppleButton
+      style={styles.appleButton}
+      cornerRadius={5}
+      buttonStyle={AppleButton.Style.WHITE}
+      buttonType={AppleButton.Type.CONTINUE}
+      onPress={() =>
+        onAppleButtonPress(updateCredentialStateForUser, signinApproved)
+      }
+    />
   );
 }
 
 const styles = StyleSheet.create({
   appleButton: {
-    width: 200,
+    width: windowWidth - 120,
     height: 60,
     margin: 10,
   },
