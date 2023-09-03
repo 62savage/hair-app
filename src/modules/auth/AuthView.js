@@ -29,7 +29,8 @@ export default function AuthScreen(props) {
         await saveUserDataOnAsyncStorage({ ...res, ...userData });
         props.login({ ...res, ...userData });
       } else if (res && !res.status) {
-        props.navigation.navigate('AuthAgreement');
+        props.login({ ...res, ...userData });
+        // props.navigation.navigate('AuthAgreement');
       }
     } catch (error) {
       console.log('service login error', error);

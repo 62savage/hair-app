@@ -5,7 +5,7 @@ import TabNavigator from './MainTabNavigator';
 import GalleryScreen from '../gallery/GalleryViewContainer';
 import AuthScreen from '../auth/AuthViewContainer';
 import StartScreen from '../start/StartViewContainer';
-import AnalysisScreen from '../analysis/AnalysisView';
+import AnalysisScreen from '../analysis/AnalysisViewContainer';
 import EndScreen from '../end/EndViewContainer';
 
 // import ProfileScreen from '../profile/ProfileViewContainer';
