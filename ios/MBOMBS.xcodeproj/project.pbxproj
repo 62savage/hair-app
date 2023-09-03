@@ -13,7 +13,8 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-MBOMBS-MBOMBSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-MBOMBS-MBOMBSTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		F42EB4512AA4AF8100BDF343 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42EB4502AA4AF8100BDF343 /* Launch Screen.storyboard */; };
+		F42EB4522AA4AF8100BDF343 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42EB4502AA4AF8100BDF343 /* Launch Screen.storyboard */; };
 		F49538ED2AA349810097F672 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F487F6DA2AA32FEC007F11D5 /* AntDesign.ttf */; };
 		F49538EE2AA349810097F672 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F487F6C92AA32FE9007F11D5 /* Entypo.ttf */; };
 		F49538EF2AA349810097F672 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F487F6CF2AA32FEB007F11D5 /* EvilIcons.ttf */; };
@@ -60,9 +61,13 @@
 		5709B34CF0A7D63546082F79 /* Pods-MBOMBS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBOMBS.release.xcconfig"; path = "Target Support Files/Pods-MBOMBS/Pods-MBOMBS.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-MBOMBS-MBOMBSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBOMBS-MBOMBSTests.debug.xcconfig"; path = "Target Support Files/Pods-MBOMBS-MBOMBSTests/Pods-MBOMBS-MBOMBSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-MBOMBS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MBOMBS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+<<<<<<< HEAD
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MBOMBS/LaunchScreen.storyboard; sourceTree = "<group>"; };
+=======
+>>>>>>> e06375c2f6892ca38fef743d2feb31312a5deb8a
 		89C6BE57DB24E9ADA2F236DE /* Pods-MBOMBS-MBOMBSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBOMBS-MBOMBSTests.release.xcconfig"; path = "Target Support Files/Pods-MBOMBS-MBOMBSTests/Pods-MBOMBS-MBOMBSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F42EB4502AA4AF8100BDF343 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F455F2D72A8FB29B0017E002 /* MBOMBS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = MBOMBS.entitlements; path = MBOMBS/MBOMBS.entitlements; sourceTree = "<group>"; };
 		F466BCFC2A9EE8B000D68775 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		F487F6C82AA32FE9007F11D5 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
@@ -131,8 +136,8 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				F42EB4502AA4AF8100BDF343 /* Launch Screen.storyboard */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = MBOMBS;
@@ -245,6 +250,10 @@
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
 			name = MBOMBSTests;
+<<<<<<< HEAD
+=======
+			productName = MBOMBSTests;
+>>>>>>> e06375c2f6892ca38fef743d2feb31312a5deb8a
 			productReference = 00E356EE1AD99517003FC87E /* MBOMBSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -311,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42EB4522AA4AF8100BDF343 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +334,7 @@
 				F49538F02AA349810097F672 /* Feather.ttf in Resources */,
 				F49538F12AA349810097F672 /* FontAwesome.ttf in Resources */,
 				F49538F22AA349810097F672 /* FontAwesome5_Brands.ttf in Resources */,
+				F42EB4512AA4AF8100BDF343 /* Launch Screen.storyboard in Resources */,
 				F49538F32AA349810097F672 /* FontAwesome5_Regular.ttf in Resources */,
 				F49538F42AA349810097F672 /* FontAwesome5_Solid.ttf in Resources */,
 				F49538F52AA349810097F672 /* FontAwesome6_Brands.ttf in Resources */,
@@ -337,7 +348,6 @@
 				F49538FD2AA349810097F672 /* Octicons.ttf in Resources */,
 				F49538FE2AA349810097F672 /* SimpleLineIcons.ttf in Resources */,
 				F49538FF2AA349810097F672 /* Zocial.ttf in Resources */,
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,6 +589,7 @@
 			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-MBOMBS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MBOMBS/MBOMBS.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
@@ -609,6 +620,7 @@
 			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-MBOMBS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MBOMBS/MBOMBS.entitlements;
 				CURRENT_PROJECT_VERSION = 1;

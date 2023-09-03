@@ -13,6 +13,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 // react-native-splash-screen >= 0.3.1
 
 // import java.lang.reflect.InvocationTargetException;
