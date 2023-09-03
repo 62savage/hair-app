@@ -1,25 +1,17 @@
 /* eslint-disable class-methods-use-this */
 import * as React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import _logo from '../../../assets/images/mbombs_logo.png';
 import { Text } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
-import { colors, windowHeight } from '../../styles';
-import ScrollViewContainer from '../../components/Container';
+import { colors, commonStyles, windowHeight } from '../../styles';
 
 export default function AnalysisScreen(props) {
   const onPressStartButton = () => {
     props.navigation.navigate('ANAlYSIS');
   };
+
   return (
-    // <ScrollViewContainer
-    //   header
-    //   screenName="Hair Analyst"
-    //   goBack
-    //   onPressGoBackIcon={() => {
-    //     props.navigation.navigate('Home');
-    //   }}
-    // >
     <View style={styles.container}>
       <View style={buttonContainerStyles(482, '#2C2941').buttonContainer}>
         <View style={buttonContainerStyles(358, '#312E47').buttonContainer}>
@@ -39,7 +31,6 @@ export default function AnalysisScreen(props) {
         </View>
       </View>
     </View>
-    // </ScrollViewContainer>
   );
 }
 
@@ -91,6 +82,11 @@ const styles = StyleSheet.create({
     width: 104,
     textAlign: 'center',
     color: '#000',
+  },
+  icon: {
+    width: '100%',
+    height: 'auto',
+    aspectRatio: 1,
   },
 });
 

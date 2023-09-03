@@ -54,7 +54,8 @@ export default function AnalysisScreen(props) {
           if (res.IsFinal) {
             // fetch total data to the server
             console.log('FINAL!!!', record);
-            props.navigation.navigate('Home');
+            props.navigation.navigate('END');
+
             return;
           }
           return fetchData(level[res.NextCategory]);

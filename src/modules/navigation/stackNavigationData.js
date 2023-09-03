@@ -6,6 +6,7 @@ import GalleryScreen from '../gallery/GalleryViewContainer';
 import AuthScreen from '../auth/AuthViewContainer';
 import StartScreen from '../start/StartViewContainer';
 import AnalysisScreen from '../analysis/AnalysisView';
+import EndScreen from '../end/EndViewContainer';
 
 // import ProfileScreen from '../profile/ProfileViewContainer';
 // import ArticleScreen from '../article/ArticleViewContainer';
@@ -31,6 +32,10 @@ const StackNavigationData = [
   {
     name: 'START',
     component: StartScreen,
+  },
+  {
+    name: 'END',
+    component: EndScreen,
   },
 
   {
