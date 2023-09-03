@@ -190,10 +190,10 @@ export default function InfoView(props) {
         props.navigation.navigate('Home');
       }}
     >
-      {/* {isExtended ? IntroduceBoxExtended : IntroduceBox} */}
+      {isExtended ? IntroduceBoxExtended : IntroduceBox}
       <Spacer size={20} />
       <View style={styles.linkerButtonsLayout}>
-        {/* {linkData.map((item, idx) => (
+        {linkData.map((item, idx) => (
           <CustomButton
             key={`linker-button-${idx}`}
             rounded
@@ -249,7 +249,7 @@ export default function InfoView(props) {
               />
             </View>
           </CustomButton>
-        ))} */}
+        ))}
       </View>
       <Spacer size={80} />
     </ScrollViewContainer>

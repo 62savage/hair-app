@@ -11,7 +11,13 @@ const _question_button = require('../../../assets/images/icons/close-button.png'
 
 const CustomModal = ({ isVisible, closeModal, goHome }) => {
   return (
-    <Modal isVisible={isVisible} backdropOpacity={0.5}>
+    <Modal
+      isVisible={isVisible}
+      backdropOpacity={0.5}
+      onBackdropPress={() => console.log('aa')}
+      onBackButtonPress={() => console.log('backdor')}
+      stlye={{ flex: 1 }}
+    >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <View
           style={{

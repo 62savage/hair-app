@@ -21,7 +21,6 @@ export default function CustomButton(props) {
       <Image resizeMode="contain" source={props.icon} style={styles.icon} />
     );
   }
-
   let content;
 
   if (props.bordered) {
