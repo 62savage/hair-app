@@ -148,14 +148,16 @@ export default function AuthScreen(props) {
           primary
           caption="Demo"
           onPress={() => {
-            saveUserDataOnAsyncStorage();
+            // saveUserDataOnAsyncStorage();
           }}
         />
         <Button
           style={[styles.demoButton]}
           primary
           caption="Login"
-          onPress={() => {}}
+          onPress={() => {
+            props.login({ email: 'boxman@gmail.com' });
+          }}
         />
         <Button
           style={[styles.demoButton]}

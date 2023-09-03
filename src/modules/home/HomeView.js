@@ -42,7 +42,6 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
   ];
 
   const onPress = (id, isLocked) => {
-    console.log(id);
     if (!isLocked) {
       props.navigation.navigate('START');
     } else {

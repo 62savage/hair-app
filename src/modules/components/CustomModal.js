@@ -11,7 +11,9 @@ const CustomModal = ({ isVisible, closeModal, height, goStart }) => {
   const onChangeText = e => setText(e);
 
   const onSubmitText = () => {
+    console.log(text);
     if (text === password) {
+      setText('');
       goStart();
     } else {
       console.log('try other password');

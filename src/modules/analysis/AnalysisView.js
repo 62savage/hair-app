@@ -30,6 +30,10 @@ export default function AnalysisScreen(props) {
     props.navigation.navigate('Home');
   };
 
+  const saveRecordToServer = final => {
+    console.log('FINAL!!! => ', final);
+  };
+
   const fetchData = async id => {
     await fetch(
       `http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/${id}`,
@@ -37,7 +41,6 @@ export default function AnalysisScreen(props) {
       .then(res => res.json())
       .then(res => {
         setData(res);
-        setRecord(prev => [...prev, res]);
       });
   };
 
@@ -53,18 +56,19 @@ export default function AnalysisScreen(props) {
         if (res.ChildrenIDs && !res.ChildrenIDs.length) {
           if (res.IsFinal) {
             // fetch total data to the server
-            console.log('FINAL!!!', record);
+            saveRecordToServer([...record, res]);
+            // 이거를 보내버리자 그냥
             props.navigation.navigate('END');
-
             return;
           }
+          setRecord(prev => [...prev, res]);
           return fetchData(level[res.NextCategory]);
         }
         setData(res);
       });
   };
 
-  console.log('RECORD    => ', record);
+  console.log('REORD =>', record);
 
   useEffect(() => {
     fetch(
