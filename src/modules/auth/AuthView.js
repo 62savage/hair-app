@@ -29,7 +29,8 @@ export default function AuthScreen(props) {
         await saveUserDataOnAsyncStorage({ ...res, ...userData });
         props.login({ ...res, ...userData });
       } else if (res && !res.status) {
-        props.navigation.navigate('AuthAgreement');
+        props.login({ ...res, ...userData });
+        // props.navigation.navigate('AuthAgreement');
       }
     } catch (error) {
       console.log('service login error', error);
@@ -148,14 +149,16 @@ export default function AuthScreen(props) {
           primary
           caption="Demo"
           onPress={() => {
-            saveUserDataOnAsyncStorage();
+            // saveUserDataOnAsyncStorage();
           }}
         />
         <Button
           style={[styles.demoButton]}
           primary
           caption="Login"
-          onPress={() => {}}
+          onPress={() => {
+            props.login({ email: 'boxman@gmail.com' });
+          }}
         />
         <Button
           style={[styles.demoButton]}

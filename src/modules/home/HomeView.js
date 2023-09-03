@@ -9,11 +9,14 @@ import _lockIcon from '../../../assets/images/lock-icon.png';
 import ScrollViewContainer from '../../components/Container';
 import Service from '../../services';
 import { Spacer } from '../../components';
+import CustomModal from '../components/CustomModal';
 
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
 
-export default function HomeScreen({ isExtended, setIsExtended }) {
+export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
   const [tree, setTree] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [text, setText] = useState('');
 
   const handleClickWebviewButton = url => {
     Linking.canOpenURL(url).then(supported => {
@@ -38,11 +41,27 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
     },
   ];
 
+  const onPress = (id, isLocked) => {
+    if (!isLocked) {
+      props.navigation.navigate('START');
+    } else {
+      setModalVisible(true);
+    }
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const goStart = () => {
+    setModalVisible(false);
+    props.navigation.navigate('START');
+  };
+
   useEffect(() => {
     const getTreeData = async () => {
       try {
         let res = await Service.getTree();
-        console.log(res);
         setTree(res);
       } catch (error) {
         console.log('notice error', error);
@@ -64,6 +83,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                 style={[styles.mainButton]}
                 bgGradientStart={item.startGradient}
                 bgGradientEnd={item.endGradient}
+                onPress={() => onPress(item.id, item.locked)}
               >
                 <View style={styles.mainButtonContent}>
                   <Image
@@ -90,6 +110,12 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
                   </Text>
                 </View>
               </CustomButton>
+              <CustomModal
+                isVisible={modalVisible}
+                closeModal={closeModal}
+                goStart={goStart}
+                height={162}
+              ></CustomModal>
             </View>
           ))}
 
@@ -188,6 +214,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             </CustomButton>
           </View> */}
         </View>
+        <Spacer size={40} />
       </View>
     </ScrollViewContainer>
   );
@@ -270,6 +297,14 @@ const styles = StyleSheet.create({
   priceLink: {
     borderBottomWidth: 1,
     borderBottomColor: colors.primary,
+  },
+  input: {
+    backgroundColor: '#fff',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 30,
+    fontSize: 18,
+    marginVertical: 20,
   },
 });
 

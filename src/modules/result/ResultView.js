@@ -9,7 +9,6 @@ import CustomButton from '../../components/Button';
 
 import { colors, commonStyles, windowHeight, windowWidth } from '../../styles';
 import { Spacer, TouchableIcon } from '../../components';
-import Storage from '../../services/Storage';
 
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 const _close_button = require('../../../assets/images/icons/close-button.png');
