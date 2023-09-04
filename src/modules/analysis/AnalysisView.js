@@ -55,14 +55,18 @@ export default function AnalysisScreen(props) {
       .then(res => res.json())
       .then(res => {
         if (res.ChildrenIDs && !res.ChildrenIDs.length) {
+          let _res = {
+            AnswerImgUrl: res.ImgUrl,
+            answer: res.Name,
+          };
           if (res.IsFinal) {
             // fetch total data to the server
-            saveRecordToServer([...record, res]);
+            saveRecordToServer([...record, _res]);
             // 이거를 보내버리자 그냥
             props.navigation.navigate('END');
             return;
           }
-          setRecord(prev => [...prev, res]);
+          setRecord(prev => [...prev, _res]);
           return fetchData(level[res.NextCategory]);
         }
         setData(res);

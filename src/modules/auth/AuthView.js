@@ -48,19 +48,19 @@ export default function AuthScreen(props) {
   };
 
   useEffect(() => {
-    saveUserDataOnAsyncStorage();
-    const getAsyncStorageUserData = async () => {
-      try {
-        const res = await Storage.getUserData();
-        console.log('user data', res);
-        if (res && res.email) {
-          props.login(res);
-        }
-      } catch (error) {
-        console.log('getAsyncStorageUserData error', error);
-      }
-    };
-    getAsyncStorageUserData();
+    // saveUserDataOnAsyncStorage();
+    // const getAsyncStorageUserData = async () => {
+    //   try {
+    //     const res = await Storage.getUserData();
+    //     console.log('user data', res);
+    //     if (res && res.email) {
+    //       props.login(res);
+    //     }
+    //   } catch (error) {
+    //     console.log('getAsyncStorageUserData error', error);
+    //   }
+    // };
+    // getAsyncStorageUserData();
   }, []);
 
   useEffect(() => {

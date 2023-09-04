@@ -21,10 +21,10 @@ import AuthAgreementScreen from '../authAgreement/AuthAgreementView';
 const headerBackground = require('../../../assets/images/topBarBg.png');
 
 const StackNavigationData = [
-  {
-    name: 'Auth',
-    component: AuthScreen,
-  },
+  // {
+  //   name: 'Auth',
+  //   component: AuthScreen,
+  // },
   {
     name: 'TABSCREENS',
     component: TabNavigator,

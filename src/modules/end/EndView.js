@@ -28,8 +28,16 @@ export default function AnalysisScreen(props) {
       </Text>
       <Spacer size={2} />
       <TouchableOpacity
+        // onPress={() => {
+        //   props.navigation.navigate('TABSCREENS', {
+        //     screen: 'Result',
+        //   });
+        // }}
         onPress={() => {
-          props.navigation.navigate('TABSCREENS', { screen: 'Result' });
+          props.navigation.navigate('TABSCREENS', {
+            screen: 'Test',
+            data: 'THIS IS DATA',
+          });
         }}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 1.5 }}>
