@@ -9,7 +9,8 @@ import { Spacer } from '../../components';
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
 
-export default function AnalysisScreen(props) {
+export default function AnalysisScreen({ route, ...props }) {
+  const { data } = route.params;
   return (
     <View
       style={[
@@ -28,8 +29,15 @@ export default function AnalysisScreen(props) {
       </Text>
       <Spacer size={2} />
       <TouchableOpacity
+        // onPress={() => {
+        //   props.navigation.navigate('TABSCREENS', {
+        //     screen: 'Result',
+        //   });
+        // }}
         onPress={() => {
-          props.navigation.navigate('TABSCREENS', { screen: 'Result' });
+          props.navigation.navigate('RESULT', {
+            data,
+          });
         }}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 1.5 }}>

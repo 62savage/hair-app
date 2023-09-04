@@ -16,12 +16,14 @@ export default function ViewContainer({
   style,
   safeAreaViewBounceColor = colors.backgroundPrimary,
   scrollable = true,
+  safeArea = true,
 }) {
   const ContainerType = scrollable ? ScrollView : View;
+  const IsSafeArea = safeArea ? SafeAreaView : View;
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollViewBackgroundLayer
+    <IsSafeArea style={{ flex: 1 }}>
+      {/* <ScrollViewBackgroundLayer
         topBounceColor={
           safeAreaViewBounceColor
             ? safeAreaViewBounceColor
@@ -32,7 +34,7 @@ export default function ViewContainer({
             ? safeAreaViewBounceColor
             : colors.backgroundPrimary
         }
-      />
+      /> */}
       {header && (
         <CustomHeader
           title={screenName}
@@ -48,7 +50,7 @@ export default function ViewContainer({
         {children}
       </ContainerType>
       <Spacer />
-    </SafeAreaView>
+    </IsSafeArea>
   );
 }
 
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: colors.backgroundPrimary,
-    paddingBottom: 120,
+    // paddingBottom: 120,
   },
   viewContainer: {
     alignItems: 'center',

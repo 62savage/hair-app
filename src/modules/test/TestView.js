@@ -1,12 +1,16 @@
-import React from 'react';
-import { StyleSheet, View, Image, FlatList, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { colors } from '../../styles';
+import Service from '../../services';
 
-export default function TestScreen(props) {
+import { Text } from '../../components/StyledText';
+
+import { colors, commonStyles, windowHeight, windowWidth } from '../../styles';
+
+export default function TestScreen({ route, ...props }) {
   return (
     <View>
-      <Text>TestScreen</Text>
+      <Text>test</Text>
     </View>
   );
 }
@@ -15,23 +19,18 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
   },
-  topImage: {
-    flex: 1,
-    height: 200,
-    margin: 5,
-    borderRadius: 5,
+  topHeaderContainer: {
+    marginHorizontal: 10,
+    justifyContent: 'center',
   },
-  imagesRow: {
-    flex: 1,
-    flexDirection: 'row',
+  topHeaderText: { fontSize: 12 },
+  imageStyle: {
+    width: '100%',
+    height: 'auto',
+    aspectRatio: 1,
+    marginBottom: 10,
   },
-  imageContainer: {
-    flex: 1,
-    padding: 5,
-  },
-  image: {
-    flex: 1,
-    height: 100,
-    borderRadius: 5,
-  },
+  mapContainer: { gap: 10 },
+  title: { fontSize: 12, fontWeight: 600 },
+  desc: { fontSize: 12, fontWeight: 300 },
 });
