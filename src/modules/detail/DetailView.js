@@ -12,7 +12,7 @@ import axios from 'axios';
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 
 export default function Detail({ route, user, ...props }) {
-  const data = route.params?.data;
+  const data = route.params.data;
 
   const onPress = async () => {
     try {
@@ -20,13 +20,11 @@ export default function Detail({ route, user, ...props }) {
         userId: user.id,
         analyticInfo: data,
       };
-      // const url =
-      //   'http://ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/analytics';
-      //await axios.post(url, dataToSend);
+      const url =
+        'http://ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/analytics';
+      await axios.post(url, dataToSend);
       props.navigation.navigate('TABSCREENS', {
         screen: 'Result',
-        from: 'Detail',
-        data,
       });
     } catch (error) {
       console.error('POST Error => ', error);
@@ -80,7 +78,8 @@ export default function Detail({ route, user, ...props }) {
           </View>
           <Spacer size={10} />
           {data?.map((item, idx) => {
-            if (item.answer && item.AnswerImgUrl)
+            console.log('item =', item);
+            if (item.Answer && item.AnswerImgUrl)
               return (
                 <View style={styles.mapContainer} key={`analysis-${idx}`}>
                   {item.AnswerImgUrl && (
@@ -95,10 +94,10 @@ export default function Detail({ route, user, ...props }) {
                   <Text style={styles.title}>
                     STEP.1 엠밤스 어플리케이션 사용설명서
                   </Text>
-                  {item.answer && (
+                  {item.Answer && (
                     <Text style={styles.desc}>{item.answer}</Text>
                   )}
-                  {item.answer && item.AnswerImgUrl && <Spacer />}
+                  {item.Answer && item.AnswerImgUrl && <Spacer />}
                 </View>
               );
           })}

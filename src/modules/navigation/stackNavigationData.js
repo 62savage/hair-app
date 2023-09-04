@@ -39,7 +39,7 @@ const StackNavigationData = [
     component: EndScreen,
   },
   {
-    name: 'RESULT',
+    name: 'DETAIL',
     component: DetailScreen,
   },
   {

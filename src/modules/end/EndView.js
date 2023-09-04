@@ -29,13 +29,8 @@ export default function AnalysisScreen({ route, ...props }) {
       </Text>
       <Spacer size={2} />
       <TouchableOpacity
-        // onPress={() => {
-        //   props.navigation.navigate('TABSCREENS', {
-        //     screen: 'Result',
-        //   });
-        // }}
         onPress={() => {
-          props.navigation.navigate('RESULT', {
+          props.navigation.navigate('DETAIL', {
             data,
           });
         }}

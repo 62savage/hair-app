@@ -16,8 +16,6 @@ const _close_button = require('../../../assets/images/icons/close-button.png');
 export default function Result(props) {
   const [result, setResult] = useState([]);
 
-  //console.log(props.route.from, props.route.data);
-
   useEffect(() => {
     const unsubscribe = props.navigation.addListener('focus', () => {
       getResult();
@@ -50,7 +48,11 @@ export default function Result(props) {
           justifyContent: 'flex-start',
           height: 135,
         }}
-        onPress={() => {}}
+        onPress={() => {
+          props.navigation.navigate('DETAIL', {
+            data: prop.AnalyticInfo,
+          });
+        }}
       >
         <View
           style={{

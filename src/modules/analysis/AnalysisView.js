@@ -54,11 +54,9 @@ export default function AnalysisScreen(props) {
         if (res.ChildrenIDs && !res.ChildrenIDs.length) {
           let _res = {
             AnswerImgUrl: res.ImgUrl,
-            answer: res.Name,
+            Answer: res.Name,
           };
           if (res.IsFinal) {
-            // fetch total data to the server
-            // saveRecordToServer([);
             props.navigation.navigate('END', { data: [...record, _res] });
             return;
           }
