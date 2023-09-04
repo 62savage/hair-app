@@ -47,9 +47,12 @@ export default function AuthStateReducer(state = initialState, action) {
   switch (action.type) {
     case USER_LOGGED_IN:
       console.log('this activated');
-      return Object.assign({}, state, {
+      // return Object.assign({}, state, {
+      //   user: action.user,
+      // });
+      return {
         user: action.user,
-      });
+      };
     default:
       return state;
   }

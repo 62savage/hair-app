@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: colors.backgroundPrimary,
-    paddingBottom: 120,
+    // paddingBottom: 120,
   },
   viewContainer: {
     alignItems: 'center',

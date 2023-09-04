@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle } from 'recompose';
 
-import TestScreen from './TestView';
+import DetailScreen from './DetailView';
 
 export default compose(
   connect(state => ({
     user: state.user.user,
   })),
-)(TestScreen);
+)(DetailScreen);
 
 // // @flow

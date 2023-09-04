@@ -7,6 +7,7 @@ import AuthScreen from '../auth/AuthViewContainer';
 import StartScreen from '../start/StartViewContainer';
 import AnalysisScreen from '../analysis/AnalysisViewContainer';
 import EndScreen from '../end/EndViewContainer';
+import DetailScreen from '../detail/DetailViewContainer';
 
 // import ProfileScreen from '../profile/ProfileViewContainer';
 // import ArticleScreen from '../article/ArticleViewContainer';
@@ -21,10 +22,10 @@ import AuthAgreementScreen from '../authAgreement/AuthAgreementView';
 const headerBackground = require('../../../assets/images/topBarBg.png');
 
 const StackNavigationData = [
-  // {
-  //   name: 'Auth',
-  //   component: AuthScreen,
-  // },
+  {
+    name: 'Auth',
+    component: AuthScreen,
+  },
   {
     name: 'TABSCREENS',
     component: TabNavigator,
@@ -37,7 +38,10 @@ const StackNavigationData = [
     name: 'END',
     component: EndScreen,
   },
-
+  {
+    name: 'RESULT',
+    component: DetailScreen,
+  },
   {
     name: 'ANAlYSIS',
     component: AnalysisScreen,

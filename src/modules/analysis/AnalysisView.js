@@ -9,9 +9,10 @@ import ScrollViewContainer from '../../components/Container';
 import CustomModal from '../components/ExitModal';
 import ButtonAnswer from './components/ButtonAnswer';
 import PhotoAnswer from './components/PhotoAnswer';
+import Service from '../../services';
+import axios from 'axios';
 
 export default function AnalysisScreen(props) {
-  console.log(props.user);
   const [data, setData] = useState({});
   // const [a, setA] = useState([316, 359, 478, 739, 887]);
   const [level, setLevel] = useState([316, 359, 478, 739, 887]);
@@ -29,10 +30,6 @@ export default function AnalysisScreen(props) {
   const goHome = () => {
     setModalVisible(false);
     props.navigation.navigate('Home');
-  };
-
-  const saveRecordToServer = final => {
-    console.log('FINAL!!! => ', final);
   };
 
   const fetchData = async id => {
@@ -61,9 +58,8 @@ export default function AnalysisScreen(props) {
           };
           if (res.IsFinal) {
             // fetch total data to the server
-            saveRecordToServer([...record, _res]);
-            // 이거를 보내버리자 그냥
-            props.navigation.navigate('END');
+            // saveRecordToServer([);
+            props.navigation.navigate('END', { data: [...record, _res] });
             return;
           }
           setRecord(prev => [...prev, _res]);
@@ -76,11 +72,11 @@ export default function AnalysisScreen(props) {
   console.log('REORD =>', record);
 
   useEffect(() => {
-    fetch(
-      'http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/359',
-    )
-      .then(data => data.json())
-      .then(setData);
+    axios
+      .get(
+        'http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/359',
+      )
+      .then(res => setData(res.data));
   }, []);
 
   return (

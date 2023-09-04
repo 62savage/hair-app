@@ -13,9 +13,9 @@ export default compose(
       login: userData => dispatch(login(userData)),
     }),
   ),
-  lifecycle({
-    componentDidMount() {
-      this.props.login();
-    },
-  }),
+  // lifecycle({
+  //   componentDidMount() {
+  //     this.props.login();
+  //   },
+  // }),
 )(AuthScreen);

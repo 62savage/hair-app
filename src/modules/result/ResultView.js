@@ -16,8 +16,6 @@ const _close_button = require('../../../assets/images/icons/close-button.png');
 export default function Result(props) {
   const [result, setResult] = useState([]);
 
-  console.log(props.user);
-
   useEffect(() => {
     const getResult = async () => {
       try {
