@@ -20,9 +20,14 @@ export default function Detail({ route, user, ...props }) {
         userId: user.id,
         analyticInfo: data,
       };
-      const url =
-        'http://ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/analytics';
-      const response = await axios.post(url, dataToSend);
+      // const url =
+      //   'http://ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/analytics';
+      //await axios.post(url, dataToSend);
+      props.navigation.navigate('TABSCREENS', {
+        screen: 'Result',
+        from: 'Detail',
+        data,
+      });
     } catch (error) {
       console.error('POST Error => ', error);
     }
