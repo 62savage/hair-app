@@ -9,6 +9,7 @@ class RNStorage {
       await AsyncStorage.setItem('user-data', jsonValue);
     } catch (e) {
       // saving error
+      throw e;
     }
   };
 
@@ -18,6 +19,16 @@ class RNStorage {
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
       // error reading value
+      throw e;
+    }
+  };
+
+  deleteUserData = async () => {
+    try {
+      await AsyncStorage.removeItem('user-data');
+    } catch (e) {
+      // error reading value
+      throw e;
     }
   };
 }

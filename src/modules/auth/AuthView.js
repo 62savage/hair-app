@@ -64,6 +64,15 @@ export default function AuthScreen(props) {
   }, []);
 
   useEffect(() => {
+    const unsubscribe = props.navigation.addListener('focus', () => {
+      setProgress(0);
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, [props.navigation]);
+
+  useEffect(() => {
     let interval;
     var startTime = new Date().getTime();
     if (props.user && props.user.email) {

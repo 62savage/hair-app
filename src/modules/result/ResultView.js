@@ -9,12 +9,18 @@ import CustomButton from '../../components/Button';
 
 import { colors, commonStyles, windowHeight, windowWidth } from '../../styles';
 import { Spacer, TouchableIcon } from '../../components';
+import Storage from '../../services/Storage';
 
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 const _close_button = require('../../../assets/images/icons/close-button.png');
 
 export default function Result(props) {
   const [result, setResult] = useState([]);
+
+  const deleteUser = async () => {
+    await Storage.deleteUserData(props.user.id);
+    props.navigation.navigate('Auth');
+  };
 
   useEffect(() => {
     const unsubscribe = props.navigation.addListener('focus', () => {
@@ -126,6 +132,16 @@ export default function Result(props) {
         props.navigation.navigate('Home');
       }}
     >
+      <CustomButton
+        bgGradientEnd="red"
+        bgGradientStart="red"
+        onPress={deleteUser}
+      >
+        <Text fontWeight="700" size={16}>
+          로그아웃
+        </Text>
+      </CustomButton>
+      <Spacer />
       {result && result.length === 0
         ? NoResultData
         : result.map((item, _) => {
