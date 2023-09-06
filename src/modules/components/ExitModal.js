@@ -6,10 +6,16 @@ import { colors, windowWidth } from '../../styles';
 import CustomButton from '../../components/Button';
 import { Text } from '../../components/StyledText';
 
-const _check_linear_gradient = require('../../../assets/images/icons/question-button.png');
 const _question_button = require('../../../assets/images/icons/close-button.png');
 
-const CustomModal = ({ isVisible, closeModal, goHome }) => {
+const CustomModal = ({
+  isVisible,
+  closeModal,
+  goHome,
+  children,
+  button,
+  icon,
+}) => {
   return (
     <Modal
       isVisible={isVisible}
@@ -37,37 +43,12 @@ const CustomModal = ({ isVisible, closeModal, goHome }) => {
               style={{ width: 14, height: 14 }}
             />
           </View>
-          <Image
-            resizeMode="contain"
-            source={_check_linear_gradient}
-            style={[styles.icon, { width: 80, height: 80 }]}
-          />
+          {icon}
           <Spacer />
-          <Text
-            hCenter
-            size={20}
-            style={{ color: '#fff', fontWeight: 900, fontSize: 20 }}
-          >
-            잠깐!
-          </Text>
-          <Spacer size={4} />
-          <Text hCenter size={12} fontWeight="400" style={{ color: '#fff' }}>
-            지금까지 과정의 데이터는 모두 삭제 됩니다.
-          </Text>
-          <Text hCenter size={12} fontWeight="400" style={{ color: '#fff' }}>
-            정말 뒤로 가시겠습니까?
-          </Text>
+
+          {children}
           <Spacer size={30} />
-          <CustomButton
-            rounded
-            borderRadius={20}
-            style={{ height: 32, width: 124 }}
-            onPress={goHome}
-          >
-            <Text style={{ color: '#000', fontSize: 16, fontWeight: 500 }}>
-              종료하기
-            </Text>
-          </CustomButton>
+          {button}
         </View>
       </View>
     </Modal>

@@ -11,6 +11,9 @@ import ButtonAnswer from './components/ButtonAnswer';
 import PhotoAnswer from './components/PhotoAnswer';
 import Service from '../../services';
 import axios from 'axios';
+import CustomButton from '../../components/Button';
+
+const _check_linear_gradient = require('../../../assets/images/icons/question-button.png');
 
 export default function AnalysisScreen(props) {
   const [data, setData] = useState({});
@@ -86,15 +89,13 @@ export default function AnalysisScreen(props) {
     >
       <View style={styles.container}>
         {data.ImgUrl && (
-          <>
-            <Image
-              resizeMode="contain"
-              source={{
-                uri: data.ImgUrl,
-              }}
-              style={styles.imageStyle}
-            />
-          </>
+          <Image
+            resizeMode="contain"
+            source={{
+              uri: data.ImgUrl,
+            }}
+            style={styles.imageStyle}
+          />
         )}
         <Text hCenter size={22}>
           {data.Name}
@@ -121,6 +122,43 @@ export default function AnalysisScreen(props) {
         isVisible={modalVisible}
         closeModal={closeModal}
         goHome={goHome}
+        children={
+          <View>
+            <Text
+              hCenter
+              size={20}
+              style={{ color: '#fff', fontWeight: 900, fontSize: 20 }}
+            >
+              잠깐!
+            </Text>
+            <Spacer size={4} />
+            <Text hCenter size={12} fontWeight="400" style={{ color: '#fff' }}>
+              지금까지 과정의 데이터는 모두 삭제 됩니다.
+            </Text>
+            <Text hCenter size={12} fontWeight="400" style={{ color: '#fff' }}>
+              정말 뒤로 가시겠습니까?
+            </Text>
+          </View>
+        }
+        icon={
+          <Image
+            resizeMode="contain"
+            source={_check_linear_gradient}
+            style={[styles.icon, { width: 80, height: 80 }]}
+          />
+        }
+        button={
+          <CustomButton
+            rounded
+            borderRadius={20}
+            style={{ height: 32, width: 124 }}
+            onPress={goHome}
+          >
+            <Text style={{ color: '#000', fontSize: 16, fontWeight: 500 }}>
+              종료하기
+            </Text>
+          </CustomButton>
+        }
       />
     </ScrollViewContainer>
   );

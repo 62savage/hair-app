@@ -36,7 +36,11 @@ export default function BottomTabs() {
                 <Image
                   resizeMode="contain"
                   source={focused ? item.coloredIcon : item.icon}
-                  style={[styles.tabBarIcon]}
+                  style={
+                    item.name === 'Result'
+                      ? styles.resultTabBarIcon
+                      : styles.tabBarIcon
+                  }
                 />
               </View>
             ),
@@ -59,6 +63,10 @@ const styles = StyleSheet.create({
   tabBarIcon: {
     width: 45,
     height: 45,
+  },
+  resultTabBarIcon: {
+    width: 65,
+    height: 65,
   },
 
   // shadow: {

@@ -12,7 +12,7 @@ import axios from 'axios';
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 
 export default function Detail({ route, user, ...props }) {
-  const data = route.params.data;
+  const { data, from } = route.params;
 
   const onPress = async () => {
     try {
@@ -102,7 +102,7 @@ export default function Detail({ route, user, ...props }) {
               );
           })}
           <Spacer size={120} />
-          {data && (
+          {data && from != 'Result' && (
             <TouchableOpacity onPress={onPress}>
               <View
                 style={{
