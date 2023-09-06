@@ -9,16 +9,20 @@ import Spacer from '../../components/Spacer';
 
 import { colors, commonStyles, windowHeight, windowWidth } from '../../styles';
 import axios from 'axios';
+import SvgLinear from '../../components/SvgLinear';
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 
 export default function Detail({ route, user, ...props }) {
   const { data, from } = route.params;
+  const { tree, curAnalysis } = props;
+  let curBranch = tree.filter(item => item.id == curAnalysis)[0];
 
   const onPress = async () => {
     try {
       const dataToSend = {
         userId: user.id,
         analyticInfo: data,
+        grouping: curBranch.branch,
       };
       const url =
         'http://ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/analytics';
@@ -64,11 +68,14 @@ export default function Detail({ route, user, ...props }) {
           safeAreaViewBounceColor={colors.backgroundSecondary}
         >
           <View style={{ flexDirection: 'row' }}>
-            <Image
+            {/* <Image
               resizeMode="contain"
               source={_check_linear_gradient}
               style={[styles.icon, { width: 44, height: 44 }]}
-            />
+            /> */}
+            <View style={{ width: 44, height: 44 }}>
+              <SvgLinear />
+            </View>
             <View style={styles.topHeaderContainer}>
               <Text style={[styles.topHeaderText, { fontWeight: '600' }]}>
                 Hair Analyst
@@ -115,11 +122,14 @@ export default function Detail({ route, user, ...props }) {
                   paddingHorizontal: 15,
                 }}
               >
-                <Image
+                <View style={{ width: 50, height: 50 }}>
+                  <SvgLinear />
+                </View>
+                {/* <Image
                   resizeMode="contain"
                   source={_check_linear_gradient}
                   style={[styles.icon, { width: 56, height: 56 }]}
-                />
+                /> */}
                 <View style={[styles.topHeaderContainer, { gap: 5 }]}>
                   <Text style={{ fontWeight: '900', fontSize: 20 }}>
                     저장하시겠습니까?

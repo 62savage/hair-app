@@ -5,6 +5,7 @@ import _logo from '../../../assets/images/mbombs_logo.png';
 import { Text } from '../../components/StyledText';
 import { colors, commonStyles, windowHeight } from '../../styles';
 import { Spacer } from '../../components';
+import SvgLinear from '../../components/SvgLinear';
 
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
@@ -18,11 +19,14 @@ export default function AnalysisScreen({ route, ...props }) {
         { height: windowHeight - 350, justifyContent: 'center' },
       ]}
     >
-      <Image
+      <View style={{ width: 90, height: 90 }}>
+        <SvgLinear />
+      </View>
+      {/* <Image
         resizeMode="contain"
         source={_check_linear_gradient}
         style={[styles.icon, { width: 80, height: 80 }]}
-      />
+      /> */}
       <Spacer />
       <Text hCenter size={20} fontWeight="900">
         수고하셨습니다.

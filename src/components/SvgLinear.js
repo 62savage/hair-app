@@ -4,6 +4,12 @@ import { SvgXml } from 'react-native-svg';
 import { store } from '../redux/store';
 
 const SvgLinear = ({ linearStart, linearEnd }) => {
+  const { tree } = store.getState().tree;
+  const { curAnalysis } = store.getState().analysisState;
+
+  let curBranch = tree.filter(item => item.id == curAnalysis)[0];
+  console.log('curBranch =>', curBranch.startGradient, curBranch.endGradient);
+
   const svgXml = `
     <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_3_2421)">
@@ -30,11 +36,15 @@ const SvgLinear = ({ linearStart, linearEnd }) => {
   const modifiedSvgXml = svgXml
     .replace(
       /<stop stop-color="#[0-9A-F]{6}"/g,
-      `<stop stop-color="${linearStart}"`,
+      `<stop stop-color="${
+        linearStart ? linearStart : curBranch.startGradient
+      }"`,
     )
     .replace(
       /<stop offset="1" stop-color="#[0-9A-F]{6}"/g,
-      `<stop offset="1" stop-color="${linearEnd}"`,
+      `<stop offset="1" stop-color="${
+        linearEnd ? linearEnd : curBranch.endGradient
+      }"`,
     );
 
   return <SvgXml xml={modifiedSvgXml} width="100%" height="100%" />;

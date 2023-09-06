@@ -7,6 +7,9 @@ import CustomButton from '../../components/Button';
 import { colors, commonStyles, windowHeight } from '../../styles';
 
 export default function AnalysisScreen(props) {
+  const { tree, curAnalysis } = props;
+  let curBranch = tree.filter(item => item.id == curAnalysis)[0];
+
   const onPressStartButton = () => {
     props.navigation.navigate('ANAlYSIS');
   };
@@ -24,6 +27,8 @@ export default function AnalysisScreen(props) {
               borderRadius={104 / 2}
               style={{ width: 104, height: 104 }}
               onPress={onPressStartButton}
+              bgGradientStart={curBranch.startGradient}
+              bgGradientEnd={curBranch.endGradient}
             >
               <Text style={styles.buttonText}>START!</Text>
             </CustomButton>
