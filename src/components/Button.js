@@ -10,10 +10,16 @@ import {
 } from 'react-native';
 
 import { colors, fonts } from '../styles';
+import { store } from '../redux/store';
 
 const borderRadius = 100;
 
 export default function CustomButton(props) {
+  const { tree } = store.getState().tree;
+  const { curAnalysis } = store.getState().analysisState;
+
+  let curBranch = tree.filter(item => item.id == curAnalysis)[0];
+
   const caption = props.caption && props.caption.toUpperCase();
   let icon;
   if (props.icon) {
@@ -73,7 +79,9 @@ export default function CustomButton(props) {
     let gradientArray =
       props.bgGradientStart && props.bgGradientEnd
         ? [props.bgGradientStart, props.bgGradientEnd]
-        : undefined;
+        : curBranch && curBranch.startGradient && curBranch.endGradient
+        ? [curBranch.startGradient, curBranch.endGradient]
+        : null;
 
     if (!gradientArray) {
       gradientArray = isPrimary

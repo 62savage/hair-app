@@ -17,9 +17,10 @@ import SvgLinear from '../../components/SvgLinear';
 const _check_linear_gradient = require('../../../assets/images/icons/question-button.png');
 
 export default function AnalysisScreen(props) {
-  console.log(props.tree[props.curAnalysis]);
+  const { tree, curAnalysis } = props;
+  let curBranch = tree.filter(item => item.id == curAnalysis)[0];
+
   const [data, setData] = useState({});
-  // const [a, setA] = useState([316, 359, 478, 739, 887]);
   const [level, setLevel] = useState([316, 359, 478, 739, 887]);
   const [record, setRecord] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);

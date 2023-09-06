@@ -10,7 +10,6 @@ import ScrollViewContainer from '../../components/Container';
 import Service from '../../services';
 import { Spacer } from '../../components';
 import CustomModal from '../components/CustomModal';
-import { setAnalysis } from '../analysis/AnalysisState';
 
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
 
@@ -19,8 +18,7 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const onPress = (id, isLocked) => {
-    console.log(id);
-    setAnalysis(id);
+    props.setAnalysisState(id);
     if (!isLocked) {
       props.navigation.navigate('START');
     } else {

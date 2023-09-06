@@ -3,6 +3,7 @@ import { compose, withState } from 'recompose';
 import HomeScreen from './HomeView';
 import { connect } from 'react-redux';
 import { getTree } from './TreeState';
+import { setAnalysis } from '../analysis/AnalysisState';
 
 export default compose(
   connect(
@@ -12,6 +13,7 @@ export default compose(
     }),
     dispatch => ({
       getTree: treeData => dispatch(getTree(treeData)),
+      setAnalysisState: id => dispatch(setAnalysis(id)),
     }),
   ),
   withState('isExtended', 'setIsExtended', false),

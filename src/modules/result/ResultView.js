@@ -61,8 +61,7 @@ export default function Result(props) {
           return;
         }
         let res = await Service.getResult(props.user.id);
-        // console.log('result =', res.reverse());
-        setResult(res);
+        setResult(res.reverse());
       } catch (error) {
         console.log('result error', error);
       }
