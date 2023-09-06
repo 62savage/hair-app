@@ -12,10 +12,12 @@ import PhotoAnswer from './components/PhotoAnswer';
 import Service from '../../services';
 import axios from 'axios';
 import CustomButton from '../../components/Button';
+import SvgLinear from '../../components/SvgLinear';
 
 const _check_linear_gradient = require('../../../assets/images/icons/question-button.png');
 
 export default function AnalysisScreen(props) {
+  console.log(props.tree[props.curAnalysis]);
   const [data, setData] = useState({});
   // const [a, setA] = useState([316, 359, 478, 739, 887]);
   const [level, setLevel] = useState([316, 359, 478, 739, 887]);
@@ -141,6 +143,7 @@ export default function AnalysisScreen(props) {
           </View>
         }
         icon={
+          // <SvgLinear />
           <Image
             resizeMode="contain"
             source={_check_linear_gradient}

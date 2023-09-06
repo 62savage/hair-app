@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import Svg, {
+  Defs,
+  LinearGradient,
+  Rect,
+  Stop,
+  SvgXml,
+} from 'react-native-svg';
 
 import Service from '../../services';
 
@@ -11,6 +18,7 @@ import CustomModal from '../components/ExitModal';
 import { colors, commonStyles, windowHeight, windowWidth } from '../../styles';
 import { Spacer, TouchableIcon } from '../../components';
 import Storage from '../../services/Storage';
+import SvgLinear from '../../components/SvgLinear';
 
 const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
 const _close_button = require('../../../assets/images/icons/close-button.png');
@@ -53,7 +61,7 @@ export default function Result(props) {
           return;
         }
         let res = await Service.getResult(props.user.id);
-        console.log('result =', res.reverse());
+        // console.log('result =', res.reverse());
         setResult(res);
       } catch (error) {
         console.log('result error', error);
@@ -64,6 +72,17 @@ export default function Result(props) {
   }, [props.navigation]);
 
   const ResultButton = prop => {
+    const gradientColorDataFromTree = props.tree.filter(
+      item => item.branch === prop.Grouping,
+    )[0];
+    const color =
+      prop.Grouping != 0
+        ? [
+            gradientColorDataFromTree.startGradient,
+            gradientColorDataFromTree.endGradient,
+          ]
+        : [colors.primaryGradientStart, colors.primaryGradientEnd];
+
     return (
       <CustomButton
         rounded
@@ -89,11 +108,7 @@ export default function Result(props) {
             marginHorizontal: 20,
           }}
         >
-          <Image
-            resizeMode="contain"
-            source={_check_linear_gradient}
-            style={styles.icon}
-          />
+          <SvgLinear linearStart={color[0]} linearEnd={color[1]} />
         </View>
         <View
           style={{

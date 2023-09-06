@@ -10,38 +10,17 @@ import ScrollViewContainer from '../../components/Container';
 import Service from '../../services';
 import { Spacer } from '../../components';
 import CustomModal from '../components/CustomModal';
+import { setAnalysis } from '../analysis/AnalysisState';
 
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
 
 export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
-  const [tree, setTree] = useState([]);
+  const tree = props.tree;
   const [modalVisible, setModalVisible] = useState(false);
-  const [text, setText] = useState('');
-
-  const handleClickWebviewButton = url => {
-    Linking.canOpenURL(url).then(supported => {
-      if (supported) {
-        Linking.openURL(url);
-      } else {
-        console.log("Don't know how to open URI: " + url);
-      }
-    });
-  };
-
-  const WebViewLinkButtonContent = [
-    {
-      title: '남다른 취향을 위한 색다른 감각',
-      content: '로이드밤 헤어',
-      link: 'http://lloydbomb.com/',
-    },
-    {
-      title: '작은 차이를 만드는 헤어 큐레이터',
-      content: '휴이엠 헤어',
-      link: 'https://huuim.com/',
-    },
-  ];
 
   const onPress = (id, isLocked) => {
+    console.log(id);
+    setAnalysis(id);
     if (!isLocked) {
       props.navigation.navigate('START');
     } else {
@@ -62,7 +41,7 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
     const getTreeData = async () => {
       try {
         let res = await Service.getTree();
-        setTree(res);
+        props.getTree(res);
       } catch (error) {
         console.log('notice error', error);
       }
@@ -115,104 +94,9 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
                 closeModal={closeModal}
                 goStart={goStart}
                 height={162}
-              ></CustomModal>
+              />
             </View>
           ))}
-
-          {/**flex 2 */}
-          {/* <View
-            style={[
-              styles.section,
-              { height: 150 + 10, justifyContent: 'space-between' },
-            ]}
-          >
-            {WebViewLinkButtonContent.map((item, idx) => (
-              <CustomButton
-                key={`webview-button-${idx}`}
-                rounded
-                borderRadius={10}
-                bgGradientStart="#806FE8"
-                bgGradientEnd="#CC7AFF"
-                style={{ height: 75 }}
-                onPress={() => {
-                  handleClickWebviewButton(item.link);
-                }}
-              >
-                <View style={{ flexBasis: '90%', flexWrap: 'wrap' }}>
-                  <Text style={{ fontWeight: 100 }} hCenter>
-                    {item.title}
-                  </Text>
-                  <Text size={16} style={{ fontWeight: 700 }}>
-                    {item.content}
-                  </Text>
-                </View>
-                <View style={{ flexBasis: '10%', flexWrap: 'wrap' }}>
-                  <Image
-                    resizeMode="contain"
-                    source={_right_arrow}
-                    style={(styles.icon, { width: 12, height: 12 })}
-                  />
-                </View>
-              </CustomButton>
-            ))}
-          </View> */}
-
-          {/* <View
-            style={[
-              styles.section,
-              {
-                height: 150,
-                flexDirection: 'row',
-                gap: 10,
-              },
-            ]}
-          >
-            <CustomButton
-              rounded
-              borderRadius={10}
-              bgGradientStart="#FAAC50"
-              bgGradientEnd="#F9FA50"
-              style={{
-                flex: 1,
-                height: '100%',
-              }}
-            >
-              <View style={styles.lockContainer}>
-                <Image
-                  style={styles.lockImage}
-                  source={_lockIcon}
-                  resizeMode="contain"
-                />
-                <View>
-                  <Text style={{ fontWeight: 100 }}>Designer private</Text>
-                  <Text size={16} style={{ fontWeight: 700 }}>
-                    디자이너 전용 {'>'}
-                  </Text>
-                </View>
-              </View>
-            </CustomButton>
-            <CustomButton
-              rounded
-              borderRadius={10}
-              bgGradientStart="#FF7971"
-              bgGradientEnd="#FAAC50"
-              style={{ flex: 1, height: '100%' }}
-            >
-              <View style={styles.lockContainer}>
-                <Image
-                  style={styles.lockImage}
-                  source={_lockIcon}
-                  resizeMode="contain"
-                />
-                <View>
-                  <Text style={{ fontWeight: 100 }}>Owner private</Text>
-                  <Text size={16} style={{ fontWeight: 700 }}>
-                    점주 전용 {'>'}
-                  </Text>
-                </View>
-              </View>
-            </CustomButton>
-          </View> */}
         </View>
         <Spacer size={40} />
       </View>
