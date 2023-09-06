@@ -12,11 +12,11 @@ import ResultScreen from '../result/ResultViewContainer';
 const iconHome = require('../../../assets/images/tabbar/home.png');
 const iconInfo = require('../../../assets/images/tabbar/info.png');
 const iconNotice = require('../../../assets/images/tabbar/notice.png');
-const iconResult = require('../../../assets/images/tabbar/result.png');
+const iconCounsel = require('../../../assets/images/tabbar/counseling.png');
 const coloredIconHome = require('../../../assets/images/tabbar/home-color.png');
 const coloredIconInfo = require('../../../assets/images/tabbar/info-color.png');
 const coloredIconNotice = require('../../../assets/images/tabbar/notice-color.png');
-const coloredIconResult = require('../../../assets/images/tabbar/result-color.png');
+const coloredIconCounsel = require('../../../assets/images/tabbar/counseling-color.png');
 const iconCalendar = require('../../../assets/images/tabbar/calendar.png');
 const iconGrids = require('../../../assets/images/tabbar/grids.png');
 const iconPages = require('../../../assets/images/tabbar/pages.png');
@@ -54,15 +54,15 @@ const tabNavigationData = [
   {
     name: 'Result',
     component: ResultScreen,
-    icon: iconResult,
-    coloredIcon: coloredIconResult,
+    icon: iconCounsel,
+    coloredIcon: coloredIconCounsel,
   },
-  {
-    name: 'Test',
-    component: TestScreen,
-    icon: iconResult,
-    coloredIcon: coloredIconResult,
-  },
+  // {
+  //   name: 'Test',
+  //   component: TestScreen,
+  //   icon: iconResult,
+  //   coloredIcon: coloredIconResult,
+  // },
 ];
 
 export default tabNavigationData;

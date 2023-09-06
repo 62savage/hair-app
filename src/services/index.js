@@ -81,6 +81,16 @@ class MBombsService {
       throw error;
     }
   };
+
+  deleteAnalyst = async id => {
+    try {
+      let res = await this.axiosInstance.get(`/analytics/${id}`);
+      return res.data;
+    } catch (error) {
+      console.log('service delete analystic error', error);
+      throw error;
+    }
+  };
 }
 
 const Service = new MBombsService();
