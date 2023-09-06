@@ -65,47 +65,47 @@ export default function InfoView(props) {
 
   const linkData = [
     {
-      icon: require('../../../assets/images/icons/instagram.png'),
+      // icon: require('../../../assets/images/icons/instagram.png'),
       title: (
+        <Text size={16} fontWeight="200">
+          남다른 취향을 위한 색다른 감각
+        </Text>
+      ),
+      belowTitle: (
         <Text size={16} fontWeight="700">
           로이드밤 헤어
         </Text>
       ),
-      belowTitle: (
-        <Text size={16} fontWeight="700">
-          인스타그램 바로가기
-        </Text>
-      ),
-      link: 'https://www.instagram.com/lloydbomb_official/',
+      link: 'http://lloydbomb.com/',
     },
     {
-      icon: require('../../../assets/images/icons/instagram.png'),
+      // icon: require('../../../assets/images/icons/instagram.png'),
       title: (
+        <Text size={16} fontWeight="200">
+          작은 차이를 만드는 헤어 큐레이터
+        </Text>
+      ),
+      belowTitle: (
         <Text size={16} fontWeight="700">
           휴이엠 헤어
         </Text>
       ),
-      belowTitle: (
-        <Text size={16} fontWeight="700">
-          인스타그램 바로가기
-        </Text>
-      ),
-      link: 'https://www.instagram.com/huuimhair_official/',
+      link: 'https://huuim.com/',
     },
-    {
-      icon: require('../../../assets/images/icons/phone.png'),
-      title: (
-        <Text size={16} fontWeight="700">
-          다이렉트 전화 문의
-        </Text>
-      ),
-      belowTitle: (
-        <Text size={12} fontWeight="300">
-          070-8824-0111
-        </Text>
-      ),
-      link: 'tel:070-8824-0111',
-    },
+    // {
+    //   icon: require('../../../assets/images/icons/phone.png'),
+    //   title: (
+    //     <Text size={16} fontWeight="700">
+    //       다이렉트 전화 문의
+    //     </Text>
+    //   ),
+    //   belowTitle: (
+    //     <Text size={12} fontWeight="300">
+    //       070-8824-0111
+    //     </Text>
+    //   ),
+    //   link: 'tel:070-8824-0111',
+    // },
   ];
 
   const IntroduceBox = (
@@ -213,7 +213,7 @@ export default function InfoView(props) {
               handleClickWebviewButton(item.link);
             }}
           >
-            <View
+            {/* <View
               style={{
                 flexDirection: 'column',
                 flexBasis: '15%',
@@ -225,11 +225,11 @@ export default function InfoView(props) {
                 source={item.icon}
                 style={styles.icon}
               />
-            </View>
+            </View> */}
             <View
               style={{
                 flexDirection: 'column',
-                flexBasis: '70%',
+                flexBasis: '90%',
                 flexWrap: 'wrap',
               }}
             >
