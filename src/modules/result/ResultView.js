@@ -38,6 +38,7 @@ export default function Result(props) {
 
   const deleteUser = async () => {
     await Storage.deleteUserData(props.user.id);
+    props.login({});
     props.navigation.navigate('Auth');
   };
 

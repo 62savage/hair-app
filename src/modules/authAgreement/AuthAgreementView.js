@@ -3,15 +3,18 @@ import ViewContainer from '../../components/Container';
 import { Text } from '../../components/StyledText';
 import { Image, StyleSheet, View } from 'react-native';
 import { colors, commonStyles, windowWidth } from '../../styles';
-import { Spacer, TouchableIcon } from '../../components';
+import { Header, Spacer, TouchableIcon } from '../../components';
 import { Checkbox, Chip } from 'react-native-paper';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Service from '../../services';
 import { set } from 'react-native-reanimated';
+import CustomButton from '../../components/Button';
 
 const _close_button = require('../../../assets/images/icons/close-button.png');
 
 export default function AuthAgreementView(props) {
+  const { userData } = props.route.params;
+
   const [allChecked, setAllChecked] = useState(false);
   const [isExtended, setIsExtended] = useState({
     type: '',
@@ -23,6 +26,15 @@ export default function AuthAgreementView(props) {
     privacy: false,
     marketing: false,
   });
+
+  const saveUserDataOnAsyncStorage = async userData => {
+    try {
+      await Storage.storeUserData(userData);
+      console.log('saveUserDataOnAsyncStorage', userData);
+    } catch (error) {
+      console.log('saveUserDataOnAsyncStorage error', error);
+    }
+  };
 
   useEffect(() => {
     if (checked.age && checked.terms && checked.privacy && checked.marketing) {
@@ -200,13 +212,38 @@ export default function AuthAgreementView(props) {
               </Text>
             </View>
           </View>
+          <Spacer />
+          {userData && (
+            <CustomButton
+              bgGradientEnd={colors.backgroundPrimary}
+              bgGradientStart={colors.backgroundPrimary}
+              onPress={async () => {
+                props.login(userData);
+                props.navigation.navigate('Auth');
+                await saveUserDataOnAsyncStorage({ ...res, ...userData });
+              }}
+            >
+              <Text fontWeight="700" size={16}>
+                확인
+              </Text>
+            </CustomButton>
+          )}
         </View>
       </View>
     </View>
   );
 
   return (
-    <ViewContainer scrollable={false}>
+    <ViewContainer
+      header
+      screenName="AuthAgreement"
+      goBack
+      onPressGoBackIcon={() => {
+        props.navigation.navigate('Auth');
+      }}
+      style={{ paddingBottom: 160 }}
+      scrollable={false}
+    >
       <View style={[styles.container]}>
         {isExtended.type ? (
           <IntroduceBoxExtended type={isExtended.type} />

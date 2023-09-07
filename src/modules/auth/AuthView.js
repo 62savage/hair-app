@@ -29,8 +29,9 @@ export default function AuthScreen(props) {
         await saveUserDataOnAsyncStorage({ ...res, ...userData });
         props.login({ ...res, ...userData });
       } else if (res && !res.status) {
-        props.login({ ...res, ...userData });
-        // props.navigation.navigate('AuthAgreement');
+        props.navigation.navigate('AuthAgreement', {
+          userData: { ...res, ...userData },
+        });
       }
     } catch (error) {
       console.log('service login error', error);
@@ -193,7 +194,9 @@ export default function AuthScreen(props) {
         <Spacer />
         <Text
           onPress={() => {
-            props.navigation.navigate('AuthAgreement');
+            props.navigation.navigate('AuthAgreement', {
+              userData: null,
+            });
           }}
         >
           이용 약관
