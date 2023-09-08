@@ -92,11 +92,12 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
               </CustomButton>
               <CustomModal
                 isVisible={modalVisible}
+                setIsVisible={() => setModalVisible(false)}
                 closeModal={closeModal}
                 goStart={goStart}
                 height={162}
-                bgGradientStart={item.startGradient}
-                bgGradientEnd={item.endGradient}
+                bgGradientStart={item?.startGradient}
+                bgGradientEnd={item?.endGradient}
                 password={item?.password || '1234'}
               />
             </View>

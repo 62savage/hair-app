@@ -1,8 +1,17 @@
-import { View, StyleSheet, TextInput } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import Modal from 'react-native-modal';
 import CustomButton from '../../components/Button';
 import { Text } from '../../components/StyledText';
 import { useState } from 'react';
+import { TouchableIcon } from '../../components';
+
+const _close_button = require('../../../assets/images/icons/close-button.png');
 
 const CustomModal = ({
   isVisible,
@@ -12,6 +21,7 @@ const CustomModal = ({
   bgGradientStart,
   bgGradientEnd,
   password,
+  setIsVisible,
 }) => {
   const [text, setText] = useState('');
   const enterPassword = password;
@@ -35,6 +45,9 @@ const CustomModal = ({
       onBackdropPress={closeModal}
     >
       <View style={styles(height).modalContainer}>
+        <View style={{ marginRight: 0, marginLeft: 'auto' }}>
+          <TouchableIcon icon={_close_button} onPress={setIsVisible} />
+        </View>
         <Text style={{ color: '#221F32', fontSize: 16, fontWeight: '600' }}>
           비밀번호를 확인하세요.
         </Text>
@@ -52,8 +65,8 @@ const CustomModal = ({
             borderRadius={20}
             style={[styles().button]}
             onPress={onSubmitText}
-            bgGradientStart={bgGradientStart}
-            bgGradientEnd={bgGradientEnd}
+            // bgGradientStart={bgGradientStart}
+            // bgGradientEnd={bgGradientEnd}
           >
             <Text style={{ fontSize: 16, fontWeight: 700 }}>확인</Text>
           </CustomButton>

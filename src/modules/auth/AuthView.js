@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { View, StyleSheet, Image, Platform } from 'react-native';
 import { Button, Spacer } from '../../components';
-import _logo from '../../../assets/images/mbombs_logo.png';
+import _logo from '../../../assets/images/mbombs.png';
 import LinearGradient from 'react-native-linear-gradient';
 import { Text } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
@@ -198,9 +198,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   logo: {
-    width: '40%',
+    width: '60%',
     height: 'auto',
-    aspectRatio: 26 / 12,
+    aspectRatio: 1,
   },
   logoContainer: {
     flex: 0.8,
