@@ -8,7 +8,6 @@ const SvgLinear = ({ linearStart, linearEnd }) => {
   const { curAnalysis } = store.getState().analysisState;
 
   let curBranch = tree.filter(item => item.id == curAnalysis)[0];
-  console.log('curBranch =>', curBranch.startGradient, curBranch.endGradient);
 
   const svgXml = `
     <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">

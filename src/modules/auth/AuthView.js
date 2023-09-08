@@ -159,35 +159,7 @@ export default function AuthScreen(props) {
           primary
           caption="Guest Login"
           onPress={() => {
-            props.login({
-              age: null,
-              authorizationCode:
-                'cb9580edb96854f8bb3e3655177bae687.0.srsyr.D6wiR94OyQJ02Mw6eYBRsw',
-              authorizedScopes: [],
-              city: null,
-              email: 'gwangbaekun@gmail.com',
-              emailVerified: null,
-              fullName: {
-                familyName: 'BAEK',
-                givenName: 'Jeyeol',
-                middleName: null,
-                namePrefix: null,
-                nameSuffix: null,
-                nickname: null,
-              },
-              gender: null,
-              id: 'clm22d3y30002ntjxklmi4qt0',
-              identityToken:
-                'eyJraWQiOiJXNldjT0tCIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLm1ib21icy5pb3MiLCJleHAiOjE2OTM4NDc0NzgsImlhdCI6MTY5Mzc2MTA3OCwic3ViIjoiMDAxMjgxLmIyYjRlNDJkYzkyOTRiZmJiYmJhYWI3MGQ3YTRhZTAyLjAyMzMiLCJub25jZSI6IjBjOGFmZWZhM2FhYjZjNmNkNjc5ODNmOTE2MWQyMDg0MzAwOTRmM2UzYWVjYjY2NmYwNjhkM2I1NDQwYzRlMzciLCJjX2hhc2giOiJFS1U4dzRWYVZRWEZpMlNyLWVqODh3IiwiZW1haWwiOiJnd2FuZ2JhZWt1bkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6InRydWUiLCJhdXRoX3RpbWUiOjE2OTM3NjEwNzgsIm5vbmNlX3N1cHBvcnRlZCI6dHJ1ZX0.iyiWcG1nVHNa1KpZCvhtVj11z3o_Hcy6f4dNFqfyJJf1onEtVFJ8-anOy8vxVgE1wG_sct2gV32UHIe-4i6fA_wa5-yShi7QbnsRWKHnzBtbDHN7-wtEuc0PUGdjk2bpBiY-eJGfJyIktEWdbD8BLujpO8kwxxqmmvTF6DwjKUiJ6j39CsjhetUaw4H7spx7yN1_mKUjqrXQl-FkbsEXZrIB3E641oxged-OdvXIted7kbm1b6yuFibYGdfxqCsGyO3AGmfKdaNnXWKmFhOgs7t8jEiom-fsAT1Cv-80J-qLzQt9VeUV0ywJn5hVl22I3z0xvaEEYet64GQiCofejg',
-              image: null,
-              name: null,
-              nonce: 'saBckM840FfQRP.B2eXm9Uf3FskDRbHD',
-              password: null,
-              realUserStatus: 1,
-              state: null,
-              status: true,
-              user: '001281.b2b4e42dc9294bfbbbbaab70d7a4ae02.0233',
-            });
+            props.login(mock_guest_login);
           }}
         />
 
@@ -260,3 +232,33 @@ const styles = StyleSheet.create({
     width: undefined,
   },
 });
+
+const mock_guest_login = {
+  age: null,
+  authorizationCode:
+    'cb9580edb96854f8bb3e3655177bae687.0.srsyr.D6wiR94OyQJ02Mw6eYBRsw',
+  authorizedScopes: [],
+  city: null,
+  email: 'gwangbaekun@gmail.com',
+  emailVerified: null,
+  fullName: {
+    familyName: 'BAEK',
+    givenName: 'Jeyeol',
+    middleName: null,
+    namePrefix: null,
+    nameSuffix: null,
+    nickname: null,
+  },
+  gender: null,
+  id: 'clm22d3y30002ntjxklmi4qt0',
+  identityToken:
+    'eyJraWQiOiJXNldjT0tCIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLm1ib21icy5pb3MiLCJleHAiOjE2OTM4NDc0NzgsImlhdCI6MTY5Mzc2MTA3OCwic3ViIjoiMDAxMjgxLmIyYjRlNDJkYzkyOTRiZmJiYmJhYWI3MGQ3YTRhZTAyLjAyMzMiLCJub25jZSI6IjBjOGFmZWZhM2FhYjZjNmNkNjc5ODNmOTE2MWQyMDg0MzAwOTRmM2UzYWVjYjY2NmYwNjhkM2I1NDQwYzRlMzciLCJjX2hhc2giOiJFS1U4dzRWYVZRWEZpMlNyLWVqODh3IiwiZW1haWwiOiJnd2FuZ2JhZWt1bkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6InRydWUiLCJhdXRoX3RpbWUiOjE2OTM3NjEwNzgsIm5vbmNlX3N1cHBvcnRlZCI6dHJ1ZX0.iyiWcG1nVHNa1KpZCvhtVj11z3o_Hcy6f4dNFqfyJJf1onEtVFJ8-anOy8vxVgE1wG_sct2gV32UHIe-4i6fA_wa5-yShi7QbnsRWKHnzBtbDHN7-wtEuc0PUGdjk2bpBiY-eJGfJyIktEWdbD8BLujpO8kwxxqmmvTF6DwjKUiJ6j39CsjhetUaw4H7spx7yN1_mKUjqrXQl-FkbsEXZrIB3E641oxged-OdvXIted7kbm1b6yuFibYGdfxqCsGyO3AGmfKdaNnXWKmFhOgs7t8jEiom-fsAT1Cv-80J-qLzQt9VeUV0ywJn5hVl22I3z0xvaEEYet64GQiCofejg',
+  image: null,
+  name: null,
+  nonce: 'saBckM840FfQRP.B2eXm9Uf3FskDRbHD',
+  password: null,
+  realUserStatus: 1,
+  state: null,
+  status: true,
+  user: '001281.b2b4e42dc9294bfbbbbaab70d7a4ae02.0233',
+};

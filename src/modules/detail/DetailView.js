@@ -15,6 +15,8 @@ const _check_linear_gradient = require('../../../assets/images/icons/check-linea
 export default function Detail({ route, user, ...props }) {
   const { data, from } = route.params;
   const { tree, curAnalysis } = props;
+
+  console.log(data);
   let curBranch = tree.filter(item => item.id == curAnalysis)[0];
 
   const onPress = async () => {
@@ -80,7 +82,9 @@ export default function Detail({ route, user, ...props }) {
               <Text style={[styles.topHeaderText, { fontWeight: '600' }]}>
                 Hair Analyst
               </Text>
-              <Text style={styles.topHeaderText}>23.05.05 </Text>
+              <Text style={styles.topHeaderText}>
+                {data[0].CreatedAt.split('T')[0]}
+              </Text>
             </View>
           </View>
           <Spacer size={10} />
