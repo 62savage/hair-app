@@ -16,7 +16,6 @@ export default function Detail({ route, user, ...props }) {
   const { data, from } = route.params;
   const { tree, curAnalysis } = props;
 
-  console.log(data);
   let curBranch = tree.filter(item => item.id == curAnalysis)[0];
 
   const onPress = async () => {

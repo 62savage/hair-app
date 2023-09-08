@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { store } from '../redux/store';
+import { colors } from '../styles';
 
 const SvgLinear = ({ linearStart, linearEnd }) => {
   const { tree } = store.getState().tree;
@@ -36,13 +37,21 @@ const SvgLinear = ({ linearStart, linearEnd }) => {
     .replace(
       /<stop stop-color="#[0-9A-F]{6}"/g,
       `<stop stop-color="${
-        linearStart ? linearStart : curBranch.startGradient
+        linearStart
+          ? linearStart
+          : curBranch.startGradient
+          ? curBranch.startGradient
+          : colors.primaryGradientStart
       }"`,
     )
     .replace(
       /<stop offset="1" stop-color="#[0-9A-F]{6}"/g,
       `<stop offset="1" stop-color="${
-        linearEnd ? linearEnd : curBranch.endGradient
+        linearEnd
+          ? linearEnd
+          : curBranch.endGradient
+          ? curBranch.endGradient
+          : colors.primaryGradientEnd
       }"`,
     );
 

@@ -4,15 +4,23 @@ import CustomButton from '../../components/Button';
 import { Text } from '../../components/StyledText';
 import { useState } from 'react';
 
-const CustomModal = ({ isVisible, closeModal, height, goStart }) => {
+const CustomModal = ({
+  isVisible,
+  closeModal,
+  height,
+  goStart,
+  bgGradientStart,
+  bgGradientEnd,
+  password,
+}) => {
   const [text, setText] = useState('');
-  const password = '123';
+  const enterPassword = password;
 
   const onChangeText = e => setText(e);
 
   const onSubmitText = () => {
     console.log(text);
-    if (text === password) {
+    if (text === enterPassword) {
       setText('');
       goStart();
     } else {
@@ -44,8 +52,8 @@ const CustomModal = ({ isVisible, closeModal, height, goStart }) => {
             borderRadius={20}
             style={[styles().button]}
             onPress={onSubmitText}
-            bgGradientStart={'#FF7971'}
-            bgGradientEnd={'#FAAC50'}
+            bgGradientStart={bgGradientStart}
+            bgGradientEnd={bgGradientEnd}
           >
             <Text style={{ fontSize: 16, fontWeight: 700 }}>확인</Text>
           </CustomButton>

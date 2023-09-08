@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import { Text } from '../../../components/StyledText';
 import CustomButton from '../../../components/Button';
 import { store } from '../../../redux/store';
+import { colors } from '../../../styles';
 
 export default function ButtonAnswer({ name, onPress }) {
   const { tree } = store.getState().tree;
@@ -15,8 +16,16 @@ export default function ButtonAnswer({ name, onPress }) {
       borderRadius={10}
       style={{ height: 44 }}
       onPress={onPress}
-      bgGradientStart={curBranch.startGradient}
-      bgGradientEnd={curBranch.endGradient}
+      bgGradientStart={
+        curBranch.startGradient
+          ? curBranch.startGradient
+          : colors.primaryGradientStart
+      }
+      bgGradientEnd={
+        curBranch.endGradient
+          ? curBranch.endGradient
+          : colors.primaryGradientEnd
+      }
     >
       <Text style={styles.buttonText}>{name}</Text>
     </CustomButton>
