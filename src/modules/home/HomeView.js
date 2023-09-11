@@ -12,6 +12,8 @@ import { Spacer } from '../../components';
 import CustomModal from '../components/CustomModal';
 
 const _right_arrow = require('../../../assets/images/icons/right-arrow.png');
+const _locked = require('../../../assets/images/icons/locked.png');
+const _unlocked = require('../../../assets/images/icons/unlocked.png');
 
 export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
   const tree = props.tree;
@@ -39,6 +41,7 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
     const getTreeData = async () => {
       try {
         let res = await Service.getTree();
+        console.log(res);
         props.getTree(res);
       } catch (error) {
         console.log('notice error', error);
@@ -65,7 +68,7 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
                 <View style={styles.mainButtonContent}>
                   <Image
                     style={styles.image}
-                    source={_checkCircle}
+                    source={item.locked ? _locked : _unlocked}
                     resizeMode="contain"
                   />
                   <Spacer size={10} />
@@ -89,9 +92,13 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
               </CustomButton>
               <CustomModal
                 isVisible={modalVisible}
+                setIsVisible={() => setModalVisible(false)}
                 closeModal={closeModal}
                 goStart={goStart}
                 height={162}
+                bgGradientStart={item?.startGradient}
+                bgGradientEnd={item?.endGradient}
+                password={item?.password || '1234'}
               />
             </View>
           ))}

@@ -1,18 +1,16 @@
-// @flow
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose, lifecycle } from 'recompose';
 
-import ResultScreen from './ResultView';
+import AuthAgreementView from './AuthAgreementView';
 import { login } from '../auth/UserState';
 
 export default compose(
   connect(
     state => ({
       user: state.user.user,
-      tree: state.tree.tree,
     }),
     dispatch => ({
       login: userData => dispatch(login(userData)),
     }),
   ),
-)(ResultScreen);
+)(AuthAgreementView);

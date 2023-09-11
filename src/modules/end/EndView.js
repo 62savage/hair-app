@@ -1,7 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import * as React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import _logo from '../../../assets/images/mbombs_logo.png';
 import { Text } from '../../components/StyledText';
 import { colors, commonStyles, windowHeight } from '../../styles';
 import { Spacer } from '../../components';

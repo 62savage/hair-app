@@ -1,9 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import * as React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import _logo from '../../../assets/images/mbombs_logo.png';
 import { Text } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
+import ScrollViewContainer from '../../components/Container';
+
 import { colors, commonStyles, windowHeight } from '../../styles';
 
 export default function AnalysisScreen(props) {
@@ -15,7 +16,16 @@ export default function AnalysisScreen(props) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollViewContainer
+      scrollable={false}
+      style={styles.container}
+      header
+      // screenName="Start"
+      goBack
+      onPressGoBackIcon={() => {
+        props.navigation.navigate('Home');
+      }}
+    >
       <View style={buttonContainerStyles(482, '#2C2941').buttonContainer}>
         <View style={buttonContainerStyles(358, '#312E47').buttonContainer}>
           <View style={buttonContainerStyles(252, '#383550').buttonContainer}>
@@ -35,7 +45,7 @@ export default function AnalysisScreen(props) {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollViewContainer>
   );
 }
 

@@ -38,6 +38,7 @@ export default function Result(props) {
 
   const deleteUser = async () => {
     await Storage.deleteUserData(props.user.id);
+    props.login({});
     props.navigation.navigate('Auth');
   };
 
@@ -75,7 +76,7 @@ export default function Result(props) {
       item => item.branch === prop.Grouping,
     )[0];
     const color =
-      prop.Grouping != 0
+      prop.Grouping != 0 && gradientColorDataFromTree
         ? [
             gradientColorDataFromTree.startGradient,
             gradientColorDataFromTree.endGradient,
