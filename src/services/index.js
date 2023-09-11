@@ -82,6 +82,16 @@ class MBombsService {
     }
   };
 
+  getAgreementPolicy = async () => {
+    try {
+      let res = await this.axiosInstance.get('/agreementpolicy');
+      return res.data;
+    } catch (error) {
+      console.log('service getting privacy policy error', error);
+      throw error;
+    }
+  };
+
   deleteAnalyst = async id => {
     try {
       let res = await this.axiosInstance.delete(`/analytics/${id}`);

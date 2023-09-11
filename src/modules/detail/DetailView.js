@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
     height: 'auto',
     aspectRatio: 1,
     marginBottom: 10,
+    borderRadius: 10,
   },
   mapContainer: { gap: 10 },
   title: { fontSize: 12, fontWeight: 600 },

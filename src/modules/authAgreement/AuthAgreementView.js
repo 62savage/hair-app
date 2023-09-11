@@ -52,7 +52,7 @@ export default function AuthAgreementView(props) {
       let res;
       const getTerms = async () => {
         if (type === 'terms') {
-          res = await Service.getPrivacyPolicy();
+          res = await Service.getAgreementPolicy();
           console.log(res.text);
           setTitle('이용 약관 동의');
           setTerms(res.text);
@@ -227,7 +227,7 @@ export default function AuthAgreementView(props) {
   return (
     <ViewContainer
       header
-      screenName="AuthAgreement"
+      screenName="MBOMBS 이용 약관"
       goBack
       onPressGoBackIcon={() => {
         props.navigation.navigate('Auth');
