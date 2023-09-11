@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ViewContainer from '../../components/Container';
 import { Text } from '../../components/StyledText';
-import { Image, StyleSheet, View } from 'react-native';
-import { colors, commonStyles, windowWidth } from '../../styles';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { colors, commonStyles, windowHeight, windowWidth } from '../../styles';
 import { Header, Spacer, TouchableIcon } from '../../components';
 import { Checkbox, Chip } from 'react-native-paper';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -45,8 +45,8 @@ export default function AuthAgreementView(props) {
   }, [checked]);
 
   const IntroduceBoxExtended = ({ type }) => {
-    console.log('type', type);
     const [terms, setTerms] = useState('');
+    const [title, setTitle] = useState('');
 
     useEffect(() => {
       let res;
@@ -54,12 +54,15 @@ export default function AuthAgreementView(props) {
         if (type === 'terms') {
           res = await Service.getPrivacyPolicy();
           console.log(res.text);
+          setTitle('이용 약관 동의');
           setTerms(res.text);
         } else if (type === 'privacy') {
           res = await Service.getPrivacyPolicy();
+          setTitle('개인 정보 수집 이용 동의');
           setTerms(res.text);
         } else if (type === 'marketing') {
           res = await Service.getMarketingPolicy();
+          setTitle('광고성 정보 수신 동의');
           setTerms(res.text);
         }
       };
@@ -82,24 +85,12 @@ export default function AuthAgreementView(props) {
         </View>
         <Spacer />
         <Text size={16} fontWeight="700" color={colors.black}>
-          엠밤스 어플리케이션 사용설명서
-        </Text>
-        <Spacer size={10} />
-        <Text
-          paddingHorizontal={20}
-          hCenter
-          size={12}
-          fontWeight="300"
-          color={colors.black}
-        >
-          헤어고민 진단부터 혜택 안내 그리고 나에게 가장 가까운 미용실찾기 전문
-          어플리케이션입니다. 해당 어플리케이션 200% 활용하기 설명서
-          시작하겠습니다.
+          {title}
         </Text>
         <Spacer size={20} />
-        <View style={{ width: windowWidth - 70, justifyContent: 'flex-start' }}>
+        <ScrollView style={{ width: windowWidth - 70 }}>
           <Text color={colors.black}>{terms}</Text>
-        </View>
+        </ScrollView>
       </View>
     );
   };
@@ -336,9 +327,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: windowWidth - 40,
-    height: 'auto',
+    height: windowHeight - 200,
     backgroundColor: colors.white,
     paddingVertical: 40,
+    marginTop: 50,
     borderRadius: 30,
   },
   icon: {

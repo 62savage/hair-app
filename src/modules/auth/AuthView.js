@@ -158,6 +158,8 @@ export default function AuthScreen(props) {
           style={[styles.demoButton]}
           primary
           caption="Guest Login"
+          bgGradientStart="#806FE8"
+          bgGradientEnd="#CC7AFF"
           onPress={() => {
             props.login(mock_guest_login);
           }}

@@ -26,6 +26,8 @@ const CustomModal = ({
   const [text, setText] = useState('');
   const enterPassword = password;
 
+  console.log(password);
+
   const onChangeText = e => setText(e);
 
   const onSubmitText = () => {
