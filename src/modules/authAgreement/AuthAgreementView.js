@@ -52,7 +52,7 @@ export default function AuthAgreementView(props) {
       let res;
       const getTerms = async () => {
         if (type === 'terms') {
-          res = await Service.getPrivacyPolicy();
+          res = await Service.getAgreementPolicy();
           console.log(res.text);
           setTitle('이용 약관 동의');
           setTerms(res.text);
