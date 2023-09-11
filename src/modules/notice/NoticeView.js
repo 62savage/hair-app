@@ -34,6 +34,8 @@ export default function NoticeView(props) {
     };
   }, []);
 
+  console.log(notice);
+
   const NoticeButton = prop => {
     return (
       <CustomButton
@@ -116,11 +118,16 @@ export default function NoticeView(props) {
               {noticeClicked.title}
             </Text>
             <Spacer size={5} />
+
             <Text fontWeight="300" size={12}>
               {noticeClicked.updatedAt
                 ? noticeClicked.updatedAt
                 : noticeClicked.createdAt}
             </Text>
+            <Spacer />
+            {noticeClicked.imgUrl && (
+              <Image src={noticeClicked.imgUrl} style={styles.image} />
+            )}
             <Spacer />
             <Text>{noticeClicked.content}</Text>
           </ViewContainer>
@@ -160,5 +167,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 'auto',
     aspectRatio: 1,
+  },
+  image: {
+    width: '100%',
+    height: 'auto',
+    aspectRatio: 1,
+    borderRadius: 10,
   },
 });
