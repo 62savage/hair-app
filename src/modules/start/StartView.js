@@ -20,7 +20,7 @@ export default function AnalysisScreen(props) {
       scrollable={false}
       style={styles.container}
       header
-      // screenName="Start"
+      screenName="Start"
       goBack
       onPressGoBackIcon={() => {
         props.navigation.navigate('Home');
