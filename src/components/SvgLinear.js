@@ -1,10 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { store } from '../redux/store';
 import { colors } from '../styles';
 
 const SvgLinear = ({ linearStart, linearEnd }) => {
+  // console.log('linearStart', linearStart, 'linearEnd', linearEnd);
   const { tree } = store.getState().tree;
   const { curAnalysis } = store.getState().analysisState;
 
@@ -39,7 +39,7 @@ const SvgLinear = ({ linearStart, linearEnd }) => {
       `<stop stop-color="${
         linearStart
           ? linearStart
-          : curBranch.startGradient
+          : curBranch
           ? curBranch.startGradient
           : colors.primaryGradientStart
       }"`,
@@ -49,7 +49,7 @@ const SvgLinear = ({ linearStart, linearEnd }) => {
       `<stop offset="1" stop-color="${
         linearEnd
           ? linearEnd
-          : curBranch.endGradient
+          : curBranch
           ? curBranch.endGradient
           : colors.primaryGradientEnd
       }"`,
