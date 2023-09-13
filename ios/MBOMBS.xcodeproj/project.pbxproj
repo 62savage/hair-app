@@ -589,7 +589,7 @@
 				DEVELOPMENT_TEAM = 2W2LD9WBTR;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MBOMBS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MBOMBS;
+				INFOPLIST_KEY_CFBundleDisplayName = "헤어 디자이너 셀링4.0";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -619,7 +619,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2W2LD9WBTR;
 				INFOPLIST_FILE = MBOMBS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MBOMBS;
+				INFOPLIST_KEY_CFBundleDisplayName = "헤어 디자이너 셀링4.0";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
