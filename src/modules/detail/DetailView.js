@@ -14,7 +14,9 @@ const _check_linear_gradient = require('../../../assets/images/icons/check-linea
 
 export default function Detail({ route, user, ...props }) {
   const { data, from } = route.params;
+  console.log(data, from);
   const { tree, curAnalysis } = props;
+  let today = new Date();
 
   let curBranch = tree.filter(item => item.id == curAnalysis)[0];
 
@@ -62,6 +64,8 @@ export default function Detail({ route, user, ...props }) {
         <ViewContainer
           style={{
             // flex: 1,
+            marginBottom: 0,
+            paddingBottom: 0,
             backgroundColor: colors.backgroundSecondary,
             alignItems: 'left',
           }}
@@ -82,7 +86,10 @@ export default function Detail({ route, user, ...props }) {
                 Hair Analyst
               </Text>
               <Text style={styles.topHeaderText}>
-                {data[0].CreatedAt.split('T')[0]}
+                {from != 'Result'
+                  ? today.toISOString().split('T')[0]
+                  : data[0].CreatedAt.split('T')[0]}
+                {/* { data[0].CreatedAt.split('T')[0]} */}
               </Text>
             </View>
           </View>
@@ -101,9 +108,10 @@ export default function Detail({ route, user, ...props }) {
                       style={styles.imageStyle}
                     />
                   )}
-                  <Text style={styles.title}>
-                    STEP.1 엠밤스 어플리케이션 사용설명서
-                  </Text>
+                  {item.Answer && (
+                    <Text style={styles.title}>{item.Answer}</Text>
+                  )}
+
                   {item.Answer && (
                     <Text style={styles.desc}>{item.answer}</Text>
                   )}
