@@ -10,15 +10,16 @@ import Spacer from '../../components/Spacer';
 import { colors, commonStyles, windowHeight, windowWidth } from '../../styles';
 import axios from 'axios';
 import SvgLinear from '../../components/SvgLinear';
-const _check_linear_gradient = require('../../../assets/images/icons/check-linear-gradient.png');
+import { Svg } from 'react-native-svg';
 
 export default function Detail({ route, user, ...props }) {
-  const { data, from } = route.params;
-  console.log(data, from);
+  const { data, from, color } = route.params;
   const { tree, curAnalysis } = props;
   let today = new Date();
 
   let curBranch = tree.filter(item => item.id == curAnalysis)[0];
+
+  // console.log('curBranch', curBranch.startGradient, curBranch.endGradient);
 
   const onPress = async () => {
     try {
@@ -79,7 +80,11 @@ export default function Detail({ route, user, ...props }) {
               style={[styles.icon, { width: 44, height: 44 }]}
             /> */}
             <View style={{ width: 44, height: 44 }}>
-              <SvgLinear />
+              {from != 'Result' ? (
+                <SvgLinear />
+              ) : (
+                <SvgLinear linearStart={color[0]} linearEnd={color[1]} />
+              )}
             </View>
             <View style={styles.topHeaderContainer}>
               <Text style={[styles.topHeaderText, { fontWeight: '600' }]}>
@@ -89,7 +94,6 @@ export default function Detail({ route, user, ...props }) {
                 {from != 'Result'
                   ? today.toISOString().split('T')[0]
                   : data[0].CreatedAt.split('T')[0]}
-                {/* { data[0].CreatedAt.split('T')[0]} */}
               </Text>
             </View>
           </View>

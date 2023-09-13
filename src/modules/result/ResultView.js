@@ -55,6 +55,7 @@ export default function Result(props) {
   useEffect(() => {
     const unsubscribe = props.navigation.addListener('focus', () => {
       getResult();
+      setAnalysisToZero();
     });
     const getResult = async () => {
       try {
@@ -68,6 +69,10 @@ export default function Result(props) {
       }
     };
 
+    const setAnalysisToZero = () => {
+      props.setAnalysisState(0);
+    };
+
     return unsubscribe;
   }, [props.navigation]);
 
@@ -75,6 +80,8 @@ export default function Result(props) {
     const gradientColorDataFromTree = props.tree.filter(
       item => item.branch === prop.Grouping,
     )[0];
+
+    console.log('gradientColorDataFromTree', gradientColorDataFromTree);
     const color =
       prop.Grouping != 0 && gradientColorDataFromTree
         ? [
@@ -97,6 +104,7 @@ export default function Result(props) {
         onPress={() => {
           props.navigation.navigate('DETAIL', {
             data: prop.AnalyticInfo,
+            color: color,
             from: 'Result',
           });
         }}

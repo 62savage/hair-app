@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 
 import ResultScreen from './ResultView';
 import { login } from '../auth/UserState';
+import { setAnalysis } from '../analysis/AnalysisState';
 
 export default compose(
   connect(
@@ -13,6 +14,7 @@ export default compose(
     }),
     dispatch => ({
       login: userData => dispatch(login(userData)),
+      setAnalysisState: id => dispatch(setAnalysis(id)),
     }),
   ),
 )(ResultScreen);
