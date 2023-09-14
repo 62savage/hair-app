@@ -143,7 +143,7 @@ export default function AnalysisScreen(props) {
         }
         icon={
           <View style={{ width: 80, height: 80 }}>
-            <SvgLinear />
+            <SvgLinear isQuestion={true} />
           </View>
         }
         button={
