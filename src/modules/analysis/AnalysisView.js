@@ -14,8 +14,6 @@ import axios from 'axios';
 import CustomButton from '../../components/Button';
 import SvgLinear from '../../components/SvgLinear';
 
-const _check_linear_gradient = require('../../../assets/images/icons/question-button.png');
-
 export default function AnalysisScreen(props) {
   const { tree, curAnalysis } = props;
   let curBranch = tree.filter(item => item.id == curAnalysis)[0];
@@ -144,12 +142,9 @@ export default function AnalysisScreen(props) {
           </View>
         }
         icon={
-          // <SvgLinear />
-          <Image
-            resizeMode="contain"
-            source={_check_linear_gradient}
-            style={[styles.icon, { width: 80, height: 80 }]}
-          />
+          <View style={{ width: 80, height: 80 }}>
+            <SvgLinear />
+          </View>
         }
         button={
           <CustomButton
