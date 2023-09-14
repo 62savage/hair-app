@@ -118,7 +118,6 @@ export default function NoticeView(props) {
               {noticeClicked.title}
             </Text>
             <Spacer size={5} />
-
             <Text fontWeight="300" size={12}>
               {noticeClicked.updatedAt
                 ? noticeClicked.updatedAt

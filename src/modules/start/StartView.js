@@ -1,11 +1,18 @@
 /* eslint-disable class-methods-use-this */
 import * as React from 'react';
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Animated,
+  Easing,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { Text } from '../../components/StyledText';
 import CustomButton from '../../components/Button';
 import ScrollViewContainer from '../../components/Container';
 
 import { colors, commonStyles, windowHeight } from '../../styles';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function AnalysisScreen(props) {
   const { tree, curAnalysis } = props;
@@ -13,6 +20,36 @@ export default function AnalysisScreen(props) {
 
   const onPressStartButton = () => {
     props.navigation.navigate('ANAlYSIS');
+  };
+
+  const animatedValue = new Animated.Value(0);
+
+  const buttonScale = animatedValue.interpolate({
+    inputRange: [0, 0.5, 1],
+    outputRange: [1, 1.25, 1.5],
+  });
+
+  const onPressIn = () => {
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 250,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const onPressOut = () => {
+    Animated.timing(animatedValue, {
+      toValue: 0,
+      duration: 100,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }).start();
+    onPressStartButton();
+  };
+
+  const animatedScaleStyle = {
+    transform: [{ scale: buttonScale }],
   };
 
   return (
@@ -32,16 +69,38 @@ export default function AnalysisScreen(props) {
             <Text style={styles.textAboveButton}>
               나에게 맞는 헤어스타일 부터 헤어고민까지 진단 시작하기.
             </Text>
-            <CustomButton
+            <TouchableWithoutFeedback
+              onPressIn={onPressIn}
+              onPressOut={onPressOut}
+            >
+              <Animated.View style={[styles.iconContainer, animatedScaleStyle]}>
+                <LinearGradient
+                  start={{ x: 0, y: 1 }}
+                  end={{ x: 1, y: 1 }}
+                  colors={[curBranch.startGradient, curBranch.endGradient]}
+                  style={[
+                    styles.buttonGradient,
+                    { borderRadius: 52, width: 104, height: 104 },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>START!</Text>
+                </LinearGradient>
+              </Animated.View>
+            </TouchableWithoutFeedback>
+            {/* <CustomButton
+              onPressIn={onPressIn}
+              onPressOut={onPressOut}
               rounded
               borderRadius={104 / 2}
               style={{ width: 104, height: 104 }}
-              onPress={onPressStartButton}
+              // onPress={onPressStartButton}
               bgGradientStart={curBranch.startGradient}
               bgGradientEnd={curBranch.endGradient}
             >
-              <Text style={styles.buttonText}>START!</Text>
-            </CustomButton>
+              <Animated.View style={[styles.iconContainer, animatedScaleStyle]}>
+                <Text style={styles.buttonText}>START!</Text>
+              </Animated.View>
+            </CustomButton> */}
           </View>
         </View>
       </View>
@@ -102,6 +161,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 'auto',
     aspectRatio: 1,
+  },
+  iconContainer: {
+    height: 104,
+    width: 104,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
