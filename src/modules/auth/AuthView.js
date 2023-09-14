@@ -3,15 +3,14 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { View, StyleSheet, Image, Platform } from 'react-native';
 import { Button, Spacer } from '../../components';
-import _logo from '../../../assets/images/mbombs.png';
 import LinearGradient from 'react-native-linear-gradient';
 import { Text } from '../../components/StyledText';
-import CustomButton from '../../components/Button';
-import { windowWidth } from '../../styles';
 import AppleLoginBtn from '../../molecules/auth/appleLogin';
 import AuthService from '../../services/authService';
 import Storage from '../../services/Storage';
-import { get } from 'lodash';
+
+import _logo from '../../../assets/images/mbombs.png';
+import __logo from '../../../assets/images/fourDotZero.png';
 
 export default function AuthScreen(props) {
   // dev mode
@@ -103,7 +102,7 @@ export default function AuthScreen(props) {
 
   const Logo = (
     <View style={[styles.logoContainer]}>
-      <Image style={styles.logo} source={_logo} resizeMode="contain" />
+      <Image style={styles.logo} source={__logo} resizeMode="contain" />
     </View>
   );
 
@@ -200,7 +199,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   logo: {
-    width: '60%',
+    width: '50%',
     height: 'auto',
     aspectRatio: 1,
   },
