@@ -227,7 +227,6 @@ export default function AuthAgreementView(props) {
   return (
     <ViewContainer
       header
-      screenName="MBOMBS 이용 약관"
       goBack
       onPressGoBackIcon={() => {
         props.navigation.navigate('Auth');
