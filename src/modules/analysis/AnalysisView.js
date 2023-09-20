@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   imageStyle: {
+    marginTop: 20,
     width: '100%',
     height: 'auto',
     aspectRatio: 1,
