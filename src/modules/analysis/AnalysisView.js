@@ -89,7 +89,7 @@ export default function AnalysisScreen(props) {
       onPressGoBackIcon={openModal}
     >
       <View style={styles.container}>
-        {data.ImgUrl && (
+        {data.ImgUrl ? (
           <Image
             resizeMode="contain"
             source={{
@@ -97,27 +97,20 @@ export default function AnalysisScreen(props) {
             }}
             style={styles.imageStyle}
           />
+        ) : (
+          <Spacer size={40} />
         )}
         <Text hCenter size={22}>
           {data.Name}
         </Text>
         <Spacer />
-        {data.ChildrenIDs?.map((item, idx) =>
-          item.imgUrl === '' ? (
-            <ButtonAnswer
-              name={item.name}
-              onPress={() => goToNext(item.id)}
-              key={`answer-${idx}`}
-            />
-          ) : (
-            <PhotoAnswer
-              name={item.name}
-              imgUrl={item.imgUrl}
-              onPress={() => goToNext(item.id)}
-              key={`answer-${idx}`}
-            />
-          ),
-        )}
+        {data.ChildrenIDs?.map((item, idx) => (
+          <ButtonAnswer
+            name={item.name}
+            onPress={() => goToNext(item.id)}
+            key={`answer-${idx}`}
+          />
+        ))}
       </View>
       <CustomModal
         isVisible={modalVisible}
