@@ -46,6 +46,7 @@ export default function ViewContainer({
       <ContainerType
         style={!scrollable && [styles.container, { ...style }]}
         contentContainerStyle={scrollable && [styles.container, { ...style }]}
+        showsVerticalScrollIndicator={false}
       >
         {children}
       </ContainerType>
