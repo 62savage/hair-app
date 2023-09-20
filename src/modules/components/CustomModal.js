@@ -8,7 +8,7 @@ import {
 import Modal from 'react-native-modal';
 import CustomButton from '../../components/Button';
 import { Text } from '../../components/StyledText';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TouchableIcon } from '../../components';
 
 const _close_button = require('../../../assets/images/icons/close-button.png');
@@ -23,19 +23,17 @@ const CustomModal = ({
   password,
   setIsVisible,
 }) => {
+  console.log('password 1111? =', password);
   const [text, setText] = useState('');
-  const enterPassword = password;
-
-  console.log(password);
-
-  const onChangeText = e => setText(e);
 
   const onSubmitText = () => {
-    console.log(text);
-    if (text === enterPassword) {
+    console.log(password, text);
+
+    if (text === password) {
       setText('');
       goStart();
     } else {
+      setText('');
       console.log('try other password');
     }
   };
@@ -54,8 +52,8 @@ const CustomModal = ({
           비밀번호를 확인하세요.
         </Text>
         <TextInput
-          onChangeText={onChangeText}
-          onSubmitEditing={onSubmitText}
+          onChangeText={text => setText(text)}
+          //onSubmitEditing={onSubmitText}
           value={text}
           style={styles().input}
           textAlign="center"
@@ -66,7 +64,9 @@ const CustomModal = ({
             rounded
             borderRadius={20}
             style={[styles().button]}
-            onPress={onSubmitText}
+            onPress={() => {
+              onSubmitText();
+            }}
             // bgGradientStart={bgGradientStart}
             // bgGradientEnd={bgGradientEnd}
           >

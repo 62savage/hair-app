@@ -18,13 +18,17 @@ const _unlocked = require('../../../assets/images/icons/unlocked.png');
 export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
   const tree = props.tree;
   const [modalVisible, setModalVisible] = useState(false);
+  const [treeToShow, setTreeToShow] = useState(null);
 
   const onPress = (id, isLocked) => {
     props.setAnalysisState(id);
+    let _clickedTree = props.tree.filter((el, _) => el.id == id)[0];
+
     if (!isLocked) {
       props.navigation.navigate('START');
     } else {
       setModalVisible(true);
+      setTreeToShow(_clickedTree);
     }
   };
 
@@ -90,18 +94,20 @@ export default function HomeScreen({ isExtended, setIsExtended, ...props }) {
                   </Text>
                 </View>
               </CustomButton>
-              <CustomModal
-                isVisible={modalVisible}
-                setIsVisible={() => setModalVisible(false)}
-                closeModal={closeModal}
-                goStart={goStart}
-                height={162}
-                bgGradientStart={item?.startGradient}
-                bgGradientEnd={item?.endGradient}
-                password={item?.password || '1234'}
-              />
             </View>
           ))}
+          {modalVisible && treeToShow && (
+            <CustomModal
+              isVisible={modalVisible}
+              setIsVisible={() => setModalVisible(false)}
+              closeModal={closeModal}
+              goStart={goStart}
+              height={162}
+              bgGradientStart={treeToShow?.startGradient}
+              bgGradientEnd={treeToShow?.endGradient}
+              password={String(treeToShow?.password)}
+            />
+          )}
         </View>
         <Spacer size={40} />
       </View>
