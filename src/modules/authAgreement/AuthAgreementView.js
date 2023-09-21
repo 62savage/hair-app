@@ -83,7 +83,6 @@ export default function AuthAgreementView(props) {
             }}
           />
         </View>
-        <Spacer />
         <Text size={16} fontWeight="700" color={colors.black}>
           {title}
         </Text>
@@ -328,7 +327,8 @@ const styles = StyleSheet.create({
     width: windowWidth - 40,
     height: windowHeight - 200,
     backgroundColor: colors.white,
-    paddingVertical: 40,
+    paddingTop: 20,
+    paddingBottom: 40,
     marginTop: 50,
     borderRadius: 30,
   },

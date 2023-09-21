@@ -53,6 +53,7 @@ export default function AuthScreen(props) {
       console.log('user data', res);
       if (res && res.email) {
         props.login(res);
+        setLoading(true);
       }
     } catch (error) {
       console.log('getAsyncStorageUserData error', error);
@@ -159,8 +160,9 @@ export default function AuthScreen(props) {
           caption="Guest Login"
           bgGradientStart="#806FE8"
           bgGradientEnd="#CC7AFF"
-          onPress={() => {
+          onPress={async () => {
             props.login(mock_guest_login);
+            await saveUserDataOnAsyncStorage(mock_guest_login);
           }}
         />
 
