@@ -109,7 +109,7 @@ export default function AnalysisScreen(props) {
             style={styles.imageStyle}
           />
         ) : (
-          <Spacer size={40} />
+          <Spacer size={120} />
         )}
         <Text hCenter size={22}>
           {data.Name}
