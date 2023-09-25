@@ -22,6 +22,7 @@ export default function BottomTabs() {
           alignItems: 'center',
           height: 76,
           backgroundColor: colors.backgroundSecondary,
+          borderTopWidth: 0,
         },
       }}
     >

@@ -100,7 +100,7 @@ export default function Detail({ route, user, ...props }) {
           <Spacer size={10} />
           {data?.map((item, idx) => {
             console.log('item =', item);
-            if (item.Answer && item.AnswerImgUrl)
+            if (item)
               return (
                 <View style={styles.mapContainer} key={`analysis-${idx}`}>
                   {item.AnswerImgUrl && (
