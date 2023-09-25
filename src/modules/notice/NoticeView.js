@@ -107,7 +107,6 @@ export default function NoticeView(props) {
         >
           <ViewContainer
             style={{
-              flex: 1,
               backgroundColor: colors.backgroundSecondary,
               alignItems: 'left',
             }}
