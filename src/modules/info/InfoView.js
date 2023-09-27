@@ -113,7 +113,7 @@ export default function InfoView(props) {
       <Image resizeMode="contain" source={_bell} style={styles.icon} />
       <Spacer />
       <Text size={16} fontWeight="700" color={colors.black}>
-        엠밤스 어플리케이션 사용설명서
+        헤어 디자이너 셀링4.0 사용설명서
       </Text>
       <Spacer size={10} />
       <Text
@@ -158,20 +158,9 @@ export default function InfoView(props) {
       <Image resizeMode="contain" source={_bell} style={styles.icon} />
       <Spacer />
       <Text size={16} fontWeight="700" color={colors.black}>
-        엠밤스 어플리케이션 사용설명서
+        헤어 디자이너 셀링4.0 사용설명서
       </Text>
       <Spacer size={10} />
-      <Text
-        paddingHorizontal={20}
-        hCenter
-        size={12}
-        fontWeight="300"
-        color={colors.black}
-      >
-        헤어고민 진단부터 혜택 안내 그리고 나에게 가장 가까운 미용실찾기 전문
-        어플리케이션입니다. 해당 어플리케이션 200% 활용하기 설명서
-        시작하겠습니다.
-      </Text>
       <Spacer size={20} />
       <View style={{ width: windowWidth - 70, justifyContent: 'flex-start' }}>
         {noticeStringData.map((item, _) => {

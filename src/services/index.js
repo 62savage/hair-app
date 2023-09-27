@@ -101,6 +101,16 @@ class MBombsService {
       throw error;
     }
   };
+
+  getRootNodes = async branch => {
+    try {
+      let res = await this.axiosInstance.get(`/root-node/${branch}`);
+      return res.data;
+    } catch (error) {
+      console.log('service delete analystic error', error);
+      throw error;
+    }
+  };
 }
 
 const Service = new MBombsService();

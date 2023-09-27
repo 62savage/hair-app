@@ -17,11 +17,12 @@ export default function BottomTabs() {
           bottom: 20,
           left: 20,
           right: 20,
-          elevation: 0,
+          // elevation: 0,
           borderRadius: 15,
           alignItems: 'center',
           height: 76,
           backgroundColor: colors.backgroundSecondary,
+          borderTopWidth: 0,
         },
       }}
     >
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
   tabBarItemContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 5,
     // borderBottomWidth: 2,
     // borderBottomColor: colors.white,
     paddingHorizontal: 10,

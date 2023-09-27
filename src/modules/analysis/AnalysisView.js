@@ -19,7 +19,7 @@ export default function AnalysisScreen(props) {
   let curBranch = tree.filter(item => item.id == curAnalysis)[0];
 
   const [data, setData] = useState({});
-  const [level, setLevel] = useState([316, 359, 478, 739, 887]);
+  const [level, setLevel] = useState([]);
   const [record, setRecord] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -35,6 +35,16 @@ export default function AnalysisScreen(props) {
     setModalVisible(false);
     props.navigation.navigate('Home');
   };
+
+  const getRoodNodes = async () => {
+    const res = await Service.getRootNodes(curBranch.branch);
+    const _level = res.filter((el, _) => el.Grouping === curBranch.branch);
+    setLevel(_level);
+
+    fetchData(_level[0].ID);
+  };
+
+  console.log(level);
 
   const fetchData = async id => {
     await fetch(
@@ -65,20 +75,21 @@ export default function AnalysisScreen(props) {
             return;
           }
           setRecord(prev => [...prev, _res]);
-          return fetchData(level[res.NextCategory]);
+          const next = level.filter(
+            (el, _) => el.Category == res.NextCategory,
+          )[0];
+          console.log(next);
+          return fetchData(next.ID);
         }
         setData(res);
       });
   };
 
   console.log('REORD =>', record);
+  console.log('DATA =>', data);
 
   useEffect(() => {
-    axios
-      .get(
-        'http://ec2-user@ec2-43-201-111-38.ap-northeast-2.compute.amazonaws.com:8080/node/359',
-      )
-      .then(res => setData(res.data));
+    getRoodNodes();
   }, []);
 
   return (
@@ -89,7 +100,7 @@ export default function AnalysisScreen(props) {
       onPressGoBackIcon={openModal}
     >
       <View style={styles.container}>
-        {data.ImgUrl && (
+        {data.ImgUrl ? (
           <Image
             resizeMode="contain"
             source={{
@@ -97,27 +108,20 @@ export default function AnalysisScreen(props) {
             }}
             style={styles.imageStyle}
           />
+        ) : (
+          <Spacer size={120} />
         )}
         <Text hCenter size={22}>
           {data.Name}
         </Text>
         <Spacer />
-        {data.ChildrenIDs?.map((item, idx) =>
-          item.imgUrl === '' ? (
-            <ButtonAnswer
-              name={item.name}
-              onPress={() => goToNext(item.id)}
-              key={`answer-${idx}`}
-            />
-          ) : (
-            <PhotoAnswer
-              name={item.name}
-              imgUrl={item.imgUrl}
-              onPress={() => goToNext(item.id)}
-              key={`answer-${idx}`}
-            />
-          ),
-        )}
+        {data.ChildrenIDs?.map((item, idx) => (
+          <ButtonAnswer
+            name={item.name}
+            onPress={() => goToNext(item.id)}
+            key={`answer-${idx}`}
+          />
+        ))}
       </View>
       <CustomModal
         isVisible={modalVisible}
@@ -181,6 +185,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   imageStyle: {
+    marginTop: 20,
     width: '100%',
     height: 'auto',
     aspectRatio: 1,
